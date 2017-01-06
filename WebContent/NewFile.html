@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$("form input + span").hide(); // input 타입 아래 span
+	
+	$("form input").not($(":button")).focus(function(){
+		$(this).next("span").show();}); // 버튼이 아닌 input에 포커스가 맞춰진 경우 나타나라.
+	
+	$("form input").not($(":button")).blur(function(){
+	
+	$(this).next("span").hide();});
+	
+	
+		
+		
+		
+		
+		
+	
+/** a==> 65 A ==> 65 키 다운
+ *  a ==> 97 A ==> 65 키 프레스
+ */
+	
+});
+
+
+</script>
+
+
+</head>
+<body>
+
+
+
+<form action="">
+<input type="text" name= "id">
+<span> 아이디...</span><br>
+<span> 5자 이상...</span><br>
+
+<input type="text" name="name">
+<span> 이름 </span><br>
+
+<input type="text" name="birth">
+<span>생일</span><br>
+
+
+<input type="button" value="등록하기">
+<input type="reset" value ="다시 입력"><br>
+</form>
+
+
+</body>
+</html>

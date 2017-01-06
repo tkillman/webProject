@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+
+$(function(){
+	
+	 $("*").css("font-size","19pt"); //전체
+     $("span").css("color","blue"); // span 태그 전체에
+     $("#div1").css("color","red");// id가 div1 인 곳
+     $(".c1").css("background","black"); // class 가 c1인 곳
+     $("span,label").css("font-family","바탕"); // span 태그, label 태그
+     $("form input").css("background","white"); // form 아래 input인 곳
+     $("form input[type=text]").css("border","none"); //form 아래 input이 text인 곳
+     $("form input[type=text]").css("border-bottom","1px solid red")  
+     $("input[name=aa1]").css("font-family","궁서") //input중 id가 aa1인 곳
+     $("form input[name*=aa]").css("color","red");/* name에 aa로 시작하는거  =*  */
+     $("form input[name$=2]").css("border-top","1px solid blue");/* name에 2로 끝나는건 = $  */
+     $("form :not(input[type=text])").css("background","tomato");
+ 
+});
+</script>
+
+</head>
+<body>
+
+<h3>selectors 예제</h3>
+
+<div id="div1">테스트 1</div>
+<div id="div2" class="c1">테스트 2</div>
+<span>테스트 3</span><br>
+<span>테스트 4</span><br>
+<div id="div3" class="c1">테스트 5</div>
+<span class="c1">테스트 6</span><br>
+<label class="c2">테스트 6</label><br>
+
+<input type="text" name="aa1"><br><br>
+
+<form>
+    <input type="text" name="aa1" > <br><br>
+    <input type="text" name="aa2" > <br><br>
+    <input type="text" name="bb1"> <br><br>
+    <input type="text" name="bb2"> <br><br>
+    <input type="button" value="등록하기">
+    <input type="reset" value="다시입력">
+    
+    
+    
+</form>
+
+</body>
+</html>
