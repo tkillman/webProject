@@ -6,24 +6,34 @@
 </head>
 <body>
 
-<div id="target1">test1</div>
-<div id='target2'>test2</div>
+<h3>selectors 예제</h3>
 
-<input type="button" id="btn1" value="btn1">
-<input type="button" id="btn2" value="btn2">
+<div id="div1">테스트 1</div>
+<div id="div2" class="c1">테스트 2</div>
+<span>테스트 3</span><br>
+<span>테스트 4</span><br>
+<div id="div3" class="c1">테스트 5</div>
+<span class="c1">테스트 6</span><br>
+<label class="c2">테스트 6</label><br>
+
+<input type="text" name="aa1"><br><br>
+
+<form>
+    <input type="text" name="aa1" > <br><br>
+    <input type="text" name="aa2" > <br><br>
+    <input type="text" name="bb1"> <br><br>
+    <input type="text" name="bb2"> <br><br>
+    <input type="button" value="등록하기">
+    <input type="reset" value="다시입력">
+    
+    
+    
+</form>
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
      <script type="text/javascript">
+    
      
-     $('#btn1').click(function() {
-		
-    	 $('<div>replaceAll</div>').replaceAll('#target1');
-	});
-     
-     
-     $('#btn2').click(function() {
-		
-    	 $('#target2').replaceWith('<div>replacewith</div>')
-	});
      
      </script>
 

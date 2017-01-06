@@ -7,7 +7,7 @@
 <script type="text/javascript">
 $(function(){
 	
-	$("form input + span").hide(); // input 타입 아래 span
+	$("form input + span").hide(); // input 타입 형제 span
 	
 	$("form input").not($(":button")).focus(function(){
 		$(this).next("span").show();}); // 버튼이 아닌 input에 포커스가 맞춰진 경우 나타나라.
