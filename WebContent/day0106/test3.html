@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h3>selectors 예제</h3>
+
+<table class ='tb' border="1" style="width : 300px ; margin : 30px auto; border-collapse : collapse;">
+<tr>
+
+		<td width="50%" align="center">이름</td>
+		<td width="50%" align="center">점수</td>
+		
+</tr>
+
+<tr align="center">
+<td> 김김김</td>
+<td>80</td>
+</tr>
+<tr align="center">
+<td> dldldl </td>
+<td>80</td>
+</tr>
+<tr align="center">
+<td> 나나나</td>
+<td>80</td>
+</tr>
+<tr align="center">
+<td>이이이</td>
+<td>80</td>
+</tr>
+<tr align="center">
+<td> 김하하</td>
+<td>80</td>
+</tr>
+
+<tr align="center">
+<td> 김나자김</td>
+<td>80</td>
+</tr>
+<tr align="center">
+<td> 아러김</td>
+<td>80</td>
+</tr>
+<tr align="center">
+<td> 아러</td>
+<td></td>
+</tr>
+
+</table>
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+
+
+$(function(){
+
+	$('.tb tr:odd').css('background','#efefef');
+	$('.tb tr:gt(5)').css('color','blue'); //gt(5) 는 index 5보다 큰 것
+	$('.tb tr:last').css('background','yellow'); 
+	
+	$(':header:eq(0)').css("color", "red")
+					  .css("background", "green");
+	$('.tb td:contains("이이이")').css('color','red');
+	$('.tb td:empty').css('background','green');
+	$('.tb td:contains("김김김")').parent().css("background",'black');
+	
+	
+					  
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+
+.yb{
+background: yellow; border : 1px solid red; 
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="subject">
+<div data-num="1"><b>스프링</b></div> //유저에 의해서 설정한 속성은 'data-'를 붙여주면 된다.
+<div data-num="2">html5</div>
+<div data-num="3">javascript</div>
+<div data-num="4">css</div>
+<div data-num="5">자바</div>
+</div>
+
+
+<br>
+<div id="div1"> 
+마우스를 올려주세요...
+
+</div>
+
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     
+     
+     $(function(){  
+     
+    	 $('#subject div').click(function() {
+     		
+    		 //var s=$(this).text();
+    		 //val , val() 차이 : val은 속성값을 가져올때는 val , val()은 text 즉 화면에 보이는 값을 가져온다.
+    		 
+    		 
+    		 
+    		 var s=$(this).html(); 
+    		 var a=$(this).attr("data-num");
+    		 
+    		 s="<b>" +s +"<b>";
+    		 $(this).html(s); // html 대신 text를 써버리면 태그 값이 들어가는 것이 아니라 text로 들어가서 수정 불가.
+    		 alert(s +" : " + a);
+    	
+     });
+     
+     });
+     
+     $(function(){  
+     
+     	$('#div1').bind("mouseover",function(){
+     		$('#div1').addClass("yb");
+     		
+     	}).bind("mouseout",function(){
+     		$('#div1').removeClass("yb");
+     		
+     	});
+    	 
+     });
+     
+     
+     
+     </script>
+</body>
+</html>
