@@ -50,12 +50,13 @@
 
 
 
-$(function(){
+$(function(){ // enter 치면 다음 칸으로 넘어가도록하기.
 	$("input").not($(":button")).keypress(function(e){
 		// console.log(e.keyCode);
 		if(e.keyCode==13) {
 			var fields = $(this).parents("form, body").find("button, input, select");
-			// parents(파라미터) 파라미터를 조상으로 갖는 elements 를 반환..
+			// parents(파라미터) 파라미터를 조상으로 갖는 배열 를 반환.
+			console.log($(this).parents());
 			
 			var index = fields.index(this);
 			
@@ -68,8 +69,9 @@ $(function(){
 	});
 });
 
-$(function(){
-	$("form input").not($(":button")).each(function(){
+
+$(function(){ // 일단 span태그 내용을 안 보이게 하기. 
+	$("form input").not($(":button")).each(function(){ //each메소드는 전부 적용한다는뜻
 		if($(this).next("span").attr("id")!="userIdState") {
 			$(this).next("span").hide();
 		}
@@ -88,7 +90,7 @@ $(function(){
 });
 
 
-$(function(){
+$(function(){ //암호는 5~11자 이상이 되야지 다음 내용으로 넘어갈 수 있도록 해줌. 
 	$("form input[name=userPwd]").change(function(){
 		var s=$(this).val().trim();
 		if(s.length<5 || s.length>10) {
@@ -100,7 +102,8 @@ $(function(){
 });
 
 
-$(function(){ //readOnly의 경우 서버에 전송하고 수정불가, disabled의 경우 서버에 전송불가하고 수정불가
+$(function(){ 
+	//readOnly의 경우 서버에 전송 가능하고 수정불가, disabled의 경우 서버에 전송불가하고 수정불가
 	$("#selectEmail").change(function(){
 		var s=$(this).val();
 		
@@ -120,10 +123,6 @@ $(function(){ //readOnly의 경우 서버에 전송하고 수정불가, disabled
 		
 	});
 });
-
-
-
-
 
 </script>
 

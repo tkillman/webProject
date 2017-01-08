@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<!--
+6장 수의 연산
+
+Math.pow(3,2);
+
+
+Math.round(10.6); //반올림
+
+Math.ceil(10.2); // 가장 가까운 정수로 올림
+
+Math.floor(10.2); // 가장 가까운 정수로 내림
+
+Math.sqrt(9); // 제곱근
+
+Math.random(); //랜덤
+
+
+7장 문자의 표현
+
+alert("hello");
+
+alert("hello'); //에러
+
+alert('egoing \'s coding everybody'); // '\'도망 탈출
+
+typeof 1
+typeof "1"
+
+8장 문자에 대한 명령
+\n 줄바꿈
+
+"code".length // 문자 개수
+
+"code".indexof("C") // 위치 정보를 알 수 있다.
+
+9장 변수(1/2) : 사용법
+
+var a = 1;
+
+var first= 'coding'; 
+
+10장 변수(2/2) : 변수의 효용
+
+
+11장 주석
+// 한줄
+/*~~~~*/ 블럭
+
+
+12장 줄바꿈과 여백
+; 명령종료
+
+
+13장 비교(1/4) :연산자란?
+
+ a=1 대입 연산자란
+ 
+a == b // 결과값이 boolean
+
+
+14장 비교(2/4) : ==과 ===
+
+alert( 1== "1"); // true
+
+alert (1 === "1"); // false 데이터 형식이 다르다.
+
+
+15장 비교(3/4) : ===를 사용하자!
+
+alert( null == undefined);
+
+//null 값이 없다. undefined 사용자의 의도로 값을 지정하지 않았다.
+
+alert( 1 == true) // true
+
+16장 비교(4/4) : 부정과 부등호
+
+!= \\ 같지 않다.
+
+!== \\ 같지 않다.
+
+17장 조건문(1/5) : 조건문이란
+if (true) {alert("true")};
+if (false) {alert("true")};
+
+if (true){ alert(1),alert(2),alert(3),alert(4)};
+// 1만 출력되고 멈춘다.
+
+18장 조건문 (2/5) : else, else if
+
+
+if(false){alert(1);} 
+else if (false){ alert(2);}
+else if (true){alert(3);}
+else {alert(4);}
+
+19장 조건문(3/5) : 조건문의 응용
+
+var id = prompt('아이디를 입력하세요');
+if (id == 'egoing'){
+    var passward = prompt('비밀번호를 입력하세요');
+        if (passward == 1111){
+                alert('로그인 성공')}
+        else alert('비밀번호가 다릅니다');
+                    } 
+else {alert('아이디가 다릅니다');}
+
+20장 조건문(4/5) : 논리 연산자
+
+&& and
+
+true && true true
+true && false -> false
+
+|| or
+
+true || true -> true
+true || false -> true
+false || false -> false
+
+var id = prompt('아이디를 입력하세요');
+var passward = prompt('비밀번호를 입력하세요');
+if (id == 'egoing' && passward == 1111)
+{ alert ('로그인 성공');}
+else {alert('로그인 실패');}
+
+!true == false \\ 한번 뒤집는다.
+
+21장 조건문 (5/5) : boolean의 대체재
+
+
+
+22장 반복문 (1/6) : 기본문법
+
+초기값 설정 while (boolean) {조건이 만족할 때 반복해서 실행할 코드};
+
+document.write("출력할 문자");
+
+while(false) {document.write("coding everybody");}
+// 무한 루프, 무한반복
+
+23장 반복(2/6) : 반복조건
+ var i =0;
+ while(i<10){ document.write("hello"+i+"<br\>");
+                i = i+1;
+                }
+24장 반복(3/6) : for 문
+ for(i=0;i<10;i++)
+ { document.write("hello"+i+"<br\>");}
+
+i++// 다음 단계부터 적용 
+++i// 자신이 포함된 관계에서도 적용
+
+ex) i=0; alert(i++);
+   i=0; alert(++i);
+
+   
+25장 반복(4/6) : 반복문의 효용
+
+반복적인 일을 간단히 해결
+
+26장 반복 (5/6) : 반복문의 제어
+
+break // 강제 종료
+continue // 그 순간에 종료
+ 
+ for(i=0;i<10;i++)
+ 
+ { if(i ==5) {break;} document.write("hello"+i+"<br\>");}
+//반복문 안에 조건문이 들어갔다. 
+ 
+ for(i=0;i<10;i++)
+{ if(i ==5) {continue;} document.write("hello"+i+"<br\>");}
+ // 5가 나오지 않는다.
+ 
+ 27장 반복문의 중첩
+ 
+  for(i=0;i<3;i++)
+ { for(j=0;j<3; j++)
+    {document.write("hello" + i +j +"<br/>");}
+ }
+/// 적용 순서가 어떻게 되는지 생각해보자.
+
+
+
+
+28장 함수 (1/5) : 함수란?
+
+함수 : 재실행 할 수 있도록 하는 것
+장점 : 재사용성,유지,보수,가독성이 용이하다.
+
+함수 정의:function 함수명([매개변수],[매개변수],...){코드}
+
+함수 사용 : 함수명(인자,인자);
+
+29장 함수(2/5) : 함수의 효용
+재사용성
+
+30장 함수(3/5) : 출력
+
+return
+
+function get_member1()
+{return 'egoing';}
+
+alert(get_member1());
+
+function get_member1()
+{return 'egoing';
+ return 'leezche';
+ return 'graphittie';}
+
+alert(get_member1()); // return은 사용한 뒤 함수를 빠져나간다.
+
+31장 함수(4/5) : 입력
+
+function get_argument(arg)
+{ return arg*1000;}
+
+alert(get_argument(1));
+alert(get_argument(2));
+// arg == 매개변수 , (1),(2) == 인자
+
+매개변수는 두 개 이상 올 수 있다.
+
+32장 함수를 정의하는 다른 방법
+
+
+function numbering()
+{ for(i=0;i<10;i++)
+    {    document.write(i);}
+}
+
+
+var numbering = function()
+{ for(i=0;i<10;i++)
+    {    document.write(i);}
+}
+
+
+(function()
+{ for(i=0;i<10;i++)
+    {    document.write(i);}
+}) (); // 일회용 함수
+
+33장 배열 (1/5) : 배열의 문법
+
+배열 : 연관된 데이터를 모아서 통으로 관리하기 위해 사용하는 데이터 타입
+
+만드는 방법
+
+var 변수명= [원소,원소,원소]; //원소를 적어주지 않아도 된다.
+
+var members= ['egoing','k8805','sorialgi'];
+
+alert(members[0]);
+alert(members[1]);
+alert(members[2]); // index , 색인
+
+34장 배열(2/5) : 배열의 효용
+
+함수는 하나의 값만 반환
+배열과 관련된 값을 다양하게 반환
+
+35강 배열(3/5) : 배열과 반복문의 조우
+function get_members()
+{return ['egoing','k8805','sorialgi'];}
+
+
+var members= get_members();
+
+
+document.write(members[0].toUpperCase()+"\n");
+document.write(members[1].toUpperCase()+"\n");
+document.write(members[2].toUpperCase()+"\n"); 
+
+document.write("<br>");
+
+for(var i=0;i<3;i++)
+{document.write(members[i].toUpperCase()+"\n");}
+
+document.write("<br>");
+
+for(var j=0;j<members.length;j++)
+{document.write(members[j].toUpperCase()+"\n");}
+
+36장 배열(4/5) :데이터의 추가
+
+배열의 원소 추가
+
+배열.push(원소) // 배열의 끝에 추가된다.
+배열.concat[원소,원소,...] // 복수의 원소를 배열 끝에 추가
+배열.unshift(원소) // 배열의 처음에 추가된다.
+
+var li=['a','b','c','d'];
+
+li.push('z');
+
+alert(li);
+
+li.concat(['f','g']);
+
+li.unshift('h');
+
+alert(li);
+
+
+배열.splice(위치, 삭제 글자수,추가원소,...)
+
+li.splice(2,1,'k','t');
+
+37장 배열(5/5) : 제거와 정렬
+-제거-
+배열.shift(); // 가장 앞쪽 원소 하나 제거
+배열.pop(); // 가장 뒤쪽 원소 하나 제거
+
+-정렬-
+배열.sort(); // 오름차순
+배열.reverse(); // 내림차순
+
+-사용자 임의 지정-
+생활코딩 참조
+
+li.sort();
+
+38장 객체(1/3) : 객체의 문법
+
+배열 = 연관된 데이터를 한 그릇에 담는 데이터타입
+객체 = 연관된 데이터를 한 그릇에 담는 데이터타입
+차이 : 객체는 인덱스를 사용자가 임의로 줄 수 있다.
+
+객체를 만드는 3가지 방법
+
+var grades = {'egoing' : 10, 'k8805' : 6, 'sorialgi' : 80};
+-------------------------------------------------
+var grades={};
+grades['egoing'] = 10;
+grades['k8805'] = 6;
+grades['sorialgi'] = 80;
+---------------------------------------
+var grades = new object();
+grades['egoing'] = 10;
+grades['k8805'] = 6;
+grades['sorialgi'] = 80;
+
+grades;
+
+객체 내에서의 용어 정리
+인덱스 = key
+데이터 = value
+
+--value 값 불러오기-
+객체명['key']; 예제)grades['egoing'];
+객체명.key 예제)grades.egoing
+
+39장 객체(2/3) : 객체와 반복문의 조우
+
+var arr=['a','b','c'];
+
+for(var i=0;i<arr.length; i++)
+{ console.log(arr[i]);}
+
+배열에는 순서가 있지만
+객체에는 key와 value만이 존재한다. 순서가 없다.
+
+var grades = {'egoing' : 10, 'k8805' : 6, 'sorialgi' : 80};
+
+-- for in 문-- 열거할 때 사용한다.
+for(변수 in 객체){내용};
+변수에는 객체의 key값이 순서대로 담기게 된다.
+
+for(var name in grades)
+{ document.write("key:"+name+"  value:"+grades[name]+"<br/>");            }
+
+
+40장 객체(3/3) : 객체지향 프로그래밍
+ 
+ var grades ={
+ 
+    'list': {'egoing' :10, 'k8805' : 8, 'sorialgi' : 80}
+    ,'show' : function(){alert('hello');}
+            }
+// grades 객체 안의 key 값 list 에 담긴 value 값은 객체
+   list 객체 안의 key 값 egoing 에 담긴 value 값은 10
+   list 객체 안의 key 값 k8805 에 담긴 value 값은 8
+   list 객체 안의 key 값 sorialgi 에 담긴 value 값은 80
+   key 값 show에 value 값으로 함수가 담겼다.
+console.log(grades['list']);
+
+console.log(grades['list']['egoing']);
+
+alert(grades['show']());
+
+-------------------------
+
+this : 약속된 변수
+ 
+ var grades ={
+    'list': {'egoing' :10, 'k8805' : 8, 'sorialgi' : 80}
+    ,'show' : function(){console.log(this.list);}
+            }
+
+함수가 소속된 객체를 가르킨다. grades
+
+grades['show']();
+// 1.객체 grades의 key값 show의 value 값을 보여라
+   2.() 함수를 실행해라
+   console.log(this.list) 
+   3. this 는 객체를 가르키므로 grades.list
+    key 값 list의 value값을 보여라.
+    
+var grades ={
+    'list': {'egoing' :10, 'k8805' : 8, 'sorialgi' : 80}
+    ,'show' : function(){
+                        for(var name in this.list){ 
+                        console.log(name, this.list[name]);
+                        }
+              }
+            }
+  
+grades.show();
+
+//객체는 데이터와 함수를 그룹핑할 수 있다.
+
+
+41장 모듈(1/5) :모듈이란?
+모듈 : 부품, 하나의 코드를 여러개의 파일로 분리하는 것.
+
+자바스크립트가 구동되는 호스트 환경에 따라서 서로 다른 모듈화 방법이 제공되고 있다.
+
+호스트 환경: 자바스크립트가 구동되는 환경 예) 서버,웹브라우저, 모바일앱
+
+장점 : 속도가 빨라진다.
+
+
+
+42장 모듈 (2/5) : 모듈화
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+<script>
+ 
+        function welcome(){ return 'hello world'}
+        alert(welcome());
+
+        
+</script>
+
+  </body>
+</html>
+
+이것을 모듈화 해보세요.
+
+별도의 greeting.js 파일을 만들고 <head> 부분에는 <script src="greeting.js"></script> 넣어준다.
+
+43장 모듈 (3/5) : node.js의 모듈화
+
+서버에서 작동하는 모듈화
+
+44장 모듈 (4/5) : 라이브러리란?
+ 모듈을 잘 정리해서 집합을 만들어 놓은 것.
+ jquery
+ 
+ jquery API documentation 사용목적을 표시한 것.
+
+ 45장 모듈(5/5) : 라이브러리의 사용
+ 
+ <script src="jquery.js"></script>
+ 
+$(#아이디 이름).click( function(){ $(#아이디이름).text('바꿀 내용');})
+
+46장 UI, API, 그리고 문서
+ui란 유저와 접합하는 모니터, 마우스, 키보드, 스피커 등을 말한다.
+API란 프로그램이 제공하는 기능들을 유저가 사용할 수 있게 만드는것.
+
+
+
+47장 UI, API, 그리고 문서 -- 문서보는법
+
+49장 정규표현식(1/7) : 오리엔테이션
+정규표현식이란? 문자열에서 특정한 문자를 찾아내는 도구
+
+50장 정규표현식(2/7) : 패턴만들기
+
+컴파일 -- 패턴
+실행 --
+정규표현식 리터럴
+정규 표현식 객체 생성자
+
+
+
+
+------------------------함수지향 -------------------
+56장 유효범위(1/5) : 전역변수와 지역변수
+
+지역변수 -- 함수 내에 선언됨.
+전역변수 -- 함수 밖에서 선언됨.
+
+왠만하면 지역변수를 사용해서 프로그래밍하도록 하길 권한다.
+
+57장 유효범위(2/5) : 유효범위의 효용
+
+58장 유효범위(3/5) : 전역변수를 사용하는 법
+
+객체를 생성해서 그 안에 자신이 원하는 변수를 집어넣어서 프로그래밍한다.
+
+일용함수를 사용해서 실행시킨다.
+
+59장 유효범위(4/5) :유효범위의 대상
+
+자바와 자바스크립트의 다른 유효범위~!
+자바 스크립트는 함수에 대해서만 유효범위를 갖는다.
+반복문이나 조건문 등의 {} 블럭은 유효범위 대상이 아니다.
+예) for(int i=0;i<10;i++){var sum +=i;} console.log(sum); 가능하다.
+
+
+60장 유효범위(5/5) : 정적 유효 범위
+사용될 때가 아닌 정의될 때 사용되는 변수범위
+
+
+61장 값으로서 함수와 콜백 (1/4) : 함수의 용도 1
+
+함수는 값이 될 수 있기 때문에 다른 객체의 value 값으로 들어 갈 수 있다.
+
+var a = function(){}
+
+함수는 값이 될 수 있기 때문에 다른 함수의 인자로도 전달 가능
+
+
+a = {
+        b:function(){}
+        };
+
+        b = 변수, key ,속성, property
+       메소드란 ? value에 담긴 함수를 메소드라고 한다.
+        다른 언어랑 정의가 조금 다르다.
+
+
+
+
+62장 값으로서 함수와 콜백 (2/4) : 함수의 용도 2
+ 
+ 함수 -> 변수,매개변수,리턴값으로 사용 가능
+ 
+ 
+63장 값으로서 함수와 콜백 (3/4) : 콜백
+
+콜백 = 값으로서 함수를 전달
+
+var numbers = [20,10,9,8,7,6,5,4,3,2,1];
+
+var sortfunc = function(a,b) {console.log(a,b);}
+console.log(numbers.sort(sortfunc));
+
+
+
+.sort() 가 두 개의 인자를 서로 비교해서 정렬하는 것을 알 수 있다.
+
+내가 원하는 방식대로 정렬하려고 하려면
+
+
+var numbers = [20,10,9,8,7,6,5,4,3,2,1];
+var sortfunc = function(a,b) { return a-b;}
+console.log(numbers.sort(sortfunc))
+
+원하는대로 숫자 배열을 함.
+
+
+64장 값으로서 함수와 콜백 (4/4) : 비동기 처리
+
+Ajax 비동기 처리 asynchronous
+
+
+65장 클로저(1/4) : 외부함수와 내부함수
+클로저란? 내부함수가 외부함수의 맥락에 접근할 수 있는 것을 가르킨다.
+중요점~! 내부함수가 외부함수의 변수에 접근이 가능하다.
+
+function ab(){
+      var a ="hahaha"
+
+        function dc(){
+            alert(a);
+        }
+        dc();
+}
+ab();
+
+
+66장 클로저 (2/4) : 클로저란~?
+
+독특성
+
+ : 외부 함수가 끝난 상황에서도 내부함수를 호출하니까 외부 함수의 변수가 남아있다.
+
+ function ab(){
+      var a ="Coding everyBody"
+
+       return function(){
+            alert(a);
+        }
+
+}
+dc = ab(); // ab() 메소드를 호출하고 종료되는 순간 ab()메소드에 관한 것들은 삭제되는 것이 맞다.
+dc();
+
+67장 클로저 (3/4) : private variable
+
+
+function factory_movice(title){
+return { get_title : function(){return title;} , set_title : function(_title){title =_title;}}}
+
+var ghost = factory_movice('Ghost in the hell');
+var matrix = factory_movice('matrix');
+
+
+alert(ghost.get_title());
+alert(matrix.get_title());
+
+
+ghost.set_title('공각기동대')
+
+alert(ghost.get_title());
+alert(matrix.get_title());
+
+title 변수에는 get_title이나 set_title을 통해서만 접근 가능하다. private 변수
+
+68장 클로저 (4/4) : 클로저의 응용
+
+ var arr =[];
+ for(var i=0; i<5  ;i++){
+     arr[i] = function(){return i;};
+ }
+
+for(var index in arr){
+        console.log(arr[index]());
+    
+}
+
+콘솔창에 1,2,3,4,5가 아닌 5만 5번 찍힌다!!!
+why? for 문 안의 변수는 유효범위가 블럭을 넘어가서
+
+어떻게 해결할까? 외부함수로 한번 감싸주자.
+
+var arr =[];
+for(var i=0; i<5  ;i++){
+
+ arr[i] = function(id){
+
+   return function(){
+            return id;}
+          }(i);
+
+}
+
+for(var index in arr){
+   console.log(arr[index]());
+
+}
+
+예) arr[0]에 들어가는 값 : i=0 일때 fuction(id) 에 0값을 주면서 바로 실행시키면 결과값으로 id 값 반환 id값은 0이다.
+ arr[1]에 들어가는 값 :i=1 일때 fuction(id) 에 1값을 주면서 바로 실행시키면 결과값으로 id 값 반환 id값은 1이다.
+ arr[2]에 들어가는 값 :i=2 일때 fuction(id) 에 2값을 주면서 바로 실행시키면 결과값으로 id 값 반환 id값은 2이다.
+
+69장 arguments (1/2)  : arguments란?
+arguments 란 이미 정의가 된 변수로 유사배열이다.
+그 배열은 어떤 것을 가리키나~? 사용자가 함수를 부를 때 보내는 인자들
+
+function  sum(){
+    var _sum=0;
+    
+    for(var i=0; i<arguments.length;i++){ 
+    //arguments.length는 전달된 인자의 갯수
+                
+                _sum = arguments[i];
+                document.write(_sum +"\n");
+    }
+    
+    document.write('<br>');
+    document.write(arguments.length);
+    
+}
+
+sum(1,2,3,4,5,6); 
+//javascript의 또다른 특징은 sum()함수를 정의할 때 매개변수를 지정해주지 않았음에도 불구하고
+// 매개변수를 넣어서 함수 호출이 가능하다.
+
+70장 arguments (2/2) : function length
+
+함수.length  -> 매개변수
+arguments.length -> 함수를 호출할 때 인자의 개수
+
+
+function add(){
+    document.write(add.length);
+    document.write(arguments.length);
+}
+
+add(1,2,3);
+
+
+
+71장. 함수의 호출 (1/2) :  apply 호출
+
+function sum(arg1,arg2){
+    return arg1+arg2;
+}
+
+sum(1,3);
+
+sum.apply(null, [1,3]); //같은 방식으로 함수를 호출할 수 있는데 왜 쓸까~?
+
+
+72장. 함수의 호출(2/2) : apply의 사용
+
+o1 = {v1 : 10, v2:30, v3: 15};
+o2 = {val1 : 1, val2:2, val3:3};
+
+function sum(){
+            var __sum = 0;
+        for(name in this){
+                    __sum+=this[name];
+        }
+    document.write(__sum);
+}
+
+sum.apply(o1); // 객체를 전달할 때 편리하게 쓸 수 있다.
+sum.apply(o2);
+
+
+73장 생성자와 new(1/3)  : 소개
+prototype - based 
+
+객체란? 연관된 변수와 메소드를 묶어놓은 것.
+
+74장 생성자와 new(2/3) : 객체 생성
+***************객체 생성 3가지 방법.
+var grades = {'egoing' : 10, 'k8805' : 6, 'sorialgi' : 80};
+-------------------------------------------------
+var grades={};
+grades['egoing'] = 10;
+grades['k8805'] = 6;
+grades['sorialgi'] = 80;
+---------------------------------------
+var grades = new object();
+grades['egoing'] = 10;
+grades['k8805'] = 6;
+grades['sorialgi'] = 80;
+
+75장 생성자와 new (3/3) : 생성자와 new 
+
+function person(){}
+var p = person();
+console.log(p);  //언 디파인드 , 함수에는 정의된 것이 없으니까
+var p1 = new person();
+console.log(p1); // person{} 객체가 생성됨.  함수가 아닌 생성자로 역할
+
+생성자는 왜 쓸까~? 코드의 재 사용성
+
+function person(){}
+var p1 = new person();
+p1.name = 'dong';
+p1.introduce = function(){return this.name;};
+
+document.write(p1.introduce());
+--------------------------------------------------
+var p2  = new person();
+p2.name = 'hyo';
+p2.introduce = function(){return this.name;};
+
+
+document.write(p2.introduce());
+
+
+두 객체를 살펴보면 메소드는 완전히 똑같고 name 값만 다르다.
+이를 생성자의 매개변수로 전달해주면 코드의 재사용성이 증가한다.
+
+function person(name){
+            this.name = name;
+            this.introduce = function(){return this.name;} 
+}
+
+var p1 = new person('dong');
+document.write(p1.introduce());
+
+var p2 = new person('hyo');
+document.write(p2.introduce());
+
+76장 전역객체
+ 
+ 모든 객체는 이 전역객체의 프로퍼티다.
+ 자바의 object class 같은 개념
+ 웹브라우저의 전역객체는 window , node.js 에서는 global이다.
+ 
+ function fuc(){document.write('fuc()함수가 호출됨.' +'<br>')}
+ fuc();
+ 
+ document.write('window 전역객체를 사용한 fuc() 메소드 호출'+'<br>');
+ window.fuc(); //fuc() 와 동일하다.
+
+
+77장 this(1/5)
+this는 함수 내에서 함수 호출 맥락(context)를 의미한다.
+즉 함수 내에서만 this를 사용 가능하고, this는 그 함수가 소속된 객체를 가리킨다.
+
+
+//window는 전역객체로 어디에도 속해있지 않은 함수 func()는 사실 전역 객체 window의 속성인 메소드이다.
+
+
+function func(){
+if(window === this){
+document.write('window ===this');
+}
+}
+func();
+
+
+78장 this(2/5) : 메소드와 this
+
+메소드 : 객체에 소속된 함수
+즉 함수 내에서만 this를 사용 가능하고, this는 그 함수가 소속된 객체를 가리킨다.
+
+79장 this(3/5) : 생성자와 this
+
+함수를 생성자로 실행하는 경우 즉 new를 붙여서 생성하면 할당받은 변수는 
+함수의 객체값을 갖게 되고 this는 그 변수를 가리키게 된다.
+
+var funcThis = null;
+
+function func(){
+        funcThis = this;
+}
+
+var n1 = func();
+if(funcThis === window){document.write('window' +'<br>');}
+
+var n2 = new func();
+if(funcThis === n2 ){document.write('n2');}
+
+
+80장 this(4/5) 객체로서의 함수
+리터럴 ? new 를 사용하지 않아도 사용자가 편하게 객체를 만들 수 있도록 해 놓은 것
+                ex) 함수리터럴,객체리터럴,배열리터럴
+함수 리터럴                
+function sum(x,y){return x+y;}                
+var sum2 = new Fuction('x','y','return x+y;');
+
+객체 리터럴
+var n1 = {}
+var n2 = new object();
+
+배열 리터럴
+var a =[1,2,3];
+var a = new Array(1,2,3);
+
+
+81강 this(5/5) apply와 this
+
+apply를 통해 this를 제어할 수 있다. apply를 사용하면 함수가 다른 객체에서 호출될 수 있다.
+
+var o ={}
+var p={}
+
+function func(){
+        switch (this){
+        case '0' : document.write('o<br>');break;
+        case 'p' : document.write('p<br>');break;
+        case 'window' : document.write('window<br>');break;
+    }
+}
+
+func();
+func.apply(o);
+func.apply(p);
+
+82강 상속 (1/3) 상속이란~?
+
+83강 상속(2/3)
+1. 상속할 변수를 prototype으로 지정
+2. 상속받을 놈이 prototype으로 상속할 놈의 생성자를 받음
+
+
+function person(name){
+        this.name = name;
+}
+
+person.prototype.name = null;
+person.prototype.introduce = function(){return  this.name;}
+
+
+var p1 = new person('kim');
+document.write(p1.introduce());
+
+function progamer(name){
+            this.name = name;
+}
+
+progamer.prototype = new person();
+
+var p2 = new progamer('donggyu');
+document.write(p2.introduce());
+
+84강 상속(3/3) 기능 추가
+
+function person(name){
+        this.name = name;
+}
+
+person.prototype.name = null;
+person.prototype.introduce = function(){return  this.name;}
+
+
+var p1 = new person('kim');
+document.write(p1.introduce());
+
+function progamer(name){
+            this.name = name;
+}
+
+progamer.prototype = new person();
+progamer.prototype.game = function(){return 'lol';}; //추가된 부분
+
+var p2 = new progamer('donggyu');
+document.write(p2.introduce());
+document.write(p2.game());
+
+
+85강 property (2/2) prototype chain
+
+
+function ultra(){}
+ultra.prototype.value='true';
+
+function middle(){}
+middle.prototype = new ultra();
+
+function sub(){}
+sub.prototype = new middle();
+
+var o = new sub();
+o.value = 1; // 추가된 부분 . 먼저 o.value를 정의하면 상속받았던 값을 재정의
+
+document.write(o.value);
+
+86강 표준 내장 객체의 확장 (1/3) - 표준 내장 객체란~?
+표준 내장 객체? 자바 스크립트가 기본적으로 가지고 있는 객체
+프로그램의 기본!!
+
+87강 표준 내장 객체의 확장(2/3) - 배열의 확장
+
+내장 객체를 사용해서 javascript developer가 되어서
+사용자에게 배열을 넣으면 배열의 값 중 하나를 반환해주는
+프로그램을 만들어보자!
+
+
+var arr =['seoul','tokyo','hot','good'];
+
+function getRandomValue(arr){
+        
+        var index = Math.floor(arr.length*Math.random());
+
+        return arr[index];
+
+}
+
+document.write(getRandomValue(arr));
+
+88강 표준 내장 객체의 확장 (3/3) - 배열의 확장
+
+위에서 만든 프로그램을 실제 적용을 시켜보자.
+주목해야 할 부분은 this 라는 부분
+random 함수가 arr이라는 인자를 받지 않아도 객체가 생성될 때
+this가 그 객체를 가리키게 되므로 간결해졌다.
+
+
+Array.prototype.random = function(){
+
+var index = Math.floor( this.length*Math.random());
+            return this[index];
+}
+
+var arr = ['hello','javascript','haha','hehe'];
+
+document.write(arr.random());
+
+
+89강 Object (1/4) Object란?
+object 객체란 객체의 기본적인 형태를 가진 객체, 모든 객체가 상속받는다.
+즉 object의 property는 모든 객체가 사용 가능하다.
+
+
+90강 Object(2/4) : Object API 사용법
+
+//Object.keys(arr)
+
+var arr1 = ['id','name','phone'];
+
+document.write(Object.keys(arr1));
+
+document.write('<br>');
+
+//Object.prototype.toString()
+
+var arr2 = ['hello','my','skill'];
+
+document.write(arr2.toString());
+
+//prototype이 선언되지 않은 것과 선언된 것의 구분~!
+keys 메소드는 prototype이 선언되지 않아서 Object 객체에서 바로 실행
+// toString 메소드는 prototype이 선언되어 있으므로 이 함수를 호출한 객체이름으로 실행
+//자바에서 static으로 선언된 메소드랑 비슷한 느낌
+
+-------------------------------------------
+Specification - ECMAScript  기본 버전은 3 , 최신판을 알려준다.
+Browser compacity 호환되는 브라우저의 버전 
+
+
+91강 Object (3/4) :  Object의 확장
+
+Object.prototype.contain = function(value){
+                
+                for(var index in this){
+                if(this[index] === value){
+                            return true;} // 돌았을 때 값이 있으면 true 반환 후 메소드 종료
+                            }
+                
+
+            return false; //전부 돌았는데 값이 없으면 false 반환
+}
+
+
+var o1 ={ 'name' : 'dong' , 'id' : 'tkillman' ,'pw' :1234};
+document.write(o1.contain('tkillman'));
+
+document.write('<br>');
+var o2 = ['hello', 'gogo', 'fight'];
+document.write(o2.contain('hello'));
+
+92강 Object (4/4) : Object 확장의 위험성
+
+
+Object.prototype.contain = function(value){
+                
+                for(var index in this){
+                if(this[index] === value){
+                            return true;} // 돌았을 때 값이 있으면 true 반환 후 메소드 종료
+                            }
+                
+
+            return false; //전부 돌았는데 값이 없으면 false 반환
+}
+
+
+var o1 ={ 'name' : 'dong' , 'id' : 'tkillman' ,'pw' :1234};
+document.write(o1.contain('tkillman'));
+
+document.write('<br>');
+var o2 = ['hello', 'gogo', 'fight'];
+document.write(o2.contain('hello'));
+
+document.write('<br>');
+
+for(var name in o1){
+                document.write(name +'\n'); 
+                // 나는 분명 o1 객체에 name, id, pw만 넣었는데 contain property가 생겨났다.            
+}
+--------------------------------------------
+해결방법
+
+for(var name in o1){
+                if(o1.hasOwnProperty(name)){
+                //o1의 key 값이 o1 객체만의 property인가요~?
+                document.write(name +'\n'); }
+                            
+}
+
+93강 데이터 타입 (1/2) - 원시 데이터 타입과 객체
+
+데이터 타입은 크게 두가지! 
+***원시 데이터 타입
+
+숫자
+문자열
+null
+boolean
+undefiend
+
+***객체 데이터 타입(참조 데이터 타입)
+
+94강 데이터 타입 (2/2) - 래퍼 객체
+
+var str = 'hello';
+
+// 원시 데이터 타입이라고 했는데 마치 객체처럼 사용하고 있다.
+// javascript 가 알아서 객체를 생성한 뒤 삭제한다. 
+// 이렇게 원시 데이터 타입을 객체처럼 사용하게 해주는 객체를 warpper object라고 한다.
+// warpper object에는 String, Number, Boolean 이 있다.
+
+document.write(str.length); 
+document.write(str.charAt(0));
+
+하지만!!!
+
+var str = 'hello';
+str.value = 'myName';
+// 오류!!!!
+document.write(str.value);
+ // 마치 객체처럼 사용하려고 하지만 그렇게 허용하지는 않는다.
+
+ 95강 참조 (1/3): 복제란~?
+ 
+ var a=1;
+ var b =a;
+ // a의 값이 복제되어서 b에 들어가게 된다.
+ 
+ 96강 참조 (2/3) : 참조
+  
+ var a ={'id' : 1}; //a 참조변수
+ var b =a; // b는 a를 참조하는 참조변수
+ 
+ b.id =3;
+ 
+ document.write(a.id); 
+ // b는 a의 객체의 참조값이므로 b를 변경해도 a의 값이 바뀐다.
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------
+
+1강 웹 브라우저와 javascript
+Html : 정보
+css : 꾸미기
+javascript : 동적인 움직임
+
+2강 ObjectModel(2/2) javascript core,BOM, DOM
+
+DOM -> document object model
+document 객체를 사용  <body/> 나 <img/>(즉 웹브라우저 화면에 보이는 것들) 태그를 조절 
+
+BOM -> Browser Object model
+웹페이지의 내용을 제외한 
+브라우저의 각종 요소들을 객체화시킨 것이다. 
+
+JavaScript core -> 
+브라우저가 아닌 것들 , 서버
+
+
+
+
+****** Browser Object Model*******
+
+4강 사용자와 커뮤니케이션하기(1/3)
+alert
+
+5강 사용자와 커뮤니케이션하기(2/3)
+confirm -> 확인은 true, 취소는 false 반환
+
+6강 사용자와 커뮤니케이션하기(3/3)
+prompt -> 사용자로부터 어떤 값을 입력받을 수 있다.
+
+7강 location 객체 (1/2)-> 문서의 주소를 알아내기
+url 주소를 알아낸다 location.href
+
+
+console.log(location.protocol, location.host, location.port, location.pathname, location.search, location.hash)
+
+
+8강 location 객체(2/2) : 문서 주소 이동
+location.href='이동할 주소';
+-------------
+location = '이동할 주소' ; location.reload();
+
+9강 Navigator 객체(1/3)
+브라우저의 정보를 얻을 수 있다.
+
+
+10강 창 제어 (1/3) window.open()
+새창을 연다.
+
+
+******** Document Object model ********
+
+
+11강 제어 대상을 찾기 (1/4) getElementsByTagName('');
+var list = document.getElementsByTagName('li');
+
+for(var i=0;i<list.length;i++){
+list[i].style.color='red';
+}
+
+12강 제어 대상을 찾기(2/4) getElementsByClassName('');
+
+var list = document.getElementsByClassName('active');
+
+for(var i=0; list.length;i++){
+    list[i].style.color = 'blue';
+
+}
+
+13강 제어 대상을 찾기(3/4) getElementById('');
+
+14강 제어 대상을 찾기(4/4) 
+querySelector('요소'); -> 첫번째 요소만을 찾아서 반환
+querySelectorAll('요소'); 0> 모든 요소들을 찾아서 반환
+
+
+15강 jquery 제어 대상 조회(1/4) - 기본 문법
+$('li').css('color','red');
+$()는 jQuery의 함수이다. 이 함수의 인자로 CSS 선택자(li)를 전달하면 jQuery 객체라는 것을 리턴한다. 
+이 객체는 선택자에 해당하는 엘리먼트를 제어하는 다양한 메소드를 가지고 있다. 
+위의 그림에서 css는 선택자에 해당하는 객체들의 style에 color:red로 변경한다.
+
+16장 jquery 제어 대상 조회(2/4) - 엘리먼트 조회1
+
+17장  jquery 제어 대상 조회(3/4) - 엘리먼트 조회1
+. 은 class
+
+18장 jquery 제어 대상 조회(4/4) -엘리먼트조회1
+#은 id
+
+
+19장 HTMLElement(1/3) 단수, 복수
+HTMLElement
+HTMLCollection
+
+20장 HTMLElement(2/3) :HTMLElement
+
+HTMLLIElement : li 태그
+HTMLAnchorElement : a 태그
+HTMLInputElement : input 태그
+
+21강 HTMLElement(3/3) : Dom tree
+
+
+22강 Jquery object (1/4) 특성
+
+var li = $('li'); // jquery 함수 
+li -> jquery 객체
+
+//암시적 반복 , 첫번째는 속성, 두번째는 값
+li.css('text-decoration','underline'); 
+
+23강 Jquery object (2/4) 엘리먼트 특성
+var li = $('li'); // li 는 jqury 객체
+li[0],li[1],li[2] // 객체 값은 document 객체
+
+24강 Element 객체(1/4)
+Element 객체는 엘리먼트를 추상화한 객체다.
+
+25강 jquery 속성 제어(1/2) -attr
+<a href='naver.com'> 네이버</a>
+document.write($('a').attr('href')); // attr의 속성값이 하나인 경우는 getAttribute의 역할
+document.write("<br>"); 
+
+
+$('a').attr('href','http://google.com'); //attr 의 속성값이 두개인 경우는 setAttribute의 역할
+
+
+26강  jquery 속성 제어(2/2) -attr
+
+var target = {};
+
+
+//attribute 방식
+target.setAttribute('name', 'good');
+//property 방식
+target.name ='good';
+
+var t2 = $('#t2');
+console.log(t2.attr('checked')); // checked
+console.log(t2.prop('checked')); // true, 
+
+prop의 장점을 파악하자.! true,false를 반환해준다.
+
+27강 JQuery 조회 범위 조회
+$('#ha .hello').css('color','red'); -> 한칸 띄면 그 하위 엘리먼트로 제한한다.
+
+
+find 메소드 사용법
+왜 쓸까~?
+전체엘리먼트에 적용시키면서 하위 엘리먼트는 따로 지정시킬때
+$('.hello').css('background-color','blue').find('#ha').css('background-color','red');
+
+
+28강 Node 객체
+DOM 객체의 최상위 
+
+29강 Node 관계 
+firstChild -> 그 엘리먼트의 첫번째 하위 객체 , 글을 쓰지 않아 비어있더라도 #text가 나온다.
+nextSibling -> 그 다음 형제 엘리먼트
+previousSibling -> 그 전 형제 엘리먼트
+childNodes -> 그 엘리먼트의 전체 하위 객체
+
+30강 Node 종류 API(1/3)
+nodeType -> 상수를 리턴하고 각 각의 상수는 의미하는 node 의 타입을 알려준다.
+
+nodeName -> 태그명을 알려준다.
+
+31강 Node의 변경 (1/2) -> 노드 추가
+
+--먼저 생성한다--
+document.createTextNode(data) 
+document.createElement(tagName)
+
+--추가 --
+document.appendChild(child)
+document.insertBefore(newElement, referenceElement)
+
+ex)
+
+function call(){
+    var target = document.getElementById('target');
+    var li = document.createElement('li');
+    var text = document.createTextNode('javascript');
+    li.appendChild(text);
+    target.appendChild(li);
+}
+
+function callinsert(){
+    var target = document.getElementById('target');
+    var li = document.createElement('li');
+    var text =document.createTextNode('jquery');
+    li.appendChild(text);
+    target.insertBefore(li, target.firstChild.nextSibling.nextSibling);
+}
+
+32강 Jquery 노드 변경 APi - 추가
+$('.target').before('<div>before</div>');
+$('.target').prepend('<div>after</div>');
+//content(기준)
+$('.target').append('<div>append</div>');
+$('.target').after('<div>after</div>');
+
+33강 jquery 노드 변경 api -삭제
+ $('#btn1').click(function() {
+         $('#target1').remove();
+    }); //태그까지 삭제 
+     $('#btn2').click(function() {
+         $('#target2').empty();
+    }); // text 내용만 비어짐
+
+
+34강 jquery 노드 변경 api - 교체,복사,이동
+
+ $('#btn1').click(function() {
+         $('<div>replaceAll</div>').replaceAll('#target1');
+    }); // replaceAll(바뀔 내용) ->바꿀 내용이 앞에 온다.
+     $('#btn2').click(function() {
+         $('#target2').replaceWith('<div>replacewith</div>')
+    });//replaceAll(바꿀 내용) ->바꿀 내용이 뒤에 온다.
+     
+
+-------------복제
+ 
+     $('#btn1').click(function() {
+        
+         $($('#source').clone()).replaceAll('#target1');
+    }); //clone() 메소드
+    
+    
+35강 jquery on  api(1/4)(이벤트 처리)
+
+$('#btn1').on('click', function(Event) {
+         $($('#source').clone()).replaceAll('#target1');
+     });
+    
+36강 jquery on api(2/4)(이벤트 처리)
+
+$('#target').on('click','a, li' ,function(Event) {
+     
+         document.write(this.tagName);
+         
+     }); // on의 파라미터로 두번째에 셀럭터 지정이 가능하다.
+//단 주의할 점! 은 html은 위에서부터 읽으면서 내려오기 때문에
+// 아직 지정되지 않은 태그에 이벤트처리에는 문제가 발생하는데
+// 이럴때에 body태그에 이벤트를 주고 그 셀럭터를 범위제한 해주면 해결 
+
+
+37강 jquery on api(3/4)(이벤트 처리)
+다중 등록 //이벤트를 한칸 띄고 또 지정할 수 있다.
+$('#textArea').on('focus blur',function(Event) {
+         $('#state').html(Event.type);  
+     });
+
+38강 jquery on api(4/4)(이벤트 제거) 
+$('#target').off('focus blur', handler);
+
+
+
+-->
+</body>
+</html>

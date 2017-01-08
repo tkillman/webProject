@@ -39,7 +39,8 @@ background: yellow; border : 1px solid red;
     	 $('#subject div').click(function() {
      		
     		 //var s=$(this).text();
-    		 //val , val() 차이 : val은 속성값을 가져올때는 val , val()은 text 즉 화면에 보이는 값을 가져온다.
+    		 //val , val() 차이 : 
+    	     //val은 속성값을 가져올때는 val , val()은 text 즉 화면에 보이는 값을 가져온다.
     		 
     		 
     		 
@@ -47,7 +48,8 @@ background: yellow; border : 1px solid red;
     		 var a=$(this).attr("data-num");
     		 
     		 s="<b>" +s +"<b>";
-    		 $(this).html(s); // html 대신 text를 써버리면 태그 값이 들어가는 것이 아니라 text로 들어가서 수정 불가.
+    		 $(this).html(s); 
+    		 // html 대신 text를 써버리면 태그 값이 들어가는 것이 아니라 text로 들어가서 수정 불가.
     		 alert(s +" : " + a);
     	
      });
