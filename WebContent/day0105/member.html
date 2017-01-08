@@ -15,7 +15,7 @@ $(function(){
 		
 		var fields = $(this).parents("form,body").find("button, input, select");
 		var index = fields.index(this);
-		//console.log(index);
+		console.log(index);
 		
 		if(index>-1 && (index+1)<fields.length ){
 			fields.eq(index+1).focus();
@@ -32,6 +32,10 @@ $(function(){
 	});
 	
 });
+
+
+
+
 
 </script>
 
