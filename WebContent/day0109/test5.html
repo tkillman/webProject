@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form action="" enctype="multipart/form-data"> 
+//파일을 업로드 할때는 꼭 있어야 한다. , 명시하지 않으면 이름만 업로드 된다.
+<table>
+<tbody id="tb">
+<tr>
+<td>첨부</td>
+<td><input type="file" name="upload"></td>
+
+
+</tr>
+
+</tbody>
+
+
+
+</table>
+
+
+</form>
+
+
+ 
+ 
+ 
+ <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     
+     $(function(){    
+    	 
+    	 
+    	// $("form input[name='upload']").change(function() {
+    		//이미 객체가 정적으로 있는 경우 이벤트를 등록할때 change
+    		// 이벤트로 생성된 객체의 경우 이벤트가 등록되지 않을 수가 있다.
+    	
+    		
+    		$("body").on("change","form input[name='upload']",function() {
+    	 	
+    				
+    		 if(!$(this).val()){ //존재안한다면
+    	 			return;
+    	 		}
+    		
+    	 	/* 	
+    	 		var s;
+    	 		s="<tr>";
+    	 		s+="<td>첨부</tb>";
+    	 		s+="<td><input type='file' name='upload'></td>";
+    	 		s+="</tr>";
+    	 		
+    	 		
+    	 		$('#tb').append(s); */
+    	 		
+    	 	var tr = $('tr');
+    	 	var td1 =$('<td>첨부</tb>');
+    	 		
+    	 		
+    	 	
+    	 });
+    	 
+     });
+     
+     
+     
+     </script>
+</body>
+</html>

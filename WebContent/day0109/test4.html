@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ 
+ 
+ <div id="div1" style="background:yellow;">
+ <p id="p1">웹 프로그래밍</p>
+ <p id="p2">AJAX</p>
+ 
+ </div>
+
+<div id="div2"></div>
+ 
+ 
+ 
+ 
+ <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+	
+   //  $('#div1').append("<p>예제</p>"); // 가장 밑으로 들어간다.
+     
+     $('#div1').prepend("<p>예제</p>"); //가장 앞으로 들어간다.
+   
+   $('#p1').after("<p>자바</p>"); // 바로 다음
+   //$("<p>자바</p>").insertAfter('#p1'); //after와 앞 뒤의 인자 순서 차이
+   
+   
+    var s=$('#div1').clone();  //이벤트는 복제되지 않는다. .clone(true) 를 사용하면 이벤트까지 복사된다.
+    $('#div2').append(s);
+   
+   
+   
+   
+   
+     </script>
+
+</body>
+</html>

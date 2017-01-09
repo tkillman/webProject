@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ 
+ 
+ <div id="div1" style="background:yellow;">
+ <p>웹 프로그래밍</p>
+ <p>AJAX</p>
+ 
+ </div>
+ <br>
+ 
+ <input type="button" value="내용변경" id="btn1"> 
+ <input type="button" value="영역제거" id="btn2">
+ 
+ 
+ <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+
+     $(function(){    
+    	 
+    	$('#btn1').click(function(){
+    		//$('#div1').html("<b>예제</b>");
+    		$('#div1').empty(); // div태그가 없어지지는 않는다.
+    		$('#div1').append("<b>예제</b>");
+    		
+    	})
+ 		
+    	
+    	
+    	$('#btn2').click(function(){
+    		$('#div1').remove(); //div 태그 자체가 없어진다.
+    		//$('#div1').append("<b>예제</b>");
+    		
+    	})
+     });
+     
+     
+     
+     
+     </script>
+
+</body>
+</html>

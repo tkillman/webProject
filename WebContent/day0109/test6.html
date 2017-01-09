@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ 
+ <div id="div1">눌러보세요</div>
+ 
+ 
+  
+ 
+ 
+ <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     $(function(){      
+    	 
+    /* 	 $('#div1').click(function() {
+    	 	alert('hello');
+    	 	
+    	 }) */
+    	 
+    	 
+    	 //동적으로 이벤트를 등록하는 메소드
+    	 $('#div1').bind("click",function(){
+    		 alert('click');
+    		 
+    	 });
+    	 
+    	$('#div1').bind("mouseover",function() {
+    		$('#div1').css("background-color","yellow");
+    		 
+    	});
+    
+    	$('#div1').bind("mouseout",function() {
+   		 $('#div1').css("background-color","red");
+   		 
+  	 	});
+   
+    	 
+    	
+    	
+    	
+    	 
+     });
+     
+     </script>
+
+
+
+
+</body>
+</html>
