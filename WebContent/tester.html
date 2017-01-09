@@ -6,35 +6,153 @@
 </head>
 <body>
 
-<script type="text/javascript">
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     
 
+     $(function(){      
+    	 $('span').hide();
+    	
+    	 $('form input').focusin(function() {
+    	 	$('span').show();
+    	 })
+    	 
+    	 $('form input').blur(function() {
+    	 	$('span').hide();
+    	 })
+    	 
+     });
 
-function get_members()
-{return ['egoing','k8805','sorialgi'];}
-
-
-var members= get_members();
-
-
-document.write(members[0].toUpperCase()+"\n");
-document.write(members[1].toUpperCase()+"\n");
-document.write(members[2].toUpperCase()+"\n"); 
-
-document.write("<br>");
-
-for(var i=0;i<3;i++)
-{document.write(members[i].toUpperCase()+"\n");}
-
-document.write("<br>");
-
-for(var i=0;i<members.length;i++)
-{document.write(members[i].toUpperCase()+"\n");}
+     </script>
 
 
 
 
-</script>
-
+<div style="margin: 30px auto; width: 800px;">
+        <div style="margin: 10px auto; margin-top: 20px; width:600px;min-height: 400px;">
+        
+            <div style="width:600px; height:30px; line-height:30px; margin:5px auto;">
+                <span style="font-weight: bold;font-size:13pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">회원 가입</span>
+            </div>
+        
+               <form name="memberForm" method="post">
+                <table style="width:600px; margin: 0px auto; border-collapse: collapse; border-spacing: 0px;">
+                
+                <tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
+                
+                <tr height="35">
+                    <td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;">
+                    아&nbsp;이&nbsp;디
+                    </td>
+                    <td align="left" style="padding-left: 5px;">
+                        <input type="text" name="userId" id="userId"  size="25" maxlength="10" class="boxTF" value="">
+                              <span id="userIdState" style='display:none;'></span>
+                    </td>
+                </tr>
+                <tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
+            
+                <tr height="35">
+                    <td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;">
+                    패스워드
+                    </td>
+                    <td align="left" style="padding-left: 5px;">
+                        <input type="password" name="userPwd" class="boxTF" size="25" maxlength="10">
+                        <span>패스워드는 5~10자 입니다.</span>
+                    </td>
+                </tr>
+                <tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
+            
+                <tr height="35">
+                    <td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;">
+                    패스워드 확인
+                    </td>
+                    <td align="left" style="padding-left: 5px;">
+                        <input type="password" name="userPwd1" class="boxTF" size="25" maxlength="10">
+                    </td>
+                </tr>
+                <tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
+            
+                <tr height="35">
+                    <td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;">
+                    이&nbsp;&nbsp;&nbsp;&nbsp;름
+                    </td>
+                    <td align="left" style="padding-left: 5px;">
+                        <input type="text" name="userName" size="25" maxlength="20"  class="boxTF" value="">
+                       <span>이름은 필수 입니다.</span>
+                    </td>
+                </tr>
+                <tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
+            
+                <tr height="35">
+                    <td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;">
+                    생년월일
+                    </td>
+                    <td align="left" style="padding-left: 5px;">
+                        <input type="text" name="birth" size="25" maxlength="20" class="boxTF" 
+                                        value="">
+                        <span>입력 형식 : 2000-01-01</span>                                        
+                    </td>
+                </tr>
+                <tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
+            
+                <tr height="35">
+                    <td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;">
+                    이 메 일
+                    </td>
+                    <td align="left" style="padding-left: 5px;">
+                              <select name="selectEmail" id="selectEmail" class="selectField">
+                                    <option value="">선 택</option>
+                                    <option value="naver.com" >네이버 메일</option>
+                                    <option value="hanmail.net" >한 메일</option>
+                                    <option value="hotmail.com" >핫 메일</option>
+                                    <option value="gmail.com" >지 메일</option>
+                                    <option value="direct">직접입력</option>
+                              </select>
+                              <input type="text" name="email1" size="13" maxlength="30"  class="boxTF" 
+                                        value=""> @ 
+                              <input type="text" name="email2" size="13" maxlength="30"  class="boxTF" value="" readonly="readonly">
+                    </td>
+                </tr>
+                <tr height="1"><td colspan="2" bgcolor="#cccccc"></td></tr>
+                
+                <tr height="35">
+                    <td width="100" align="left" bgcolor="#E6E6E6" style="padding-left: 10px;">
+                    전화번호
+                    </td>
+                    <td align="left" style="padding-left: 5px;">
+                              <select name="tel1" class="selectField">
+                                    <option value="">선 택</option>
+                                    <option value="010" >010</option>
+                                    <option value="011" >011</option>
+                                    <option value="016" >016</option>
+                                    <option value="017" >017</option>
+                                    <option value="018" >018</option>
+                                    <option value="019" >019</option>
+                              </select>
+                              <input type="text" name="tel2" size="5" maxlength="4" class="boxTF" 
+                                        value=""> -
+                              <input type="text" name="tel3" size="5" maxlength="4" class="boxTF" value="">
+                    </td>
+                </tr>
+                <tr height="2"><td colspan="2" bgcolor="#507CD1"></td></tr>
+            
+                <tr height="40">
+                    <td align="center" colspan="2">
+                            <input type="button" value=" 회원가입 " class="btn">
+                            <input type="reset" value=" 다시입력 " class="btn">
+                            <input type="button" value=" 가입취소 " class="btn">
+                    </td>
+                </tr>
+                
+                <tr height="35">
+                    <td align="center" colspan="2">
+                        <span style="color: blue;"></span>
+                    </td>
+                </tr>
+                </table>
+            </form>
+        </div>
+</div>
 
 
 </body>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<!-- 숙제 
+
+성적 처리 테이블 만들기
+
+enter 치면 옆으로 값이 넘어가도록 해주고 전체 값을 다 쳤을 때는 tr로 넘겨주는
+총점과 평균을 구해주고
+-->
+
+</head>
+<body>
+<table class ='tb' border="1" style="width : 300px ; margin : 30px auto; border-collapse : collapse;">
+<tr>
+
+		<td align="center">국어</td>
+		<td align="center">영어</td>
+		<td align="center">수학</td>
+		<td align="center">총점</td>
+		<td align="center">평균</td>
+		
+</tr>
+
+<tr align="center">
+<td><input id="kor" type="text" style="width : 40px"></td>
+<td><input id="eng" type="text" style="width : 40px"></td>
+<td><input id="math" type="text" style="width : 40px"></td>
+<td><input id="total" type="text" style="width : 40px" readOnly='true'></td>
+<td><input id="avg" type="text" style="width : 40px" readOnly='true'></td>
+</tr>
+</table>
+
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+$(function(){ // enter 치면 다음 칸으로 넘어가도록하기.
+	$("input").keypress(function(e){ 
+		// console.log(e.keyCode);
+		if(e.keyCode==13) {
+			var fields = $(this).parents("form, body").find("input");
+			// parents(파라미터) 파라미터를 조상으로 갖는 배열 를 반환.
+			console.log($(this).parents());
+			
+			var index = fields.index(this);
+			
+			if(index>-1 && (index+1)<fields.length) {
+				fields.eq(index+1).focus();
+			}
+			
+			return false;
+		}
+	});
+	
+});
+
+
+$(function(){ 
+	
+	$('#kor').change(function() {
+		$('#total').attr('value',parseInt($('#kor').val()));
+		
+	});
+	
+	$('#eng').change(function() {
+		$('#total').attr('value',parseInt($('#kor').val())+parseInt($('#eng').val()));
+		
+	});
+
+	$('#math').change(function() {
+		$('#total').attr('value',parseInt($('#kor').val())+parseInt($('#eng').val())+parseInt($('#math').val()));
+		
+	});
+	
+});
+
+$(function(){ 
+	$('#kor').change(function() {
+		$('#avg').attr('value',(parseInt($('#kor').val())/3));
+		
+	});
+	
+	$('#eng').change(function() {
+		$('#avg').attr('value',(parseInt($('#kor').val())+parseInt($('#eng').val()))/3);
+		
+	});
+
+	$('#math').change(function() {
+		$('#avg').attr('value',(parseInt($('#kor').val())+parseInt($('#eng').val())+parseInt($('#math').val()))/3);
+		
+	});
+	
+	
+});
+
+</script>
+
+</body>
+</html>
