@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+event.preventDefault(); 이벤트를 취소
+event.which -> event.keyCode와 같은 의미
+
+			shift	a		a		a		shift
+shift +a -> keydown keydown keypress keyup keyup
+
+
+<script type="text/javascript">
+
+
+function check(){
+	
+	var f=document.forms[0];
+	
+	if(! f.name.value){
+		return false;
+	}
+	f.submit();
+	return true;
+}
+
+<script>
+
+
+
+
+<form action="" onsubmit="return check();">
+<input type="text" name="name">
+<input type="submit">
+<button type="submit">
+</form>
+
+
+</body>
+</html>

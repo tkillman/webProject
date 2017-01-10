@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form action="">
+<input type="text" class="tel" name="tel1" maxlength="3">-
+<input type="text" class="tel" name="tel2" maxlength="4">-
+<input type="text" class="tel" name="tel3" maxlength="4">
+<br>
+<input type="button" >
+
+</form>
+
+
+
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     // tel1에 3자리를 입력하면 자동으로 다음 칸으로 넘어가게 하고 싶다.
+     
+     
+     $(function(){ 
+     
+    	 $('.tel').keyup(function() {
+		
+    	 val n=$(this).attr('maxlength');
+    	 
+    	 console.log(n);
+    	 
+    	 if(this.value.length>=n){
+    		 $(this).next(".tel").focus();
+    		 return false;
+    		 
+    	 }
+    
+	});
+    
+     });
+	
+	
+     </script>
+
+</body>
+</html>
