@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form enctype="multipart/form-data">
+<input type="file" name="upload">
+</form>
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+    
+     
+	$('body').on('change','input',function(){
+		var s='<input type="file" name="upload">'
+		$('form').append("<br>"+s);
+			
+	});
+     
+     
+     
+     </script>
+</body>
+</html>
