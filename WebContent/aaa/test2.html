@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+.cls {
+	background: #cccccc;
+	border: 3px solid #666;
+	margin: 5px;
+	padding: 5px;
+	position: relative;
+	width: 400px;
+	height: 300px;
+	overflow: auto;
+}
+
+.cls p{
+    margin: 10px;
+    padding: 5px;
+    border: 2px solid #666;
+    width: 1000px;
+    height: 1000px;
+}
+</style>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	// $("#result").text("scrollTop:" +$(".cls").scrollTop());
+	
+	// $(".cls").scrollTop(200);
+	// $("#result").text("scrollTop:"+$(".cls").scrollTop());
+	
+	$(".cls").scroll(function(){
+		var t=$(".cls").scrollTop();
+		var l=$(".cls").scrollLeft();
+		
+		var s="top:"+t+",left:"+l;
+		$("#result").text(s);
+	});
+
+             // 브라우저를 축소해서 테스트
+	$(document).scroll(function(){
+		var t=$(document).scrollTop();
+		var l=$(document).scrollLeft();
+		
+		var s="top:"+t+",left:"+l;
+		$("#result").text(s);
+	});
+});
+</script>
+
+</head>
+<body>
+
+<h3>scroll() 테스트</h3>
+
+<div class="cls">
+	<h4>웹 프로그래밍</h4>
+	<p>jquery</p>
+</div>
+
+<div id="result"></div>
+
+</body>
+</html>
