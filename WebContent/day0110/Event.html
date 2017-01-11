@@ -12,6 +12,8 @@
 
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
+
+// 전화번호 칸 넘기기
 $(function(){
 	$(".tel").keyup(function(){
 		var n=$(this).attr("maxlength");
@@ -23,12 +25,18 @@ $(function(){
 	});
 });
 
+// hover (function(){},function(){}) 사용해보기
 $(function(){
 	$("table tr:gt(0)").hover(
 		function(){$(this).addClass("bg")},
 		function(){$(this).removeClass("bg")}
 	);
 });
+
+
+// one() 메소드 : 한번만 실행,
+//click() 누를 때마다 , 
+//trigger() 시작하자마자 이벤트를 발생시킨다.
 
 $(function(){
 	$("#div1").one("click", function(){

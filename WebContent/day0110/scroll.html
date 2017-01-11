@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+
+<style type="text/css">
+
+.div1{
+	
+	border : 2px solid black;
+	width: 500px;
+	height: 500px;
+	overflow: auto;
+}
+
+.div1 p{
+	border : 2px solid black;
+	width: 1000px;
+	height:1000px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="div1">밖의 상자<p >안의 상자 </p> </div>
+<div id="result"></div>
+
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     
+    
+     $(function(){
+    			
+    	 
+    	// 초기에 스크롤 값을 설정해 줄때 
+     	// $('.div1').scrollTop(300);
+     	 
+    	 
+    	 $('.div1').scroll(function(){
+    		 var tt = $(this).scrollTop();
+    		 var wi = $(this).scrollLeft();
+    		 
+    		 $('#result').html("높낮이 변화 :" +tt +" 좌우 변화 : "+wi)
+    	 })	;	
+    	 
+    
+    	 
+     });
+     
+     
+     </script>
+</body>
+</html>

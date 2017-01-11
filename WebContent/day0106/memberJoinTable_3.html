@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<form>
+<input id="i1" type="text"> <span>도움말1</span><br>
+<input id="i2" type="text"> <span>도움말2</span><br>
+<input id="i3" type="text"> <span>도움말3</span><br>
+<input id="i4" type="text"> <span>도움말4</span><br>
+
+</form>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     
+     $(function(){     
+    	
+    	//i1 에 5글자 이상 입력하게 하기
+    	
+    	$('#i1').change(function(){
+    			
+    		var str = $(this).val();
+    		
+    		if(str.length<5){
+    			alert("5글자 이상 입력하세요.")
+    		}
+    		
+    	});
+    	 
+     });
+     
+     </script>
+
+
+</body>
+</html>

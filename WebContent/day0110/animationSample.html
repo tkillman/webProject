@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<style type="text/css">
+#boxA{
+height: 2500px;
+}
+
+</style>
+
+</head>
+<body>
+
+
+<div id="boxA">맨 아래로</div>
+<div id="boxB">맨 위로</div>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     
+     
+     $(function(){     
+    	
+		 $('#boxA').click(function(){
+			// position() 메소드 : 부모 요소를 기준으로 한 상대적인 현재 위치
+			 //여기서는 body 태그를 기준으로 한 상대적 위치 
+			 //top은 높낮이를 구하는 것
+			 //left 좌우폭을 구하는 것
+    		 var ss1 = $('#boxB').position().top;
+    		 //alert(ss1);
+    		 
+    		 $('body').animate({scrollTop : ss1} ,"slow");
+    		 
+    		 
+    	 });
+    	 
+    	 $('#boxB').click(function(){
+     		
+    		 var ss2 = $('#boxA').position().top;
+    		 //alert(ss2);
+    		 
+    		 $('body').animate({scrollTop : ss2} ,"slow");
+    		 
+    		 
+    	 });
+    	 
+    	 
+     });
+     
+     </script>
+
+
+</body>
+</html>

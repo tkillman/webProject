@@ -49,28 +49,41 @@
 <script type="text/javascript">
 
 
+// 1. 엔터치면 다음칸 넘어가기 memberJoinTable_1 참고
+// 2. span 태그 내용 안 보이다가 클릭하면 보이게 하기 memberJoinTable_2 참고
+// 3. 5글자 이상 쳐야지 넘어갈 수 있도록 하기 memberJoinTable_3 참고
+// 4. 선택한 값 복사해서 표시하기 memberJoinTable_4 참고
+
+
+
 
 $(function(){ // enter 치면 다음 칸으로 넘어가도록하기.
 	$("input").not($(":button")).keypress(function(e){
 		// console.log(e.keyCode);
+		
 		if(e.keyCode==13) {
+		
 			var fields = $(this).parents("form, body").find("button, input, select");
 			// parents(파라미터) 파라미터를 조상으로 갖는 배열 를 반환.
-			console.log($(this).parents());
+			
+			//console.log($(this).parents());
 			
 			var index = fields.index(this);
 			
 			if(index>-1 && (index+1)<fields.length) {
+				//잘못된 값 또는 0~9번까지 있다면fields.length는 10이고 index가 9인 경우 더이상 넘어가면 안된다.
 				fields.eq(index+1).focus();
 			}
 			
 			return false;
+			
 		}
 	});
 });
 
 
 $(function(){ // 일단 span태그 내용을 안 보이게 하기. 
+	
 	$("form input").not($(":button")).each(function(){ //each메소드는 전부 적용한다는뜻
 		if($(this).next("span").attr("id")!="userIdState") {
 			$(this).next("span").hide();
@@ -81,6 +94,7 @@ $(function(){ // 일단 span태그 내용을 안 보이게 하기.
 			$(this).next("span").show();
 		}
 	});
+	
 	$("form input").not($(":button")).blur(function(){
 		if($(this).next("span").attr("id")!="userIdState") {
 			$(this).next("span").hide();
@@ -91,6 +105,11 @@ $(function(){ // 일단 span태그 내용을 안 보이게 하기.
 
 
 $(function(){ //암호는 5~11자 이상이 되야지 다음 내용으로 넘어갈 수 있도록 해줌. 
+	
+	//val() form 태그에서 주로 value 값 설정
+	//text(내용)  내용을 스트링 형태로 넣어줌
+	//html(내용) 내용에 태그가 들어가 있으면 태그를 반영 
+ 
 	$("form input[name=userPwd]").change(function(){
 		var s=$(this).val().trim();
 		if(s.length<5 || s.length>10) {
@@ -105,14 +124,17 @@ $(function(){ //암호는 5~11자 이상이 되야지 다음 내용으로 넘어
 $(function(){ 
 	//readOnly의 경우 서버에 전송 가능하고 수정불가, disabled의 경우 서버에 전송불가하고 수정불가
 	$("#selectEmail").change(function(){
+		
 		var s=$(this).val();
 		
 		if(s!="direct") {
+			
 			$("input:text[name=email2]").val(s);
 			$("input:text[name=email2]").attr("readOnly", "true");
 			//값이 정해진 경우 readOnly의 속성이 사라지기 때문에 다시 설정해준다.
 			
 			$("input:text[name=email1]").focus();
+			
 		} else {
 			$("input:text[name=email2]").val("");
 			

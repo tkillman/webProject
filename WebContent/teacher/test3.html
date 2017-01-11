@@ -19,14 +19,18 @@
 
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
+
+
 $(function(){
 	var s=$("#boxB").position().top;
 	
 	alert(s);
 	
 	$("#p1").click(function(){
+		
 		var p=$("#boxB").position().top;
 		$("html, body").animate({scrollTop:p}, "slow");
+		
 	});
 	$("#p2").click(function(){
 		$("html, body").animate({scrollTop:0}, "slow");

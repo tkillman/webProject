@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div style="display: none; font-size:100px">안 보이지롱</div> 
+<input type="button" id="btn" value="클릭하세요">
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     
+     $(function(){     
+    	$('#btn').click(function(){
+    		
+    		var sss = $('div').is(':hidden');
+    		
+    		if(sss){
+    			$('div').show();
+    		}else{
+    			$('div').hide();
+    		}
+    	
+    	});
+    
+     });
+     
+     </script>
+
+
+</body>
+</html>

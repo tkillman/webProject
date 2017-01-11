@@ -6,15 +6,19 @@
 </head>
 <body>
 
-<div id='div1' style="width : 300px; height:300px ; background : red ; display : none;"></div>
+<div id='div1' style= "width : 300px; height:300px ; background : red ; display : none;"></div>
 <button id ='btn'> »Æ¿Œ </button>
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 
+
 $(function(){
+	
+	
 	$('#btn').click(function(){
+		
 		var isHidden = $('#div1').is(":hidden");
 		
 		if(isHidden){
@@ -23,8 +27,6 @@ $(function(){
 			$('#div1').hide(2000);
 		}
 	});
-	
-	
 	
 });
 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+<select id="sel">
+<option ></option>
+<option value="naver.com">option1</option>
+<option value="daum.com">option2</option>
+<option value="google.com">option3</option>
+<option value="yahoo.com">option4</option>
+<option value="default">직접입력</option>
+
+</select>
+
+
+
+<form>
+<input id="i1" type="text" readonly="readonly">
+
+</form>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     
+     $(function(){     
+    	
+    	//i1 에 5글자 이상 입력하게 하기
+    	
+    	$('#sel').change(function(){
+    		
+    		var ss= $(this).val();
+    		console.log(ss);
+    		if(ss!="default"){
+    			
+    			$('#i1').attr('readonly','readonly');
+    			$('#i1').val(ss);	
+    		}else{
+    			$('#i1').removeAttr('readonly');
+    			$('#i1').val("");
+    		
+    		}
+    	
+    	});
+    	 
+     });
+     
+     </script>
+
+
+</body>
+</html>
