@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+
+
+$(function(){
+	
+	$('#btn').click(function(){
+		
+
+		//undefiend ㄱㅏ 나온다.
+		//null과는 다르다. 
+		//var s = $('#c1:checkbox:checked').val();
+		//alert(s);
+		
+		var c= $('form input:checked');
+		var result = "";
+		
+		
+	//선택한 값들을 표시	
+		for(var i=0; i<c.length;i++){
+			result+= $(c[i]).next().html()+",";
+		}
+		
+		alert(result);
+		
+	});
+	
+});
+
+
+
+
+</script>
+</head>
+<body>
+
+
+<form>
+  <p>
+        <input id="c1" type="checkbox"><label for="c1">농구</label>
+        <input id="c2" type="checkbox"><label for="c2">배구</label>
+        <input id="c3" type="checkbox"><label for="c3">축구</label>
+        <input id="c4" type="checkbox"><label for="c4">야구</label>
+  </p>
+  <p>
+        <input id="btn" type="button" value="확인">
+  </p>
+  <p>
+         당신이 선택한 스포츠는 <span id="result"></span> 입니다.
+   </p>
+</form>
+
+</body>
+</html>

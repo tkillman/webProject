@@ -108,11 +108,15 @@ $(function(){
 function isNum(data) { //javascript nan 
 	//정규표현식 사용
 	
+	
 	var format = /^(\d+)$/;  // \d는 정규표현식으로 숫자를 의미, +는 하나 이상이라는 의미 , ^ 앞을 검사, $ 뒤쪽을 검사
+	
 	
 	return format.test(data); //test() 라는 메소드는 format에 일치하면 true 반환, 아니면 false 반환
 	
+	
 	// html5의 경우 input type="number" 로 수면 해결될 수 도 있다.
+	
 	
 }
 
@@ -184,6 +188,14 @@ function updateOk(index) {
 function deleteScore(index) {
 
 }
+
+
+
+
+
+
+
+
 </script>
 
 </head>

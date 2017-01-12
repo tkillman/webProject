@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+
+
+//
+$(function(){
+	//$('#chk1').attr('checked','true');
+	$('#chk1').prop('checked',true);
+});
+
+
+//
+$(function(){
+	//$('#chk1').attr('checked','true');
+	$('#chk3').prop('checked',false);
+});
+
+
+// attr 와 prop 와 is 의 차이점
+$(function(){
+	$('#check1').change(function(){
+		var s = "attr:" +$(this).attr("checked");
+		s+= "\n prop :" +$(this).prop("checked");
+		s+= "\n is :" +$(this).is(":checked");
+		
+		
+		alert(s);
+	});
+});
+
+
+
+
+
+</script>
+</head>
+<body>
+
+<form>
+     <p>
+        <input type="checkbox" id="chk1" value="1">1
+        <input type="checkbox" id="chk2" value="2">2
+        <input type="checkbox" id="chk3" value="3" checked="checked">3
+     </p>
+	 <div id="box"></div>
+</form>
+
+
+<br>
+<input type="checkbox" id="check1" checked="checked">
+
+<!-- for 속성 배우기  for에 아이디 값을 준다. -->
+<label for="check1">나를 눌러 </label>
+
+
+
+
+
+
+</body>
+</html>

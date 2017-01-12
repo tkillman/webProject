@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+*{
+	margin: 0px; padding: 0px;
+}
+body {
+	font-size: 9pt; font-family: 돋움;
+}
+a{
+	color: #000000;
+	text-decoration: none;
+	cursor: pointer;
+}
+a:active, a:hover {
+	text-decoration: underline;
+	color: tomato;
+}
+.title {
+	font-weight: bold;
+	font-size:13pt;
+	margin-bottom:10px;
+	font-family: 나눔고딕, 맑은 고딕, 돋움, sans-serif;
+}
+.btn {
+	 font-size: 12px;
+	 color:#333;
+ 	 font-weight:500;
+	 font-family: 나눔고딕, 맑은 고딕, 돋움, sans-serif;
+	 border:1px solid #ccc;
+	 background-color:#FFF;
+	 vertical-align:middle;
+	 text-align:text-align;
+	 cursor:cursor;
+	 padding:4px 8px;
+	 border-radius:4px;
+	 margin-bottom: 3px;
+}
+.btn:active, .btn:focus, .btn:hover {
+	 background-color:#e6e6e6;
+	 border-color: #adadad;
+	 color: #333;
+}
+.boxTF {
+	border:1px solid #999;
+	padding:4px 6px;
+	border-radius:4px;
+	background-color:#ffffff;
+	font-family: 나눔고딕, 맑은 고딕, 돋움, sans-serif;
+	font-size: 9pt;
+}
+.selectField {
+	border:1px solid #999;
+	padding:3px 6px;
+	border-radius:4px;
+	font-family: 나눔고딕, 맑은 고딕, 돋움, sans-serif;
+	font-size: 9pt;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.12.3.min.js"></script>
+<script type="text/javascript">
+
+
+//전체 선택과 전체 선택 해제
+$(function(){
+	$('#chkAll').click(function(){
+		
+	if(this.checked==true){
+		$("input[name=nums]").each(function(){
+			
+			this.checked=true;
+			
+		});
+		
+	}else{
+	
+	$("input[name=nums]").each(function(){
+			
+			this.checked=false;
+			
+		});
+	}
+	});
+	
+});
+
+
+/// 하나 이상을 선택해야 삭제가 가능하도록 만드는 것.
+$(function(){
+	$('#deleteListBtn').click(function(){
+		var len = $('input[name=nums]:checkbox:checked').length;
+		if(len==0){
+			alert('먼저 선택 하세요.');
+			return;
+		}
+		alert("삭제");
+	});
+});
+
+
+
+</script>
+
+</head>
+<body>
+
+<div style="width: 700px; margin: 30px auto 0px;">
+
+	<div style="width:700px; height:30px; line-height:30px; margin:5px auto;">
+	   ■ <span style="font-weight: bold;font-size:13pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">게시판</span>
+	</div>
+	
+	<table style="width: 700px; margin: 20px auto 0px; border-spacing: 0px;">
+	   <tr height="35">
+		  <td align="left" width="50%">
+			   <button type="button" class="btn" id="deleteListBtn" >삭제</button>
+		  </td>
+		  <td align="right">
+			 <select name="rows" id="rows" class="selectField">
+				   <option value="5">5개씩 출력</option>
+				   <option value="10" selected="selected">10개씩 출력</option>
+				   <option value="20">20개씩 출력</option>
+				   <option value="30">30개씩 출력</option>
+				   <option value="50">50개씩 출력</option>
+			 </select>
+		  </td>
+	   </tr>
+	</table>
+
+	<form name="listForm" method="post">
+	<table style="width: 700px; margin: 0px auto; border-spacing: 0px;">
+	  <tr align="center" bgcolor="#507CD1" height="30"> 
+		  <td width="40">
+			  <input type="checkbox" name="chkAll" id="chkAll" style="margin-top: 3px;">
+		  </td>
+		  <td width="60" style="color: #ffffff;">번호</td>
+		  <td width="360" style="color: #ffffff;">제목</td>
+		  <td width="100" style="color: #ffffff;">작성자</td>
+		  <td width="80" style="color: #ffffff;">작성일</td>
+		  <td width="60" style="color: #ffffff;">조회수</td>
+	  </tr>
+	 
+	  <tr align="center" bgcolor="#ffffff" height="30"> 
+		  <td align="center"><input type="checkbox" name="nums" value="2" style="margin-top: 3px;"></td>
+		  <td align="center">2</td>
+		  <td align="left" style="padding-left: 10px;">
+			  <a href="#">테스트 제목...</a>
+		  </td>
+		  <td align="center">스프링</td>
+		  <td align="center">2010-10-10</td>
+		  <td align="center">2</td>
+	  </tr>
+	  <tr><td height="1" colspan="6" bgcolor="#e4e4e4"></td></tr> 
+
+	  <tr align="center" bgcolor="#ffffff" height="30"> 
+		  <td align="center"><input type="checkbox" name="nums" value="1" style="margin-top: 3px;"></td>
+		  <td align="center">1</td>
+		  <td align="left" style="padding-left: 10px;">
+			  <a href="#">테스트 제목...</a>
+		  </td>
+		  <td align="center">자바다</td>
+		  <td align="center">2010-10-10</td>
+		  <td align="center">2</td>
+	  </tr>
+	  <tr><td height="1" colspan="6" bgcolor="#e4e4e4"></td></tr> 
+	 
+	</table>
+	 </form>
+	 
+	 <div style="margin-top:5px; clear:both; height:32px; line-height:32px;	text-align:center;">
+		 <a href="#">1</a>
+		 <a href="#">2</a>
+     </div>
+
+	<table style="width: 700px; margin: 5px auto 0px; border-spacing: 0px;">
+	   <tr height="35">
+		  <td align="left" width="50%">
+			  <form name="searchForm" action="" method="post">
+				  <select name="searchKey" class="selectField">
+					  <option value="subject">제목</option>
+					  <option value="name">작성자</option>
+					  <option value="content">내용</option>
+					  <option value="created">등록일</option>
+				</select>
+				<input type="text" name="searchValue" class="boxTF">
+				<input type="button" value=" 검 색 " class="btn" >
+			</form>
+		  </td>
+		  <td align="right">
+			  <input type="button" value=" 글올리기 " class="btn">
+		  </td>
+	   </tr>
+	</table>
+
+</div>
+
+
+</body>
+</html>

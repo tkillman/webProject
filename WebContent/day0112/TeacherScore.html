@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+*{
+	margin: 0px; padding: 0px;
+}
+body {
+	font-size: 9pt; font-family: 돋움;
+}
+a{
+	color: #000000;
+	text-decoration: none;
+	cursor: pointer;
+}
+a:active, a:hover {
+	text-decoration: underline;
+	color: tomato;
+}
+.title {
+	font-weight: bold;
+	font-size:13pt;
+	margin-bottom:10px;
+	font-family: 나눔고딕, 맑은 고딕, 돋움, sans-serif;
+}
+.btn {
+	 font-size: 12px;
+	 color:#333;
+ 	 font-weight:500;
+	 font-family: 나눔고딕, 맑은 고딕, 돋움, sans-serif;
+	 border:1px solid #ccc;
+	 background-color:#FFF;
+	 vertical-align:middle;
+	 text-align:text-align;
+	 cursor:cursor;
+	 padding:4px 8px;
+	 border-radius:4px;
+	 margin-bottom: 3px;
+}
+.btn:active, .btn:focus, .btn:hover {
+	 background-color:#e6e6e6;
+	 border-color: #adadad;
+	 color: #333;
+}
+.boxTF {
+	border:1px solid #999;
+	padding:4px 6px;
+	border-radius:4px;
+	background-color:#ffffff;
+	font-family: 나눔고딕, 맑은 고딕, 돋움, sans-serif;
+	font-size: 9pt;
+}
+.selectField {
+	border:1px solid #999;
+	padding:3px 6px;
+	border-radius:4px;
+	font-family: 나눔고딕, 맑은 고딕, 돋움, sans-serif;
+	font-size: 9pt;
+}
+
+#tbScore td {
+	padding: 5px;
+}
+tr.over {background: #FFC;}
+
+</style>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script type="text/javascript">
+
+
+
+function isNumber(data){ //입력된 데이터가 숫자이어야만 함.
+	var format=/^(\d+)$/;
+	
+    if(! format.test(data))
+	        return false; 
+    
+	return true;
+}
+
+
+
+//엔터 처리
+$(function(){
+	   $("#trInsert input").keypress(function (evt) { 
+	        var fields = $("#trInsert input:text");
+	        var index = fields.index(this);
+	        
+	        if (evt.keyCode == 13) {
+	            if ( index > -1 && index < 5 ) { //  5보다 적을 때는 focus 이동
+	                fields.eq( index + 1 ).focus();
+	            } else { //5 이후는 입력이 실행되도록 함
+	            	insertScore();
+	            }
+	            return false;
+	        }
+	     });
+	   
+	   
+	   $("#trInsert input").keyup(function (evt) {
+	        var fields = $("#trInsert input:text");
+	        var index = fields.index(this);
+
+	        if(index>=3 && index<=5) { /// 3,4,5는 성적 입력 받는곳
+	        	var kor=$("#kor").val().trim();
+	        	var eng=$("#eng").val().trim();
+	        	var mat=$("#mat").val().trim();
+
+	        	
+	        	//isNaN 자바스크립트 함수, 숫자로 바꿀 수 있으면 false반환 , 바꿀수 없으면 true 반환
+	        	var k = !kor || isNaN(kor) ? 0:parseInt(kor);
+	        	var e = !eng || isNaN(eng) ? 0:parseInt(eng);
+	        	var m = !mat || isNaN(mat) ? 0:parseInt(mat);
+	        	
+	        	
+	        	//총점,평균 계산 표시
+	        	var tot=k+e+m;
+	        	var ave=Math.floor(tot/3);
+	        	
+	        	
+	        	if(!kor && !eng && !mat) {
+	        		tot="";
+	        		ave="";
+	        	}
+	        	
+	        	//입력칸 초기화
+	        	$("#tot").val(tot);
+	        	$("#ave").val(ave);
+	        }
+
+	     });
+});
+
+
+
+// 동적 객체의 이벤트 처리 , on으로 하는 이유는 새로 생긴 input에도 이벤트를 적용시키기 위해서
+$(function(){
+	$(document).on('keypress','[id*=row] input', function(evt){
+          var fields = $("[id*=row] input:text");
+          var index = fields.index(this);
+        
+          if (evt.keyCode == 13) {
+              if ( index > -1 && index < 5 ) {
+                  fields.eq( index + 1 ).focus();
+              }
+              return false;
+          }
+	});
+	
+	
+	
+   $(document).on('keyup','[id*=row] input', function(evt){
+	   var fields = $("[id*=row] input:text");
+       var index = fields.index(this);
+
+       if(index>=3 && index<=5) {
+       	   var kor=fields.eq(3).val().trim();
+           var eng=fields.eq(4).val().trim();
+           var mat=fields.eq(5).val().trim();
+       	
+       	   var k = !kor || isNaN(kor) ? 0:parseInt(kor);
+       	   var e = !eng || isNaN(eng) ? 0:parseInt(eng);
+       	   var m = !mat || isNaN(mat) ? 0:parseInt(mat);
+       	
+       	   var tot=k+e+m;
+       	   var ave=Math.floor(tot/3);
+       	
+       	   if(!kor && !eng && !mat) {
+       		   tot="";
+       		   ave="";
+       	   }
+       	
+          fields.eq(6).val(tot);
+       	  fields.eq(7).val(ave);
+       }
+       
+	});	
+});
+
+var idx=1;
+function insertScore() {
+	var hak=$("#hak").val().trim();
+	var name=$("#name").val().trim();
+	var birth=$("#birth").val().trim();
+	var kor=$("#kor").val().trim();
+	var eng=$("#eng").val().trim();
+	var mat=$("#mat").val().trim();
+	
+	if(!hak || !name || !birth) {
+		alert("값을 입력 하세요 !!!");
+		return false;
+	}
+
+	if(! isNumber(kor) || ! isNumber(eng) || ! isNumber(mat)) {
+		alert("점수는 숫자만 가능합니다. !!!");
+		return false;
+	}
+	
+	var tot=parseInt(kor)+parseInt(eng)+parseInt(mat);
+	var ave=Math.floor(tot/3);
+	
+	if($("#tbScore tr").length==1)
+		idx=1;
+	
+	idx++;
+	var str="<tr height='30' id='row"+idx+"' bgcolor='#FFFFFF' align='center'></tr>";
+	$(str).
+	   hover(function(){ // 마우스가 위치할 경우
+		   $(this).addClass("over");
+	   }, function(){ // 마우스가 벗어나면
+		   $(this).removeClass("over");
+	   })
+	       .append("<td>"+hak+"</td>")
+	       .append("<td>"+name+"</td>")
+	       .append("<td>"+birth+"</td>")
+	       .append("<td>"+kor+"</td>")
+	       .append("<td>"+eng+"</td>")
+	       .append("<td>"+mat+"</td>")
+	       .append("<td>"+tot+"</td>")
+	       .append("<td>"+ave+"</td>")
+	       .append("<td><span onclick='updateScore("+idx+");' style='cursor:pointer;'>수정</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span onclick='deleteScore("+idx+");' style='cursor:pointer;'>삭제</span></td>")
+	       .appendTo("#tbScore");
+	
+	$("#hak").val("");
+	$("#name").val("");
+	$("#birth").val("");
+	$("#kor").val("");
+	$("#eng").val("");
+	$("#mat").val("");
+	$("#tot").val("");
+	$("#ave").val("");
+	$("#hak").focus();
+}
+
+var arr=new Array();
+function updateScore(index) {
+	var tds=$("#row"+index+" td");
+	var size;
+	var s;
+	
+	$(tds).each(function(i){ 
+		if(i!=tds.length-1) { // 마지막 수정과 삭제칸이 아니면
+			arr[i]=$(this).text(); //배열에 넣는 이유는 값을 수정하다가 다시 취소를 누르면 돌아가기 위해서
+		
+			size = i==1||i==2?8:6; //사이즈 결정
+			s="";
+			if(i==6||i==7) /// 총점과 평균
+				s="  readonly='readonly' style='border: none;'"
+			
+			$(this).empty(); // 내용을 지운다. 태그는 남아있다.
+			
+			$(this).append("<input type='text' value='"+arr[i]+"' class='boxTF' size='"+size+"'"+s+">");
+		} else {
+			
+			$(this).empty();
+			$(this).append("<span onclick='updateOk("+index+");' style='cursor:pointer;'>완료</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span onclick='updateCancel("+index+");' style='cursor:pointer;'>취소</span>");
+		}
+	});
+}
+
+
+function updateCancel(index) {
+	
+	var tds=$("#row"+index+" td");
+	
+	$(tds).each(function(i){
+		if(i!=tds.length-1) {
+			$(this).empty();
+			$(this).text(arr[i]); //arr[i] 수정 전 값이 들어있다.
+		} else {
+			$(this).empty();
+			$(this).append("<span onclick='updateScore("+index+");' style='cursor:pointer;'>수정</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span onclick='deleteScore("+index+");' style='cursor:pointer;'>삭제</span>");
+		}
+	});
+}
+
+function updateOk(index) {
+	var tds=$("#row"+index+" td");
+	
+	$(tds).each(function(i){
+		var ob=$(this);
+		if(i!=tds.length-1) {
+			$(this).find("input:text").each(function(i) {
+				ob.empty();
+		        ob.text($(this).val());
+		    });
+		} else {
+			$(this).empty();
+			$(this).append("<span onclick='updateScore("+index+");' style='cursor:pointer;'>수정</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span onclick='deleteScore("+index+");' style='cursor:pointer;'>삭제</span>");
+		}
+	});
+}
+
+
+function deleteScore(index) {
+	if(! confirm("데이터를 삭제 하시겠습니까 ? "))
+		return false;
+	
+	var row=$("#row"+index);
+	// row.remove(); //remove 사용하면 객체가 사라진다.
+	
+	row.fadeOut("show", function(){
+		row.remove();
+	});
+}
+</script>
+
+</head>
+<body>
+
+<div style="width: 800px; margin: 30px auto 0px;">
+
+	<div style="width:800px; height:30px; line-height:30px; margin:5px auto;">
+	   ■
+	   <span style="font-weight: bold;font-size:13pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">성적처리</span>
+	</div>
+
+	<form name="scoreForm" method="post">
+	<table style="width: 800px; margin: 0px auto 0px; border-spacing: 1px; background: #cccccc;">
+	<thead>
+		<tr height="30"  bgcolor="#E4E6E4" align="center">
+			<td width="80">학번</td>
+			<td width="100">이름</td>
+			<td width="100">생년월일</td>
+			<td width="80">국어</td>
+			<td width="80">영어</td>
+			<td width="80">수학</td>
+			<td width="80">총점</td>
+			<td width="80">평균</td>
+			<td width="120">&nbsp;</td>
+		</tr>
+	</thead>
+	
+	<tbody id="tbScore">
+		<tr id="trInsert" bgcolor="#FFFFFF" align="center">
+			<td><input type="text" name="hak" id="hak" class="boxTF" size="6"></td>
+			<td><input type="text" name="name" id="name" class="boxTF" size="8"></td>
+			<td><input type="text" name="birth" id="birth" class="boxTF" size="8"></td>
+			<td><input type="text" name="kor" id="kor" class="boxTF" size="6"></td>
+			<td><input type="text" name="eng" id="eng" class="boxTF" size="6"></td>
+			<td><input type="text" name="mat" id="mat" class="boxTF" size="6"></td>
+			<td><input type="text" name="tot" id="tot" class="boxTF" size="6" readonly="readonly" style="border: none;"></td>
+			<td><input type="text" name="ave" id="ave" class="boxTF" size="6" readonly="readonly" style="border: none;"></td>
+			<td>
+				<input type="button" value=" 등록하기 " class="btn" onclick="insertScore();">
+			</td>
+		</tr>
+	</tbody>
+	
+	</table>
+	</form> 
+</div>
+
+</body>
+</html>

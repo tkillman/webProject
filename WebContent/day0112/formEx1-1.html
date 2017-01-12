@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+  body{
+    font-size:15px;
+    font-family: 나눔고딕, 맑은 고딕, 돋움, sans-serif;
+  }
+
+  input, select {
+    margin : 2px; padding:2px;
+  }
+ </style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+
+<form name="myForm">
+이름 : <input type="text" name="name" value="이름을 입력하세요"><br>
+나이 : <input type="text" name="age"><br>
+이메일 :
+<input type="text" name="email1">@
+<input type="text" name="email2" readonly="readonly">
+<select id="emailAddr">
+	<option value="">주소를 선택 하세요</option>
+	<option value="naver.com">네이버</option>
+	<option value="hanmail.net">한메일</option>
+	<option value="direct">직접 입력 </option>
+</select><br/>
+
+<input type="checkbox" name="ck">약관에 동의 하십니까 ?<br>
+<input type="button" value="회원가입" id="btn" disabled="disabled"><br>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+
+
+//오른쪽으로 보내는 버튼....
+$(function(){
+	$('#btnRight').click(function(){
+		
+		$('#s1 option:selected').each(function(){
+			$(this).appendTo('#s2');
+		});
+	});
+});
+
+
+//왼쪽으로 보내는 버튼....
+$(function(){
+	$('#btnLeft').click(function(){
+		
+		$('#s2 option:selected').each(function(){
+			$(this).appendTo('#s1');
+		});
+	});
+});
+
+
+//전체를 오른쪽으로 보내는 버튼
+$(function(){
+	$('#btnRightAll').click(function(){
+		
+		$('#s1 option').each(function(){
+			$(this).appendTo('#s2');
+		});
+	});
+});
+
+
+//전체를 왼쪽으로 보내는 버튼
+$(function(){
+	$('#btnLeftAll').click(function(){
+		
+		$('#s2 option').each(function(){
+			$(this).appendTo('#s1');
+		});
+	});
+});
+
+
+//rightAllSelect
+$(function(){
+	$('#rightAllSelect').click(function(){
+	
+		//데이터가 있나 없나
+		if($('#s2 option').length==0){
+			return;
+		}
+		
+		//attr 문제가 좀 있다, prop를 사용하면 잘 되긴 한다.
+		$('#s2 option').each(function(){	
+			//$(this).attr('selected','selected');
+			$(this).prop('selected','selected');
+		}); 
+		
+	});
+	
+});
+
+//rightAllUnselect
+$(function(){
+	$('#rightAllUnselect').click(function(){
+		
+		$('#s2 option').each(function(){
+			
+			$(this).removeAttr('selected');	
+		}); 	
+	});
+	
+});
+
+
+
+</script>
+</head>
+<body>
+
+<form>
+
+
+<div style="display: inline-block;">
+    <select multiple="multiple" id="s1" name="s1" style="width:100px;">
+       <option value="java">자바</option>
+       <option value="web">웹</option>
+       <option value="spring">스프링</option>
+       <option value="jsp">JSP</option>
+    </select>
+</div>
+
+<div style="display: inline-block;">
+    <button type="button" id="btnRight" style="display:block; width:80px;"> &gt; </button>
+    <button type="button" id="btnRightAll" style="display:block;width:80px;"> &gt;&gt; </button>
+    <button type="button" id="btnLeft" style="display:block;width:80px;"> &lt; </button>
+    <button type="button" id="btnLeftAll" style="display:block;width:80px;"> &lt;&lt; </button>
+</div>
+
+<div style="display: inline-block;">
+    <select multiple="multiple" id="s2" name="s2" style="width:100px;"></select>
+</div>
+
+<div>
+    <button type="button" id="rightAllSelect"> 우측 데이터 모두 선택 </button>
+    <button type="button" id="rightAllUnselect"> 우측 데이터 모두 선택 해제</button>
+</div>
+
+
+</form>
+
+
+</body>
+</html>
