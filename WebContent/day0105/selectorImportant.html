@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+13개 연습하기
+
+
+
+1번째 모든 요소 잡기
+<div id='div1'>2번째 아이디</div>
+<div class='div1class'>3번째 클래스</div>
+<span> 4번째 그냥 태그잡기</span>
+
+<form id="form1">
+
+<input type="text" class='in' name="qinput1" value="input1">
+<input type="text" class='in' name="input2" value="input2">
+<input type="text" class='in' name="input3" value="input3">
+<input type="text" class='in' name="kinput4" value="input4">
+<input type="button" class='in' name="button5" value="button5">
+</form>
+
+<div></div>
+
+<a></a>
+<b></b>
+
+<form id="form2">
+<input type="text">
+</form>
+
+<table>
+<tr>
+<td>1번째 행</td>
+</tr>
+
+<tr>
+<td>2번째 행</td>
+</tr>
+
+<tr>
+<td>3번째 행</td>
+</tr>
+
+
+<tr>
+<td>4번째 행</td>
+</tr>
+
+
+<tr>
+<td>5번째 행</td>
+</tr>
+
+
+</table>
+
+
+
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     
+     $(function(){     
+    	
+    	 //1 모든 엘리먼트
+    	 $('*').css("background","tomato");
+    	 
+    	 //2 아이디
+    	 $('#div1').css("color","red");
+    	 
+    	 //3 클래스
+    	 $('.div1class').css("color","yellow");
+    	
+    	 //4 태그 전체
+    	 $('span').css("background","black");
+    	 
+    	 //5 태그 요소 바로 다음 아래 요소
+    	 $('#form1 input').css("font-size","20px"); // 20을 바꿔보기
+    
+    	 //6 속성 name을 가진 모든 input 태그
+    	 $('input[name]').css('color','red');
+    	 		 
+    	 //7  속성 name에  3 이 끝
+    	 $('input[name$=3]').val('7번째 3으로 끝남');
+    	 
+    	 //8 속성 name에  3 포함
+    	 $('input[name*=k]').val('8번째 k포함');
+    	 
+    	 //9 속성 name에  3 시작
+    	 $('input[name^=q]').val('9번째 q시작');
+    	 
+    	 //10 연관없는 a태그와 b태그
+    	 $('a,b').html("hello");
+    	 
+    	 //11 tr 태그들 중 1번째 요소, 0부터 시작
+    	 $('tr:eq(1)').html("<td>2번째 행 교체</td>");
+    	 
+    	 
+    	 //12 tr 태그들 중 2번째 요소보다 큰 엘리먼트들 , 0부터 시작
+    	 $('tr:gt(2)').html("<td>4번째 이후 행 교체</td>")
+    	 
+    	 
+    	 //13 input type중 버튼이 아닌것
+    	 
+    	 $('input').not($(':button')).css('border','10px solid black');
+    	 
+     });
+     
+     
+     
+     </script>
+
+
+</body>
+</html>

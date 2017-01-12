@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+.bg {
+	background: yellow;
+}
+</style>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+
+// 전화번호 칸 넘기기
+$(function(){
+	$(".tel").keyup(function(){
+		var n=$(this).attr("maxlength");
+
+		if(this.value.length >= n) {
+			$(this).next(".tel").focus();
+			return false;
+		}
+	});
+});
+
+// hover (function(){},function(){}) 사용해보기
+$(function(){
+	$("table tr:gt(0)").hover(
+		function(){$(this).addClass("bg")},
+		function(){$(this).removeClass("bg")}
+	);
+});
+
+
+// one() 메소드 : 한번만 실행,
+//click() 누를 때마다 , 
+//trigger() 시작하자마자 이벤트를 발생시킨다.
+
+$(function(){
+	$("#div1").one("click", function(){
+		alert("누르면 안되는데...");
+	});
+	
+	$("#div2").click(function(){
+		alert("안녕...");
+	});
+	
+	$("#div2").trigger("click");
+	
+});
+
+
+</script>
+
+
+</head>
+<body>
+
+
+<form action="">
+<input type="text" class="tel" name="tel1" maxlength="3"> - 
+<input type="text" class="tel" name="tel2" maxlength="4"> - 
+<input type="text" class="tel" name="tel3" maxlength="4">
+<br> 
+<input type="button" value="등록"> 
+</form>
+<br>
+
+<hr>
+
+<table border="1" style="width: 300px;">
+<tr>
+    <td>제목</td>
+</tr>
+<tr>
+    <td>자바</td>
+</tr>
+<tr>
+    <td>안드로이드</td>
+</tr>
+<tr>
+    <td>하둡</td>
+</tr>
+</table>
+
+
+<hr>
+<div id="div1">눌러봐</div>
+
+
+<hr>
+<div id="div2">눌러봐</div>
+
+
+
+
+
+
+
+</body>
+</html>

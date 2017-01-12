@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<!--  
 event.preventDefault(); 이벤트를 취소
 event.which -> event.keyCode와 같은 의미
 
@@ -13,31 +13,44 @@ event.which -> event.keyCode와 같은 의미
 shift +a -> keydown keydown keypress keyup keyup
 
 
+-->
+
 <script type="text/javascript">
+
+
+// name이 비어있으면 submit 할수 없도록 만드는 것.
 
 
 function check(){
 	
 	var f=document.forms[0];
 	
+	
 	if(! f.name.value){
 		return false;
+		
 	}
 	f.submit();
 	return true;
+	
+	
 }
 
-<script>
+</script>
 
+<form action="test.html" onsubmit="return click();">
 
-
-
-<form action="" onsubmit="return check();">
 <input type="text" name="name">
-<input type="submit">
-<button type="submit">
+	
+<input type="submit" value="제출" >
+
+
 </form>
+
 
 
 </body>
 </html>
+
+
+

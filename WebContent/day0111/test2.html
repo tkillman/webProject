@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+
+div{
+	width: 60px; height: 60px; margin: 10px; float: left;
+	border: 2px solid blue;
+	 
+
+}
+
+
+
+.blue{background: blue;}
+
+.lightblue{background: lightblue;}
+
+.oragne{   background: oragne; }
+
+
+</style>
+</head>
+<body>
+
+<div>A<p>A</p></div>0
+<div>B<p>B</p></div>1
+<div>C<p>C</p></div>2
+<div>D<p>D</p></div>3
+<div>E<p>E</p></div>4
+
+<div>F<span>F</span></div>5
+<div>G<span>G</span></div>6
+
+
+
+
+
+
+
+ <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+
+
+     $(function(){     
+    	 
+    	// $('div:eq(1)').css("background" , "red");
+    	// $('div:eq(1)').siblings().css("background" , "red"); //나머지 형제들의 색이 바뀜
+    	// $('div:eq(1)').siblings().css("background" , "red").end().next().text("AAA"); //나머지 형제들의 색이 바뀜 
+    	
+    	//1번째 // 1번 이외 형제들 // 다시 1번 //2번 
+    								
+    	 $('div:eq(1)').siblings().css("background" , "red").end().next().text("AAA").end().nextAll().css("color","yellow"); 
+    	
+    	
+    	
+    	
+    	//$('div:eq(1)').nextAll().find('p').css('border','2px solid black');
+    	//c의 경우 text가 AAA로 바뀌면서 <p> 태그가 사라졌다.
+    	
+    	
+    	//add() 메소드의 사용
+    	//find 이후의 elements에 추가하는 효과
+    	 $('div:eq(1)').nextAll().find('p').css('border','2px solid black').add('span').css("border" ,"2px solid blue");
+    	
+    	
+    	
+    	
+    	
+    	
+     });
+
+     
+     
+     
+     
+     
+     
+     </script>
+</body>
+</html>
