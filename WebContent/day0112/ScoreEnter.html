@@ -4,27 +4,33 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+
 *{
 	margin: 0px; padding: 0px;
 }
+
 body {
 	font-size: 9pt; font-family: 돋움;
 }
+
 a{
 	color: #000000;
 	text-decoration: none;
 	cursor: pointer;
 }
+
 a:active, a:hover {
 	text-decoration: underline;
 	color: tomato;
 }
+
 .title {
 	font-weight: bold;
 	font-size:13pt;
 	margin-bottom:10px;
 	font-family: 나눔고딕, 맑은 고딕, 돋움, sans-serif;
 }
+
 .btn {
 	 font-size: 12px;
 	 color:#333;
@@ -39,11 +45,13 @@ a:active, a:hover {
 	 border-radius:4px;
 	 margin-bottom: 3px;
 }
+
 .btn:active, .btn:focus, .btn:hover {
 	 background-color:#e6e6e6;
 	 border-color: #adadad;
 	 color: #333;
 }
+
 .boxTF {
 	border:1px solid #999;
 	padding:4px 6px;
@@ -52,6 +60,7 @@ a:active, a:hover {
 	font-family: 나눔고딕, 맑은 고딕, 돋움, sans-serif;
 	font-size: 9pt;
 }
+
 .selectField {
 	border:1px solid #999;
 	padding:3px 6px;
@@ -63,6 +72,7 @@ a:active, a:hover {
 #tbScore td {
 	padding: 5px;
 }
+
 tr.over {background: #FFC;}
 
 </style>
@@ -73,9 +83,35 @@ tr.over {background: #FFC;}
 
 
 
+//총 8개의 메소드 정리해보기
+//1. isNumber(data) 입력된 데이터가 숫자인가
+
+//2. 엔터 처리
+
+//3. 새로 생긴 점수란 칸도 엔터 치면 넘길 수 있도록 처리
+
+//4. 점수 입력
+
+//  5. 점수 수정하기
+
+// 6. 점수 수정하다가 취소시키기
+
+//7. 수정 완료
+
+// 8. 점수 삭제
+
+
+
+//1.
+
 function isNumber(data){ //입력된 데이터가 숫자이어야만 함.
-	var format=/^(\d+)$/;
+	var format=/^(\d+)$/; 
+	// ^ 앞쪽 , $ 뒤쪽 , (\d+) 숫자 , 
 	
+	
+	//test() 라는 메소드는 format에 일치하면 true 반환, 아니면 false 반환
+		// html5의 경우 input type="number" 로 주면 해결될 수 도 있다.
+		
     if(! format.test(data))
 	        return false; 
     
@@ -84,9 +120,12 @@ function isNumber(data){ //입력된 데이터가 숫자이어야만 함.
 
 
 
-//엔터 처리
+
+
+//2. 엔터 처리
 $(function(){
-	   $("#trInsert input").keypress(function (evt) { 
+	  
+	$("#trInsert input").keypress(function (evt) { 
 	        var fields = $("#trInsert input:text");
 	        var index = fields.index(this);
 	        
@@ -96,6 +135,7 @@ $(function(){
 	            } else { //5 이후는 입력이 실행되도록 함
 	            	insertScore();
 	            }
+	            
 	            return false;
 	        }
 	     });
@@ -137,8 +177,11 @@ $(function(){
 
 
 
-// 동적 객체의 이벤트 처리 , on으로 하는 이유는 새로 생긴 input에도 이벤트를 적용시키기 위해서
+
+// 3.동적 객체의 이벤트 처리 , on으로 하는 이유는 새로 생긴 input에도 이벤트를 적용시키기 위해서
+
 $(function(){
+	
 	$(document).on('keypress','[id*=row] input', function(evt){
           var fields = $("[id*=row] input:text");
           var index = fields.index(this);
@@ -152,8 +195,9 @@ $(function(){
 	});
 	
 	
-	
+//  값을 수정했을 때도 총점과 평균이 변화하도록 이벤트를 처리한다.	
    $(document).on('keyup','[id*=row] input', function(evt){
+	  
 	   var fields = $("[id*=row] input:text");
        var index = fields.index(this);
 
@@ -169,6 +213,7 @@ $(function(){
        	   var tot=k+e+m;
        	   var ave=Math.floor(tot/3);
        	
+       	   
        	   if(!kor && !eng && !mat) {
        		   tot="";
        		   ave="";
@@ -176,11 +221,16 @@ $(function(){
        	
           fields.eq(6).val(tot);
        	  fields.eq(7).val(ave);
+       	  
        }
        
 	});	
+   
 });
 
+
+
+// 4. 점수 입력
 var idx=1;
 function insertScore() {
 	var hak=$("#hak").val().trim();
@@ -208,6 +258,7 @@ function insertScore() {
 	
 	idx++;
 	var str="<tr height='30' id='row"+idx+"' bgcolor='#FFFFFF' align='center'></tr>";
+	
 	$(str).
 	   hover(function(){ // 마우스가 위치할 경우
 		   $(this).addClass("over");
@@ -236,33 +287,47 @@ function insertScore() {
 	$("#hak").focus();
 }
 
+
+
+//  5. 점수 수정하기
 var arr=new Array();
+
 function updateScore(index) {
+	
 	var tds=$("#row"+index+" td");
 	var size;
 	var s;
 	
+	
 	$(tds).each(function(i){ 
-		if(i!=tds.length-1) { // 마지막 수정과 삭제칸이 아니면
-			arr[i]=$(this).text(); //배열에 넣는 이유는 값을 수정하다가 다시 취소를 누르면 돌아가기 위해서
 		
+		if(i!=tds.length-1) {// 마지막 수정과 삭제칸이 아니면
+			
+			arr[i]=$(this).text(); //배열에 넣는 이유는 값을 수정하다가 다시 취소를 누르면 돌아가기 위해서
+			console.log(arr[i]);
 			size = i==1||i==2?8:6; //사이즈 결정
 			s="";
-			if(i==6||i==7) /// 총점과 평균
-				s="  readonly='readonly' style='border: none;'"
+			
+			if(i==6||i==7) {/// 총점과 평균
+				s="readonly='readonly' style='border: none;'"}
+			
 			
 			$(this).empty(); // 내용을 지운다. 태그는 남아있다.
 			
 			$(this).append("<input type='text' value='"+arr[i]+"' class='boxTF' size='"+size+"'"+s+">");
+			
 		} else {
 			
 			$(this).empty();
 			$(this).append("<span onclick='updateOk("+index+");' style='cursor:pointer;'>완료</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span onclick='updateCancel("+index+");' style='cursor:pointer;'>취소</span>");
+		
 		}
 	});
 }
 
 
+
+// 6. 점수 수정하다가 취소시키기
 function updateCancel(index) {
 	
 	var tds=$("#row"+index+" td");
@@ -278,7 +343,12 @@ function updateCancel(index) {
 	});
 }
 
+
+
+
+//수정 완료시키기
 function updateOk(index) {
+	
 	var tds=$("#row"+index+" td");
 	
 	$(tds).each(function(i){
@@ -288,14 +358,18 @@ function updateOk(index) {
 				ob.empty();
 		        ob.text($(this).val());
 		    });
+			
 		} else {
 			$(this).empty();
 			$(this).append("<span onclick='updateScore("+index+");' style='cursor:pointer;'>수정</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span onclick='deleteScore("+index+");' style='cursor:pointer;'>삭제</span>");
+			
 		}
 	});
 }
 
 
+
+// 점수 삭제 시키기
 function deleteScore(index) {
 	if(! confirm("데이터를 삭제 하시겠습니까 ? "))
 		return false;
@@ -307,11 +381,14 @@ function deleteScore(index) {
 		row.remove();
 	});
 }
+
+
 </script>
 
 </head>
-<body>
 
+
+<body>
 <div style="width: 800px; margin: 30px auto 0px;">
 
 	<div style="width:800px; height:30px; line-height:30px; margin:5px auto;">
@@ -354,6 +431,7 @@ function deleteScore(index) {
 	</table>
 	</form> 
 </div>
+
 
 </body>
 </html>

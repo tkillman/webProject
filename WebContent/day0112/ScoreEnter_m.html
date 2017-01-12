@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+<table>
+<thead>
+<tr>
+<td>수학</td>
+<td>영어</td>
+<td>총점</td>
+<td>평균</td>
+</tr>
+</thead>
+
+
+<tbody id="tbody">
+<tr>
+<td><input type="text" name="mat" id="mat"></td>
+<td><input type="text" name="eng" id="eng"></td>
+<td><input type="text" name="tot" id="tot" readonly="readonly"></td>
+<td><input type="text" name="avg" id="avg" readonly="readonly"></td>
+<td><input type="button" name="btn" id="insertBtn" value="등록"></td>
+<tr>
+
+
+</tbody>
+
+</table>
+
+
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     
+     
+     
+     
+     //1 .엔터치면 다음 칸으로 넘기기
+     $(function(){     
+    	 
+    	 $('input').keypress(function(e){
+    		
+    		 var fields = $('input');
+    		 
+    		 var idx = fields.index(this);
+    		 if(e.keyCode ==13){
+    		 if(idx>-1 && idx<1){
+    			 fields.eq(idx+1).focus();
+    			 return;
+    		 }else{
+    		 fields.eq(idx).focus();
+    		 return;}
+    		 }
+    	 });
+     });
+     
+     
+   // 2. 점수 등록하기
+   $(function(){
+	  
+	   var rowNum=0;
+	   $('#insertBtn').click(function(){
+		   
+		   //alert('ee');
+		   
+		   var m = $('#mat').val();
+		   var e = $('#eng').val();
+		   
+		   var t = parseInt(m)+parseInt(e);
+		   var av = Math.floor((t/2));
+		   
+		   
+		   //alert(m);
+		   
+		   rowNum++;
+		   var s1="<tr id='rowNum"+rowNum+"'></tr>"
+		   
+		  var ss="<td>"+m+"</td><td>"+e+"</td>"
+		  var sss="<td>"+t+"</td><td>"+av+"</td>" 
+		  var ssss="<td><span onclick=updateScore("+rowNum+")>수정</span> || <span onclick=del("+rowNum+")> 삭제</span></td>"
+		  $(s1).append(ss).append(sss).append(ssss).insertAfter($('#tbody'));
+		
+		  
+	   });
+	   
+   });  
+   
+   
+   
+ /// 수정 버튼을 누른 경우  
+ 	var arr =new Array();
+  	
+ 	function updateScore(rowNum){
+	  //alert(data);
+	  var tds = $('#rowNum'+rowNum+'  td');
+	  //console.log(tds);
+	  
+	  
+	  tds.each(function(i){
+		  
+		  arr[i] = $(this).text();
+		// console.log(arr[i]);
+		  
+		 if(i==0 ||i==1){
+			 $(this).empty();
+			 $(this).append("<input type='text' value='"+arr[i]+"'>");
+			 
+		 }else if(i==2||i==3){
+			 $(this).empty();
+			 $(this).append("<input type='text' value='"+arr[i]+"' readonly='readonly'>");
+		 }else{
+			 $(this).empty();
+			 $(this).append("<span onclick=updateOk("+rowNum+")>완료</span> || <span onclick=cancle("+rowNum+")>취소</span>");
+			 
+		 }
+		 
+		 
+		 
+	  });
+	
+  }
+     
+  	
+//값을 수정하면 수정된 값이 총점과 평균에 반영되도록 하기...
+
+$(function(){
+	
+	$(document).on('keyup','[id*=rowNum] input',function(e){
+		
+		var fields = $('[id*=rowNum] input');
+		//console.log(fields);
+	
+		var mat = fields.eq(0).val();
+		var eng = fields.eq(1).val();
+		
+		var tot =parseInt(mat)+parseInt(eng)
+		
+		fields.eq(2).val(tot);		
+		fields.eq(3).val(Math.floor((tot)/2));
+		
+	});
+});
+  	
+  	
+  	
+ ///완료 버튼을 누르는 경우
+ 
+ function updateOk(rowNum){
+	 
+	 var tds = $('#rowNum'+rowNum+' td')
+	// console.log(tds);
+	 
+	var arr1 = new Array(); 
+	tds.each(function(i){
+			
+		//console.log($(this).find('input:text').val());
+		arr1[i] = $(this).find('input:text').val();
+		
+			$(this).empty();
+			$(this).text(arr1[i]);
+			
+				if(i>3){	 
+			
+				$(this).empty();
+				 $(this).append("<span onclick=updateScore("+rowNum+")>수정</span> || <span onclick=del("+rowNum+")>삭제</span>");
+				 
+			 }
+	});
+	 
+ }
+
+ /// 취소시킬때
+ function cancle(rowNum){
+	
+	 console.log('받은 rowNum값 : ' + rowNum);
+	 var tds = $('#rowNum'+rowNum+' td')
+	 
+	 tds.empty();
+	 
+	 tds.each( function(i){
+	 	
+	 	
+		 if(i>3){
+			 $(this).empty();
+			 $(this).append("<span onclick=updateScore("+rowNum+")>수정</span> || <span onclick=del("+rowNum+")>삭제</span>");
+			 return;
+		 }
+		 
+		 
+		 console.log("arr[i] 번 값 : " +arr[i]);
+		 $(this).text(arr[i]);
+	 }
+	 )
+	 
+ }
+
+ //삭제
+ 
+ function del(rowNum){
+	 
+	 
+	 if(confirm('삭제하시겠습니까?')==true){ 
+		 $('#rowNum'+rowNum).remove();
+	} else{
+		 return;
+	 }
+	
+ }
+ 
+     </script>
+
+
+</body>
+</html>

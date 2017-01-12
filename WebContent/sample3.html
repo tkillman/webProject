@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     
+     
+     function check(){
+    	 
+    	 var s = $('#basketball').prop("checked");
+    	 alert("prop의 값은 : " +s);
+    	 
+     }
+     
+     
+     </script>
+
+</head>
+<body>
+
+<input type="checkbox" id="basketball" name="sport" value="농구"><label for="basketball">농구</label>
+<input type="checkbox" id="baseball" name="sport" value="야구"><label for="baseball">야구</label>
+<input type="button" onclick=check(); value="prop확인단추">
+
+
+
+
+
+</body>
+</html>

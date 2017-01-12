@@ -9,7 +9,6 @@
 
 <div id="divForm"></div>
 
-
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <script type="text/javascript">
@@ -53,19 +52,13 @@ function createElement(){
 	
 	div.append(label);
 	label=$('<span>' , {html : "害切 "});
-	input $('<input>', {type:"radio" , name:"gender" ,value : "害切" , checked : (gender=="害切")});
+	input =$('<input>', {type:"radio" , name:"gender" , value :"害切", checked: (gender=="害切")});
 	div.append(label).append(input);
 	
 	
 	label=$('<span>' , {html : "食切 "});
-	input $('<input>', {type:"radio" , name:"gender",value : "食切" , checked : (gender=="食切")});
+	input =$('<input>', {type:"radio" , name:"gender", value :"食切" ,checked : (gender=="食切")});
 	div.append(label).append(input).append("<br>");
-	
-	
-	
-	
-	
-	
 	
 	return div;
 	}

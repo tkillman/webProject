@@ -11,10 +11,9 @@
 $(function(){
 	
 	$('#btn').click(function(){
-		
 
-		//undefiend ㄱㅏ 나온다.
-		//null과는 다르다. 
+		//undefiend ㄱㅏ 나온다. 자료형이 결정되지 않은 변수
+		//null과는 다르다.  자료형은 객체인데 비어있는 변수
 		//var s = $('#c1:checkbox:checked').val();
 		//alert(s);
 		
@@ -24,16 +23,17 @@ $(function(){
 		
 	//선택한 값들을 표시	
 		for(var i=0; i<c.length;i++){
+			
+			
 			result+= $(c[i]).next().html()+",";
+			
 		}
-		
-		alert(result);
+	
+		$('#result').text(result);
 		
 	});
 	
 });
-
-
 
 
 </script>
