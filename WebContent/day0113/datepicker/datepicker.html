@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" type="text/css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="jquery.ui.datepicker-ko.js"></script>
+
+
+</head>
+<body>
+
+<input type="text" id="date1" readonly="readonly"><br>
+<input type="text" id="date2" readonly="readonly"><br>
+<input type="text" id="date3" readonly="readonly"><br>
+<input type="text" id="date4" readonly="readonly"><br>
+
+<script type="text/javascript">
+
+
+$(function(){
+	//1. 데이트 피커 띄우기
+	$('#date1').datepicker();
+	
+	//2. 년도와 월의 위치 바꾸기
+	$('#date2').datepicker({
+		showMonthAfterYear:true
+	});
+	
+	
+	/*  //3. default Date 설정
+	$('#date2').datepicker(
+		"option", "defaultDate", "10-01-2017"
+	); */
+
+	//4. 최소 날짜, 최대 날짜 설정
+	 
+	$('#date4').datepicker({
+		
+	minDate:"2017-01-10", maxDate:"2017-01-15"});
+	 
+	 
+	
+	
+	
+	
+});
+
+
+
+
+
+</script>
+</body>
+</html>

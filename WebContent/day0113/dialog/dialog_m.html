@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" type="text/css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style type="text/css">
+
+/* 다이얼 로그 타이틀에 css 주기*/
+.ui-dialog-titlebar{
+
+	background: red;
+}
+
+
+</style>
+
+</head>
+<body>
+
+<input type="button" id="btn1" value="버튼1">
+<input type="button" id="btn2" value="버튼2">
+<input type="button" id="btn3" value="버튼3">
+<input type="button" id="btn4" value="버튼4">
+<input type="button" id="btn5" value="버튼5">
+<input type="button" id="btn6" value="버튼6">
+<input type="button" id="btn7" value="버튼7">
+<input type="button" id="btn8" value="버튼8">
+
+<div id="div1" style="display: none;">다이얼 로그 띄우기1</div>
+<div id="div2" style="display: none;">다이얼 로그 띄우기2</div>
+<div id="div3" style="display: none;">다이얼 로그 띄우기3</div>
+
+<div id="div5" style="display: none;">다이얼 로그 띄우기5
+<input type="button" value="확인" onclick="closeing();">
+</div>
+
+<div id="div6" style="display: none;">다이얼 로그 띄우기6</div>
+<div id="div7" style="display: none;">다이얼 로그 띄우기7</div>
+<div id="div8" style="display: none;">다이얼 로그 띄우기8</div>
+
+
+<script type="text/javascript">
+
+$(function(){
+	
+	//1. 다이얼 로그 띄우기
+	$('#btn1').click(function(){
+		
+		$('#div1').dialog();
+		
+	});
+
+	
+	//2. 다이얼 로그에 제목 붙이기
+	$('#btn2').click(function(){
+		
+		$('#div2').dialog({
+			title: 'hello'
+		});
+		
+	});
+
+	//3.다이얼 로그가 띄워지면 뒷 배경은 클릭할 수 없도록 하기
+	$('#btn3').click(function(){
+		
+		$('#div3').dialog({
+			modal: true
+		});
+		
+	});
+	
+	//4. 서버에 갔다오기
+		$('#btn4').click(function(){
+			$('<div>').dialog({
+				open:function(){
+					$(this).load('timer_m.jsp');
+				}
+			});
+			
+		});
+	
+	
+	//5. 확인을 눌렀을 때 창이 닫히도록 하기
+		$('#btn5').click(function(){
+			$('#div5').dialog();
+		});
+	
+});
+	
+	//6. 버튼을 만들자.
+	
+	$('#btn6').click(function(){
+		
+		$('#div6').dialog({
+					buttons : {"확인" :function(){},"취소":function(){$('#div6').dialog("close");}}	
+	});
+	})
+	
+	//7. 애니메이션 효과
+	$('#btn7').click(function(){
+		
+		$('#div7').dialog({
+					show:"clip",hide:"clip"
+	});
+	})
+	
+	//8. title 창 없애기
+	$('#btn8').click(function(){
+		
+		$('#div8').dialog({
+			open : function(){$(this).parents(".ui-dialog:first").
+				   find(".ui-dialog-titlebar").remove()}
+			
+			,buttons :{ "취소":function() {$('#div8').dialog('close');}}
+			
+		});
+	
+		
+	});// 마지막 괄호
+	
+// 메소드 이름 close() 로 하면 안된다. 이미 정의된 메소드인 것 같다.
+function closeing(){
+$('#div5').dialog("close");
+};
+
+	
+
+
+</script>
+</body>
+</html>

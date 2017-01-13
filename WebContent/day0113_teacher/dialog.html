@@ -5,6 +5,8 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" type="text/css">
+
+
 <style type="text/css">
 .ui-widget-header { /*대화상자타이틀*/
 	background: none;
@@ -18,11 +20,27 @@
 <script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
+//1 . 다이얼 로그를 띄우기
+//2. 다이얼 로그를 띄우는데 제목을 붙여주기
+//3. 다이얼 로그를 띄우는데 뒤에 배경을 클릭 할 수 없도록 하기
+//4. 서버에 갔다 오는데 그 동안 새로고침이 되더라도 뒤의 내용이 지워지지 않도록 하는 방법.
+	//ajax의 기법.
+	
+//5.  확인 버튼을 눌렀을 때 창이 닫히도록 하기
+//6. 타이틀 창을 없애고 , 7. 애니메이션, 8.버튼 만들기
+
+
+
 $(function(){
+	
+	
+	//1 . 다이얼 로그를 띄우기
 	$("#btn1").click(function(){
 		$("#dlg1").dialog();  // 모딜리스대화상자
 	});
 	
+	
+	//2. 다이얼 로그를 띄우는데 제목을 붙여주기
 	$("#btn2").click(function(){
 		$("#dlg2").dialog({
 			title:"데이터검색"
@@ -31,7 +49,8 @@ $(function(){
 		});
 	});
 
-	$("#btn3").click(function(){
+	//3. 다이얼 로그를 띄우는데 뒤에 배경을 클릭 할 수 없도록 하기
+	$("#btn3").click(function(){ // modal?? 뒷 배경을 조작할 수 없도록 하는 것
 		$("#dlg3").dialog({
 			title:"우편번호"
 			,modal:true
@@ -40,19 +59,21 @@ $(function(){
 		});
 	});
 
+	//4. 서버에 갔다 오는데 그 동안 새로고침이 되더라도 뒤의 내용이 지워지지 않도록 하는 방법.
+	//ajax의 기법.
+	
 	$("#btn4").click(function(){
 		$("<div>").dialog({
 			title:"대화상자"
 			,modal:true
-			,open:function(){
-				$(this).load("test1.jsp");
-			}
+			,open :function(){$(this).load("test1.jsp")}
 			,width:300
 			,height:300
 		});
 	});
 	
 	
+	//5.  확인 버튼을 눌렀을 때 창이 닫히도록 하기
 	$("#btn5").click(function(){
 		$("#dlg5").dialog({
 			title:"예제"
@@ -62,6 +83,8 @@ $(function(){
 		});
 	});
 	
+	
+	//6. 타이틀 창을 없애고 ,애니메이션,버튼 만들기
 	$("#btn6").click(function(){
 		$("#dlg6").dialog({
 			title:"예제"
@@ -90,6 +113,7 @@ $(function(){
 
 });
 
+//
 function dlgOk5() {
 	$("#dlg5").dialog("close");
 }

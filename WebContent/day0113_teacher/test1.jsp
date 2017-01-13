@@ -1,5 +1,6 @@
 <%@page import="java.util.Calendar"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
+
 <%
 	Calendar cal=Calendar.getInstance();
 	String s=String.format("%tF %tT", cal, cal);
