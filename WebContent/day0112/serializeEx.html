@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- 직렬화 : 폼 자료를  a=1&b=2&c=3&d=4&e=5 처럼 결합 시켜 줌 -->
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+  //get 방식  키1=값&&키2=값&&키3=값&&키4=값&&키5=값&&
+    
+  $(function() {
+	 $('#sendButton').click(function() {
+         var params=$('form').serialize();
+         
+        // location.href="a.jsp?"+params;
+         
+         alert(params);
+         return false;
+	 });
+
+	 
+	 
+     $('form').submit(function() {
+    	 
+         var params=$(this).serialize();
+        
+         alert(params);
+         
+         return false;
+    });
+});
+  
+  
+</script>
+
+</head>
+
+<body>
+<form>
+     <p><input type="text" name="a" value="1" id="a" ></p>
+     <p><input type="text" name="b" value="2" id="b" ></p>
+     <p><input type="hidden" name="c" value="3" id="c"></p>
+     <p>
+           <textarea name="d" rows="8" cols="40">4</textarea>
+     </p>
+     <p>
+	     <select name="e">
+           <option value="5" selected="selected">5</option>
+           <option value="6">6</option>
+           <option value="7">7</option>
+         </select>
+     </p>
+     <p>
+           <input type="checkbox" name="f" value="8" id="f">
+     </p>
+     
+     <p>
+           <input type="submit" name="g" value="Submit" id="g">
+           <input type="button" value="확인" id="sendButton">
+      </p>
+      
+</form>
+
+</body>
+</html>

@@ -7,11 +7,90 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 
+
+//오른쪽으로 보내는 버튼....
+$(function(){
+	$('#btnRight').click(function(){
+		
+		$('#s1 option:selected').each(function(){
+			$(this).appendTo('#s2');
+		});
+	});
+});
+
+
+//왼쪽으로 보내는 버튼....
+$(function(){
+	$('#btnLeft').click(function(){
+		
+		$('#s2 option:selected').each(function(){
+			$(this).appendTo('#s1');
+		});
+	});
+});
+
+
+//전체를 오른쪽으로 보내는 버튼
+$(function(){
+	$('#btnRightAll').click(function(){
+		
+		$('#s1 option').each(function(){
+			$(this).appendTo('#s2');
+		});
+	});
+});
+
+
+//전체를 왼쪽으로 보내는 버튼
+$(function(){
+	$('#btnLeftAll').click(function(){
+		
+		$('#s2 option').each(function(){
+			$(this).appendTo('#s1');
+		});
+	});
+});
+
+
+//rightAllSelect
+$(function(){
+	$('#rightAllSelect').click(function(){
+	
+		//데이터가 있나 없나
+		if($('#s2 option').length==0){
+			return;
+		}
+		
+		//attr 문제가 좀 있다, prop를 사용하면 잘 되긴 한다.
+		$('#s2 option').each(function(){	
+			//$(this).attr('selected','selected');
+			$(this).prop('selected','selected');
+		}); 
+		
+	});
+	
+});
+
+//rightAllUnselect
+$(function(){
+	$('#rightAllUnselect').click(function(){
+		
+		$('#s2 option').each(function(){
+			
+			$(this).removeAttr('selected');	
+		}); 	
+	});
+	
+});
+
+
+
 </script>
 </head>
 <body>
 
 <form>
+
 
 <div style="display: inline-block;">
     <select multiple="multiple" id="s1" name="s1" style="width:100px;">
@@ -38,7 +117,9 @@
     <button type="button" id="rightAllUnselect"> 우측 데이터 모두 선택 해제</button>
 </div>
 
+
 </form>
+
 
 </body>
 </html>
