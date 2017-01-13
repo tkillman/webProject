@@ -80,7 +80,7 @@ tr.over {background: #FFC;}
 
 <script type="text/javascript">
 
-$(function(){
+$(function(){ //누르면 다음 칸으로 넘어갈 수 있도록 해준다.
 
 	$('#trInsert input').keypress(function(e){
 		
@@ -105,7 +105,7 @@ $(function(){
 
 
 
-function isNum(data) { //javascript nan 
+function isNum(data) { //javascript nan 함수로도 표현 가능, 점수입력칸이 숫자인지 판단  
 	//정규표현식 사용
 	
 	var format = /^(\d+)$/;  // \d는 정규표현식으로 숫자를 의미, +는 하나 이상이라는 의미 , ^ 앞을 검사, $ 뒤쪽을 검사
@@ -120,7 +120,7 @@ function isNum(data) { //javascript nan
 
 var idx=1;
 
-function insertScore() {
+function insertScore() { //등록 버튼을 누르면 생기는 이벤트들
 	
 	var hak = $('#hak').val().trim(); 
 	var name = $('#name').val().trim(); 
@@ -184,6 +184,43 @@ function updateOk(index) {
 function deleteScore(index) {
 
 }
+
+
+
+ $(function(){ //입력시마다 총점 표시해보기
+	
+	$('#trInsert').change(function() {
+		//alert('인식됨');
+		
+		var kk = $('#kor').val();
+		
+		var en = $('#eng').val();
+		
+		var mm = $('#mat').val();
+		
+		
+		
+		
+		
+		var asd =parseInt(kk)+parseInt(en)+parseInt(mm); 
+		
+		$('#tot').val(asd);
+		
+		
+	});
+ 	
+	
+ 
+ 
+ 
+ 
+});
+
+
+
+
+
+
 </script>
 
 </head>
