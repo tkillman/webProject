@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+var xmlHttp = null;
+
+function createXMLHttpRequest() {
+    var xmlReq = null;
+
+    if (window.XMLHttpRequest) { // IE 7.0 이상, Non-Microsoft browsers
+        xmlReq = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        try {
+            // XMLHttpRequest in later versions of Internet Explorer
+            xmlReq = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e1) {
+            try {
+                // Try version supported by older versions of Internet Explorer
+                xmlReq = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e2) {
+                // Unable to create an XMLHttpRequest with ActiveX
+            }
+        }
+    }
+
+    return xmlReq;
+}
+
+
+
+
+function send(){
+	
+	var num1=document.getElementById("num1").value;
+	var num2=document.getElementById("num2").value;
+	
+	var query;
+	
+	query = "num1="+num1+"&num2="+num2;
+	var url = "tt2.jsp?"+query;
+	console.log(url);
+	
+	//1.서버로 갈 ajax 객체 생성
+	//2. 콜백 함수 지정
+	//3. 보내기
+	
+	xmlHttp  =  createXMLHttpRequest();
+	
+	xmlHttp.onreadystatechange=callback;
+	
+	xmlHttp.open("GET",url,true); // 첫 번째는 방식 지정, 두번째는 위치 지정, 세번째가 true 비동기 방식 false 이면 동기방식
+	
+	xmlHttp.send(null); // "GET" 방식의 경우 send(null), "POST" 방식의 경우 send(보낼 객체);
+	
+	
+}
+
+
+function createXMLHttpRequest() {
+    var xmlReq = null;
+
+    if (window.XMLHttpRequest) { // IE 7.0 이상, Non-Microsoft browsers
+        xmlReq = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        try {
+            // XMLHttpRequest in later versions of Internet Explorer
+            xmlReq = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e1) {
+            try {
+                // Try version supported by older versions of Internet Explorer
+                xmlReq = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e2) {
+                // Unable to create an XMLHttpRequest with ActiveX
+            }
+        }
+    }
+
+    return xmlReq;
+}
+
+
+function callback(){
+	
+	var re = document.getElementById("result");
+	var xmlHttpresult = xmlHttp.responseText;
+	
+	re.innerHTML = xmlHttpresult;
+	
+}
+
+</script>
+</head>
+<body>
+
+
+
+
+
+
+<input type="text" id="num1">
+<input type="text" id="num2">
+<input type="button" value="send" onclick="send();">
+<div id="result"></div>
+
+
+
+
+</body>
+</html>
