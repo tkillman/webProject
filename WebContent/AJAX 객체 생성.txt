@@ -5,7 +5,9 @@ function createXMLHttpRequest() {
     var xmlReq = null;
 
     if (window.XMLHttpRequest) { // IE 7.0 이상, Non-Microsoft browsers
-        xmlReq = new XMLHttpRequest();
+        
+        xmlReq = new XMLHttpRequest(); //!!!!!!!! 중요 !!!!!!!!!!!!
+        
     } else if (window.ActiveXObject) {
         try {
             // XMLHttpRequest in later versions of Internet Explorer
