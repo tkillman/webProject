@@ -29,9 +29,9 @@ function send(){
 	}); //앞의 이름은 태그 네임, 
 	
 	//data 는 돌아오는 정보
-
-	//2. AJAX GET 방식 두 번째 
-	
+	//get 방식으로 처리하면 한글이 깨질 위험이 높다.
+	//CRUD create, retrive, update, delete
+	// 입력시는 post 방식
 	
 	
 	

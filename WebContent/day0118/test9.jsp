@@ -10,6 +10,28 @@
 <script type="text/javascript">
 
 
+function check(){
+	var num1 = $('#num1').val();
+	var num2 = $('#num2').val();
+	var oper = $('#oper').val();
+	
+	if(!num1){
+		$('#num1').focus();
+		return false;
+	}
+	if(!num2){
+		$('#num2').focus();
+		return false;
+	}
+	if(!oper){
+		$('#oper').focus();
+		return false;
+	}
+	
+	return true;
+}
+
+
 $(function(){
 	$('#btnSend').click(function(){
 		
@@ -19,7 +41,7 @@ $(function(){
 		
 		
 		var query="n1="+num1+"&n2="+num2+"&oper="+oper;
-		var url="test8_ok.jsp";
+		var url="test9_ok.jsp";
 		
 		$.ajax({
 			
@@ -35,6 +57,7 @@ $(function(){
 				$('#oper').val("add");
 				
 			}
+			,beforeSend:check
 			,error:function(e){
 				
 				console.log(e.responseText);
@@ -46,7 +69,6 @@ $(function(){
 	})
 	
 })
-
 
 
 </script>

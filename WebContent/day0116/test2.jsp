@@ -99,8 +99,6 @@ function printData(){
 // AJAX 객체 생성
 
 
-
-
 </script>
 </head>
 <body>

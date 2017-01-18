@@ -30,10 +30,11 @@
 	
 	//Thread.sleep(3000);
 	//클라이언트가 요청 이후에도 다른 일을 할 수 있다.
+	StringBuffer sb= new StringBuffer();
 	
-	
+	sb.append("{");
+	sb.append("\"result\""+":\""+s+"\"");
+	sb.append("}");
+	out.print(sb.toString());
 	
 %>
-
-
-<%=s%>

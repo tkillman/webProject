@@ -19,20 +19,19 @@ $(function(){
 		
 		
 		var query="n1="+num1+"&n2="+num2+"&oper="+oper;
-		var url="test8_ok.jsp";
+		var url="test12_ok.jsp";
 		
 		$.ajax({
 			
 			 type:"POST"
 			,url:url
 			,data:query
+			,dataType:"JSON"
 			,success:function(data){
 				
-				$('#resultLayout').html(data);
+				var result=data.result;
 				
-				$('#num1').val("");
-				$('#num2').val("");
-				$('#oper').val("add");
+				$('#resultLayout').html(result);
 				
 			}
 			,error:function(e){
