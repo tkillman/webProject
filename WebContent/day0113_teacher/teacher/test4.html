@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"
+	type="text/css">
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+
+
+	<div id="tab-container">
+		<ul>
+			<li><a href="t1.jsp"><span>첫번째</span></a></li>
+			<li><a href="t2.jsp"><span>두번째</span></a></li>
+			<li><a href="t3.jsp"><span>세번째</span></a></li>			
+		</ul>
+	
+	</div>
+
+
+
+	<script type="text/javascript">
+
+	$(function(){
+		$("#tab-container").tabs();
+		
+	})
+	
+	</script>
+	
+	
+	
+	
+</body>
+</html>

@@ -10,42 +10,47 @@
 <script type="text/javascript">
 
 
-function send(){
-	
-	var num1=$("#num1").val();
-	var num2=$("#num2").val();
-	var oper=$("#oper").val();
-	
-	$('#num1').val("");
-	$('#num2').val("");
-	$('#oper').val("add");
-	
-	var url="test5_ok.jsp";
+$(function(){
+	$('#btnSend').click(function(){
 		
+		var num1 = $('#num1').val();
+		var num2 = $('#num2').val();
+		var oper = $('#oper').val();
+		
+		
+		var query="n1="+num1+"&n2="+num2+"&oper="+oper;
+		var url="test12_ok.jsp";
+		
+		$.ajax({
+			
+			 type:"POST"
+			,url:url
+			,data:query
+			,dataType:"JSON"
+			,success:function(data){
+				
+				var result=data.result;
+				
+				$('#resultLayout').html(result);
+				
+			}
+			,error:function(e){
+				
+				console.log(e.responseText);
+				
+			}
+		
+		})
+		
+	})
 	
-	
-	//1.AJAX 'GET' 첫 번째 방식
-	
-	$.get(url, {num1:num1,num2:num2,oper:oper}, function(data){
-	
-		$('#resultLayout').html(data);
-	
-	}); //앞의 이름은 태그 네임, 
-	
-	//data 는 돌아오는 정보
+})
 
-	//get 방식으로 처리하면 한글이 깨질 위험이 높다.
-	//CRUD create, retrive, update, delete
-	// 입력시는 post 방식
-	
-	
-}
 
 
 </script>
 </head>
 <body>
-
 
 <input type="text" id="num1">
 <select id="oper">
@@ -55,7 +60,7 @@ function send(){
     <option value="div">나누기</option>
 </select>
 <input type="text" id="num2">
-<input type="button" value=" = " onclick="send();"><br>
+<input type="button" value=" = " id="btnSend"><br>
 
 <hr>
 <div id="resultLayout"></div>

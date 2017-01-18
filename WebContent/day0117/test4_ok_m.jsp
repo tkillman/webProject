@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/xml; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 
-    
-    
-    
-    <%String name  = request.getParameter("name");%>
-    
-    <guest>
-    
-    <content><%=name%></content>
-    </guest>
+
+
+<% String id=request.getParameter("id");%>
+
+<guest>
+<%for(int i=0;i<4;i++){  %>
+<content><![CDATA[<%=i%>:<%=id%>]]></content>
+<% } %>
+
+
+</guest>
+
