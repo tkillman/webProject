@@ -35,6 +35,7 @@ function createXMLHttpRequest() {
     }
 
     return xmlReq;
+    
 }
 
 
@@ -71,10 +72,11 @@ function send(){
 	xmlHttp.open("POST",url,true); // 첫번째 인자 방식, 두번째 인자 주소, 세 번째 인자 true이면 비동기 방식으로 보내겠습니다.
 	//post는 입출력 스트림으로 넘어간다.
 
+	//!!!!!!!!!!! 포스트 타입일 때는 header에서 Content-Type을 명시해 주어야 한다.
 	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	
 	//content type- 보내는 데이터 타입 , form 태그는 자동적으로 content type을 지정해준다.
-	//
+	
 	
 	
 	//4. 데이터를 보낸다.

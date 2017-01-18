@@ -12,6 +12,7 @@
 $(function(){
 	$('#btnSend').click(function(){
 		
+		
 		var num1 = $('#num1').val();
 		var num2 = $('#num2').val();
 		var oper = $('#oper').val();
@@ -19,13 +20,18 @@ $(function(){
 		
 		var query="n1="+num1+"&n2="+num2+"&oper="+oper;
 		var url="test8_ok.jsp";
+			
+		//1.type,url,data,success,error
 		
 		
 		$.ajax({
 			
 			 type:"POST"
+			 
 			,url:url
+			
 			,data:query
+			
 			,success:function(data){
 				
 				$('#resultLayout').html(data);
@@ -35,17 +41,14 @@ $(function(){
 				$('#oper').val("add");
 				
 			}
+		
 			,error:function(e){
 				
 				console.log(e.responseText);
 				
 			}
-		
-		})
 			
-		
-		
-		
+		})
 	})
 	
 })

@@ -22,7 +22,7 @@ function send(){
 	
 
 	var query="num1="+num1+"&num2="+num2+"&oper="+oper;
-	var url="test6_ok.jsp"+query;
+	var url="test6_ok.jsp?"+query;
 	
 	
 	

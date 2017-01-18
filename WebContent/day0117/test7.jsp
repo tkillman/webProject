@@ -22,22 +22,18 @@ function send(){
 	
 	var url="test7_ok.jsp";
 	
-	//1.AJAX POST 방식
+	
+	//1.AJAX POST 방식 ,, url,data,function
 	
 	$.post(url, {n1:num1,n2:num2,oper:oper}, function(data){
+		
 		$('#resultLayout').html(data);
-	}); //앞의 이름은 태그 네임, 
+		
+	}); //앞의 이름은 보내는 변수명
 	
 	//data 는 돌아오는 정보
 
-	
-	
-	
-	
 }
-
-
-
 
 </script>
 </head>

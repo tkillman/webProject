@@ -10,6 +10,8 @@
 
 var xmlHttp=null;
 
+
+
 function createXMLHttpRequest() {
 
     var xmlReq = null;
@@ -38,13 +40,12 @@ function createXMLHttpRequest() {
 }
 
 
+
 function send(){
 	
 	var name = document.getElementById("name").value;
 	var content = document.getElementById("content").value;
 
-	
-	
 	var query;
 	query = "name=" +name+"&content="+content;
 	
@@ -52,8 +53,6 @@ function send(){
 	var url = "test4_ok.jsp";
 	
 
-	
-	
 	
 	//1.Ajax 객체 생성
 	
@@ -65,16 +64,16 @@ function send(){
 	//onreadystatechange 어떤 자바 스크립트 함수를 부를지 지정하므로 괄호가 없어야 한다.  함수의 이름 아무거나 상관없다. 
 	//Get방식
 	
+	
 	//3. 보내기
 	xmlHttp.open("POST",url,true); // 첫번째 인자 방식, 두번째 인자 주소, 세 번째 인자 true이면 비동기 방식으로 보내겠습니다.
 	//post는 입출력 스트림으로 넘어간다.
 
+	
 	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	
 	//content type- 보내는 데이터 타입 , form 태그는 자동적으로 content type을 지정해준다.
-	//
-	
-	
+
 	//4. 데이터를 보낸다.
 	xmlHttp.send(query); 
 	
@@ -82,6 +81,7 @@ function send(){
 
 
 function callback(){
+	
 	if(xmlHttp.readyState==4){ // 모든 요청 응답 완료, 완료했다고  오류가 없는 상태는 아니다.
 		if(xmlHttp.status==200){ //서버로부터의 상태 코드
 			printData();
@@ -91,13 +91,14 @@ function callback(){
 }
 
 
+
 function printData(){
 	
 	var lay = document.getElementById("resultLayout");
 	var xml = xmlHttp.responseXML; 
 	// 서버가 클라이언트한테 쏜 text , xml , json 형태로 보낼 수 있는데 그 중 text 형태로 받겠다.
 	
-	//console.log(xml);
+	console.log(xml);
 	//document.getElementsByTagName("div")[0]
 	
 	
@@ -107,12 +108,13 @@ function printData(){
 	
 	//alert(dataCount);
 	
-	s="데이터 개수 :" +dataCount +"<br>";
+	s="데이터 개수 : " +dataCount +"<br>";
 	
 	
 	var records = root.getElementsByTagName("record");
 	
-	for(var i=0;i<records.length;i++){
+	
+	 for(var i=0;i<records.length;i++){
 		
 		var item = records[i];
 		
@@ -120,22 +122,21 @@ function printData(){
 		var name= item.getElementsByTagName("name")[0].firstChild.nodeValue;
 		var content= item.getElementsByTagName("content")[0].firstChild.nodeValue;
 		
-		s+="번호 :" +num +"<br>";
-		s+="이름 :" +name +"<br>";
-		s+="내용 :" +content +"<br>";
+		
+		
+		s+="번호 : " +num +"<br>";
+		s+="이름 : " +name +"<br>";
+		s+="내용 : " +content +"<br>";
 		s+="============================<br>";
 		
 		
 	}
 	
+	 
 	lay.innerHTML = s;
-	
+	 
+	 
 }
-
-
-// AJAX 객체 생성
-
-
 
 
 </script>
@@ -145,6 +146,7 @@ function printData(){
 이름 : <input type="text" id="name"><br>
 <textarea rows="5" cols="40" id="content"></textarea>
 <br>
+
 <button type="button" onclick="send();">보내기</button>
 
 

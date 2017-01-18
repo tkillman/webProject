@@ -2,12 +2,15 @@
 
 <%
 
+
 	request.setCharacterEncoding("utf-8");
 
 	int num1 = Integer.parseInt(
 			request.getParameter("n1"));
+	
 	int num2 = Integer.parseInt(
 			request.getParameter("n2"));
+	
 	
 	String oper=request.getParameter("oper");
 	

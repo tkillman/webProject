@@ -21,28 +21,26 @@ function send(){
 	$('#oper').val("add");
 	
 	var url="test5_ok.jsp";
+		
 	
-	//1.AJAX GET 방식
+	
+	//1.AJAX 'GET' 첫 번째 방식
 	
 	$.get(url, {num1:num1,num2:num2,oper:oper}, function(data){
+	
 		$('#resultLayout').html(data);
+	
 	}); //앞의 이름은 태그 네임, 
 	
 	//data 는 돌아오는 정보
-
-	//2. AJAX GET 방식 두 번째 
-	
-	
-	
 	
 }
-
-
 
 
 </script>
 </head>
 <body>
+
 
 <input type="text" id="num1">
 <select id="oper">
