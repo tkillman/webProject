@@ -22,7 +22,6 @@ $(function(){
 		var query="name="+name+"&content="+content;
 		var url="test10_ok.jsp";
 		
-		
 		$.ajax({
 			
 			type:"POST"
@@ -46,7 +45,6 @@ $(function(){
 					out+="<br>내용 : "+ content;
 					out+="<br>------------<br>";
 					
-					
 				});
 				
 				$('#resultLayout').html(out);
@@ -56,9 +54,7 @@ $(function(){
 			,error:function(e){
 				console.log(e.responseText);
 			}
-			
 		})
-		
 		
 	})
 })

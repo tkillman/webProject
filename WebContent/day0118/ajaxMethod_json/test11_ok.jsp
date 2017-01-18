@@ -5,7 +5,7 @@
 
 	request.setCharacterEncoding("utf-8");
 
-	String userId=request.getParameter("userId");
+	String userId=request.getParameter("aa");
 	
 	String pass="true";
 	

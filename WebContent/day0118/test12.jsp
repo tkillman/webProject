@@ -11,6 +11,7 @@
 
 
 $(function(){
+	
 	$('#btnSend').click(function(){
 		
 		var num1 = $('#num1').val();
@@ -26,7 +27,7 @@ $(function(){
 			 type:"POST"
 			,url:url
 			,data:query
-			,dataType:"JSON"
+			,dataType:"json"
 			,success:function(data){
 				
 				var result=data.result;

@@ -33,6 +33,7 @@ function check(){
 
 
 $(function(){
+	
 	$('#btnSend').click(function(){
 		
 		var num1 = $('#num1').val();

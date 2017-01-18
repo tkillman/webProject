@@ -23,15 +23,18 @@ $(function(){
 		}
 		
 		var url="test11_ok.jsp";
-		$.post(url,{userId:userId},function(data){
+		
+		$.post(url,{aa:userId},function(data){
 			//console.log(data);
 			var uid=data.userId;
 			var pass=data.pass;
 			
 			var out=uid+" 아이디는";
 			if(pass=="true"){
+				
 				out+="사용 가능합니다";
 				$('#userIdState').html(out);
+			
 			}else{
 				out+="사용 할 수 없습니다.";
 				$('#userId').val("");
@@ -40,16 +43,8 @@ $(function(){
 				return false;
 			}
 			
-
-			
 		},"json");
-		
-		
-		
-		
-		
-		
-		
+
 	});
 })
 
