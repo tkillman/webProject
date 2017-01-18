@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+var xmlHttp=null;
+
+function createXMLHttpRequest() {
+    var xmlReq = null;
+
+    if (window.XMLHttpRequest) { // IE 7.0 이상, Non-Microsoft browsers
+        
+        xmlReq = new XMLHttpRequest(); //!!!!!!!! 중요 !!!!!!!!!!!!
+        
+    } else if (window.ActiveXObject) {
+        try {
+            // XMLHttpRequest in later versions of Internet Explorer
+            xmlReq = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e1) {
+            try {
+                // Try version supported by older versions of Internet Explorer
+                xmlReq = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e2) {
+                // Unable to create an XMLHttpRequest with ActiveX
+            }
+        }
+    }
+
+    return xmlReq;
+}
+
+
+function send(){
+	
+	var id=document.getElementById("id").value;
+	
+	console.log(id);
+	
+	var query = "id="+id;
+	var url="test4_ok_m.jsp";
+	
+	
+	xmlHttp = createXMLHttpRequest();
+	
+	xmlHttp.onreadystatechange=callback;
+	
+	xmlHttp.open("POST",url,true)
+	
+	
+	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	
+	xmlHttp.send(query);
+	
+}
+
+
+function callback(){
+	if(xmlHttp.readyState==4){
+		if(xmlHttp.status==200){
+			printData();
+			console.log("success");
+				}
+	}
+	
+	
+}
+
+
+function printData(){
+	
+	var xml = xmlHttp.responseXML;
+	//console.log(xml);
+	
+	
+	
+	var contents=xml.getElementsByTagName("content");
+	console.log(contents);
+	
+	var result=document.getElementById("result");
+	
+	var s="";
+
+	for(var i=0;i<contents.length;i++){
+		console.log(contents.length);
+		
+		var content = contents[i];
+		var data = content.firstChild.nodeValue;
+		
+		s+="데이터 내용 : "+data +"<br>";
+		
+	}
+	console.log(s);
+	result.innerHTML=s;
+}
+
+
+$.post(url, data, function(data) {
+	
+})
+
+data,type,url,success,error
+
+$.ajax({
+	type:
+	,url:
+	,
+	
+	
+})
+
+</script>
+
+</head>
+<body>
+
+
+
+
+
+
+
+<input type="text" name="name" id="id">
+<input type="button" value="버튼" onclick="send();">
+<div id="result"></div>
+
+
+</body>
+</html>
