@@ -51,7 +51,7 @@ function send(){
 	query = "num1=" +num1+"&num2="+num2;
 	query += "&oper=" +oper;
 	
-	var url = "test2_ok.jsp?"+query; //쿼리 스트링
+	var url = "test3_ok.jsp"; //쿼리 스트링
 	
 	//location.href="test2_ok.jsp?"+query;
 	
@@ -68,9 +68,17 @@ function send(){
 	//Get방식
 	
 	//3. 보내기
-	xmlHttp.open("GET",url,true); // 비동기 방식으로 보내겠습니다.
+	xmlHttp.open("POST",url,true); // 첫번째 인자 방식, 두번째 인자 주소, 세 번째 인자 true이면 비동기 방식으로 보내겠습니다.
+	//post는 입출력 스트림으로 넘어간다.
+
+	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	
-	xmlHttp.send(null);
+	//content type- 보내는 데이터 타입 , form 태그는 자동적으로 content type을 지정해준다.
+	//
+	
+	
+	//4. 데이터를 보낸다.
+	xmlHttp.send(query); 
 	
 }
 
