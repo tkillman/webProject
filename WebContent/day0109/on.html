@@ -17,6 +17,7 @@
      //on을 쓰는 이유?
      // on 메소드가 아닌 input에 바로 change 메소드를 등록할 경우
      // 새로 생겨난 input에는 이벤트가 등록되지 않는다.
+     
 	$('body').on('change','input',function(){
 		var s='<input type="file" name="upload">'
 		$('form').append("<br>"+s);

@@ -29,7 +29,7 @@ $(function(){
 			,data:query
 			,dataType:"json"
 			,success:function(data){
-				
+				console.log(data);
 				var result=data.result;
 				
 				$('#resultLayout').html(result);
