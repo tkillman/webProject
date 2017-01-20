@@ -24,14 +24,12 @@
     	o.put("content",content+"-"+i);
     	
     	arr.add(o);
-    	
     }
     
     ob.put("list",arr);
     //정보 프레임 워크 : 스프링, 마이바티스,이가부
     
     Thread.sleep(3000);
-    
     
     out.print(ob.toString());
     
