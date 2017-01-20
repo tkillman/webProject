@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <script type="text/javascript">
+     
+     $(function(){     
+    	 
+    	 $('#btn').click(function(){
+    		
+    		// var name= $('#name').val();
+    		// var content = $('#content').val();
+    		 
+    		 var query= $('#for').serialzie();
+    		 var url= "ex2_ok_m.jsp";
+    		 
+    			
+    			
+    		 $.ajax({
+    			 type:"post"
+    			 ,url=url
+    			 ,data=query
+    			 ,dataType:'json'
+    			 ,beforeSend:check
+    			 ,success:function(data){
+    				 console.log(data)
+    				 
+    			 },error:function(e){
+    				 console.log(e.responseText);
+    			 }
+    			 
+    			 
+    			 
+    			 
+    		 })
+    		
+    		 
+    	 });
+    	 
+    	 
+     });
+	
+     function check(){
+    	 
+    	 var name= $('#name').val();
+ 		 var content = $('#content').val();
+    	 
+    	 if(!name){
+    		 
+    		 $('#name').focus();
+    		 return false;
+    	 }
+    	 
+    	 if(!content){
+    		 
+    		 $('#content').focus();
+    		 return false;
+    	 }
+    	 
+    	 return true;
+    	 
+     }
+     
+     </script>
+
+
+
+
+
+
+
+
+
+
+<form id="for">
+이름:<input type="text" name="name" id="name"><br>
+내용 : <textarea rows="5" cols="50" name="content" id="content"></textarea><br>
+<input type="button" id="btn" value="보내기" onclick="send();">
+
+
+
+</form>
+
+
+
+
+
+
+</body>
+</html>

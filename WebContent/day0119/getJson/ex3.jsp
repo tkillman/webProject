@@ -18,7 +18,7 @@ $(function(){
 		
 		$.getJSON(url,function(data){
 			
-				//console.log(data);
+				console.log(data);
 				
 				var out;
 				out="개수 : " + data.count+"<br>";

@@ -83,6 +83,8 @@ $(function(){
 </head>
 <body>
 
+<h1>json 형태의 데이터 받기</h1>
+
 <form name="guestForm">
 
 이름 : <input type="text" name="name" id="name"><br>

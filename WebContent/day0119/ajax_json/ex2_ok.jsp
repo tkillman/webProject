@@ -16,8 +16,15 @@
     ob.put("count",5);
     
     JSONArray arr = new JSONArray();
-    
+
+/* json 형태의 데이터가 많을 때는 배열로 처리
+
+[{2,4,2,3},{2,4,1},...] */
+
+
+
     for(int i=0;i<=5;i++){
+    	
     	JSONObject o = new JSONObject();
     	o.put("num",i);
     	o.put("name",name+"-"+i);
@@ -28,7 +35,7 @@
     }
     
     ob.put("list",arr);
-    //정보 프레임 워크 : 스프링, 마이바티스,이가부
+    //정보 프레임 워크 : 스프링, 마이바티스, 이가부, 스프링스탠다드
     
     out.print(ob.toString());
     
