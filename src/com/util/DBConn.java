@@ -12,20 +12,14 @@ public class DBConn {
 	
 	public static Connection getConnection() {
 		//String url="jdbc:oracle:thin:@127.0.0.1:1521:ORCL";
-		/* String url="jdbc:oracle:thin:@192.168.0.4:1521:XE";
+		 String url="jdbc:oracle:thin:@192.168.0.4:1521:XE";
 		String user="green";
-		String pwd="java$!";*/
-		String url="jdbc:oracle:thin:@127.0.0.1:1521:XE";
-		String user="hr";
-		String pwd="hr";
-		
+		String pwd="java$!";
 		
 		if(conn==null) {
 			try {
-			
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				conn = DriverManager.getConnection(url, user, pwd);
-				
 			}catch (Exception e) {
 				System.out.println(e.toString());
 			}

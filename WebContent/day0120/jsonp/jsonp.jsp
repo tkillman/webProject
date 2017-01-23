@@ -12,6 +12,7 @@
 
 
 $(function(){
+	
 	$('#resultOk').click(function(){
 		
 		var url="http://127.0.0.1:8181/jsonp/user/result.jsp"
@@ -20,7 +21,7 @@ $(function(){
 			url:url
 			,data:"id=user"
 			,dataType:"jsonp"
-			,jsonp:"callback" // callback은 javascript 함수명, 에이작스는 다른 도메인  접근 불가, javascript는 가능 
+			,jsonp:"callback"  // callback은 javascript 함수명, 에이작스는 다른 도메인  접근 불가, javascript는 가능 
 			,success:function(data){
 					if(data!=null){
 						alert(data.name+" : "+data.age);
