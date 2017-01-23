@@ -26,7 +26,7 @@ $(function(){
 			}
 		    ,beforeSend:check
 		    ,error:function(e) {
-		    	alert(e.responseText);
+		    	console.log(e.responseText);
 		    }
 		});
 
@@ -60,6 +60,7 @@ function check() {
 
 </head>
 <body>
+<h1>올바른 데이터를 보내는지 확인하는 방법 : beforeSend</h1>
 
 <form name="calcForm">
 <input type="text" name="num1" id="num1">
@@ -75,17 +76,6 @@ function check() {
 
 <hr>
 <div id="resultLayout"></div>
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>

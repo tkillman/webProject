@@ -68,6 +68,7 @@ $(function(){
 		
 	});//버튼 처리
 	
+	
 	$(document).ajaxStart(function(){
 		$('#loading').center();
 		$('#loadingLayout').fadeTo('slow',0.5);
@@ -103,6 +104,10 @@ $(function(){
 
 </head>
 <body>
+
+<h1>에이작스가 응답을 시작하는 순간과 끝나는 순간에 <br>명령을 주는 ajaxStart, ajaxComplete</h1>
+
+
 
 <form name="guestForm">
 

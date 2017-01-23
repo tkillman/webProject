@@ -75,6 +75,7 @@ $(function(){
 </script>
 </head>
 <body>
+<h1> 3초의 딜레이 순간에도 딴짓이 가능</h1>
 
 <input type="text" id="num1">
 <select id="oper">

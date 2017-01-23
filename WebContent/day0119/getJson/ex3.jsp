@@ -46,15 +46,7 @@ $(function(){
 		
 		})
 		
-		
-		
 	})
-		
-		
-		
-		
-	
-	
 	
 	function check(){
 	
@@ -80,6 +72,8 @@ $(function(){
 
 </head>
 <body>
+
+<h1>데이터를 주고받는 방식 5번째인 getJson 메소드</h1>
 
 <form name="guestForm">
 

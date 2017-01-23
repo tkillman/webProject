@@ -64,6 +64,7 @@ public class GuestServlet extends HttpServlet {
 	}
 
 	private void listGuest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		GuestDAO dao=new GuestDAO();
 		MyUtil util=new MyUtil();
 		
@@ -112,6 +113,7 @@ public class GuestServlet extends HttpServlet {
 		
 		int result=dao.insertGuest(dto);
 		String state="true";
+		
 		if(result==0)
 			state="false";
 		

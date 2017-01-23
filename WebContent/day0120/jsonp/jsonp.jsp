@@ -13,6 +13,9 @@
 
 $(function(){
 	$('#resultOk').click(function(){
+	
+		//이 주소는 다른 도메인의 주소이고 원칙적으로 에이작스는
+		//다른 도메인과는 데이터를 주고받을 수 없지만 jsonp를 통해서 가능하다.
 		
 		var url="http://127.0.0.1:8181/jsonp/user/result.jsp"
 		
@@ -20,7 +23,9 @@ $(function(){
 			url:url
 			,data:"id=user"
 			,dataType:"jsonp"
-			,jsonp:"callback" // callback은 javascript 함수명, 에이작스는 다른 도메인  접근 불가, javascript는 가능 
+			,jsonp:"callback" 
+			// callback은 javascript 함수명, 에이작스는 다른 도메인  접근 불가, 
+			// javascript는 다른 도메인에 접근 가능 
 			,success:function(data){
 					if(data!=null){
 						alert(data.name+" : "+data.age);
@@ -38,7 +43,7 @@ $(function(){
 
 </head>
 <body>
-
+<h1>서로 다른 도메인 간의 데이터 주고받기</h1>
 <button type="button" id="resultOk"> 확인<br>
 
 <hr>

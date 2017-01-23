@@ -14,6 +14,7 @@
 
 <link rel="stylesheet" href="<%=cp%>/res/css/style.css" type="text/css">
 <style type="text/css">
+
 .title {
 	font-weight: bold;
 	font-size:13pt;
