@@ -1,6 +1,7 @@
 package com.bbs;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Iterator;
@@ -365,6 +366,9 @@ public class BoardServlet extends MyServlet {
 			job.put("isLogin", isLogin);
 			job.put("state", state);
 			
+			resp.setContentType("text/html; charset=utf-8");
+			PrintWriter out= resp.getWriter();
+			out.print(job.toString());
 			
 			
 		}
