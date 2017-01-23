@@ -12,6 +12,7 @@
 
 
 $(function(){
+	
 	$('#resultOk').click(function(){
 	
 		//이 주소는 다른 도메인의 주소이고 원칙적으로 에이작스는
@@ -23,9 +24,13 @@ $(function(){
 			url:url
 			,data:"id=user"
 			,dataType:"jsonp"
+<<<<<<< HEAD
 			,jsonp:"callback" 
 			// callback은 javascript 함수명, 에이작스는 다른 도메인  접근 불가, 
 			// javascript는 다른 도메인에 접근 가능 
+=======
+			,jsonp:"callback"  // callback은 javascript 함수명, 에이작스는 다른 도메인  접근 불가, javascript는 가능 
+>>>>>>> af5a85ee3434d3dbac254a9c5d9b069dd63c35b6
 			,success:function(data){
 					if(data!=null){
 						alert(data.name+" : "+data.age);

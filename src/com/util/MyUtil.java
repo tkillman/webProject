@@ -22,7 +22,6 @@ public class MyUtil {
     //****************************************
 	// 其捞隆(paging) 贸府(GET 规侥)
 	public String paging(int current_page, int total_page, String list_url) {
-		
 		StringBuffer sb=new StringBuffer();
 		
 		int numPerBlock=10;
