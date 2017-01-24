@@ -36,6 +36,7 @@ function deleteBoard() {
 </c:if>
 }
 
+
 function updateBoard() {
 <c:if test="${sessionScope.member.userId==dto.userId}">
     var num = "${dto.num}";
@@ -67,12 +68,9 @@ function listPage(page){
 }
 
 
-
-
 function login(){
 	location.href="<%=cp%>/member/login.do";
 }
-
 
 function sendReply() {
 	
@@ -95,6 +93,7 @@ function sendReply() {
 	var url="<%=cp%>/bbs/insertReply.do";
 	
 	$.ajax({
+		
 		type:"post"
 		,url:url
 		,data:query
