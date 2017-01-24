@@ -63,6 +63,7 @@ public class BoardServlet extends MyServlet {
 	
 		String page=req.getParameter("page");
 		int current_page=1;
+		
 		if(page!=null)
 			current_page=Integer.parseInt(page);
 		
@@ -73,6 +74,7 @@ public class BoardServlet extends MyServlet {
 			searchKey="subject";
 			searchValue="";
 		}
+		
 		// GET 방식인 경우 디코딩
 		if(req.getMethod().equalsIgnoreCase("GET")) {
 			searchValue=URLDecoder.decode(searchValue, "utf-8");
@@ -113,6 +115,7 @@ public class BoardServlet extends MyServlet {
 			n++;
 		}
 		
+		
 		String params="";
 		if(searchValue.length()!=0) {
 			// 검색인 경우 검색값 인코딩
@@ -141,6 +144,7 @@ public class BoardServlet extends MyServlet {
 		// JSP로 포워딩
 		String path="/WEB-INF/views/bbs/list.jsp";
 		forward(req, resp, path);
+		
 	}
 	
 	private void createdForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -345,6 +349,7 @@ public class BoardServlet extends MyServlet {
 		if(info==null){
 			isLogin="false";
 		} else{
+		
 			int num=Integer.parseInt(req.getParameter("num"));
 			
 			String content = req.getParameter("content");
@@ -370,12 +375,7 @@ public class BoardServlet extends MyServlet {
 			PrintWriter out= resp.getWriter();
 			out.print(job.toString());
 			
-			
 		}
-		
-		
-		
-		
 		
 
 	}	
@@ -383,6 +383,7 @@ public class BoardServlet extends MyServlet {
 	private void listReply(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 리플 리스트 ---------------------------------------
 		// 리플 리스트(AJAX:TEXT) ---------------------------------------
+		
 		BoardDAO dao = new BoardDAOImpl();
 		MyUtil util = new MyUtil();
 		
@@ -392,16 +393,24 @@ public class BoardServlet extends MyServlet {
 		if (pageNo != null)
 			current_page = Integer.parseInt(pageNo);
 
+		//한 페이지에 보여줄 댓글 개수
 		int numPerPage = 5;
+		
 		int total_page = 0;
+		
 		int dataCount = 0;
 
 		dataCount = dao.dataCountReply(num);
+		
 		total_page = util.pageCount(numPerPage, dataCount);
+		
+		//현재 가야할 페이지가 전체 페이지보다 작은 경우, 내가 1페이지에서 3페이지로 가려는데 다른 사람이 3페이지를 지움
 		if (current_page > total_page)
 			current_page = total_page;
-
+		
+		
 		int start = (current_page - 1) * numPerPage + 1;
+		
 		int end = current_page * numPerPage;
 
 		// 리스트에 출력할 데이터
@@ -409,6 +418,7 @@ public class BoardServlet extends MyServlet {
 
 		// 엔터를 <br>
 		Iterator<ReplyDTO> it = list.iterator();
+		
 		while (it.hasNext()) {
 			ReplyDTO dto = it.next();
 			dto.setContent(dto.getContent().replaceAll("\n", "<br>"));
@@ -430,6 +440,39 @@ public class BoardServlet extends MyServlet {
 	
 	private void deleteReply(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 리플 삭제 ---------------------------------------
+
+		HttpSession session = req.getSession();
+		SessionInfo info= (SessionInfo) session.getAttribute("member");
+		
+		String isLogin="true";
+		String state= "false";
+		
+		if(info==null){
+			
+			isLogin="false";
+			
+		} else{
+			
+			BoardDAO dao = new BoardDAOImpl();
+			
+		int replyNum = Integer.parseInt(req.getParameter("replyNum"));
+		int result =dao.deleteReply(replyNum);
+		
+		if(result==1){
+			state="true";
+		}
+			
+		
+			JSONObject job = new JSONObject();
+			job.put("isLogin", isLogin);
+			job.put("state", state);
+			
+			resp.setContentType("text/html; charset=utf-8");
+			PrintWriter out= resp.getWriter();
+			out.print(job.toString());
+			
+		}
+		
 
 	}
 }

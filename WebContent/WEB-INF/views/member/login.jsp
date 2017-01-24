@@ -51,6 +51,7 @@
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
 
 <script type="text/javascript">
+
 function bgLabel(ob, id) {
     if(!ob.value) {
 	    document.getElementById(id).style.display="";
