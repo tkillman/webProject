@@ -19,7 +19,6 @@
 <script type="text/javascript" src="<%=cp%>/res/jquery/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
 <script type="text/javascript">
-	
 	function searchList() {
 		var f=document.searchForm;
 		f.action="<%=cp%>/bbs/list.do";
@@ -43,7 +42,6 @@
 				        <img src="<%=cp%>/res/images/arrow.gif" alt="" style="padding-left: 5px; padding-right: 5px;">
 				        <span style="font-weight: bold;font-size:13pt;font-family: 나눔고딕, 맑은 고딕, 굴림;">게시판</span>
 				    </div>
-				    
 				</div>
 			
 				<div style="margin: 10px auto; margin-top: 20px; width:700px; min-height: 400px;">
@@ -84,7 +82,7 @@
 					      <td align="center">${dto.listNum}</td>
 					      <td align="left" style="padding-left: 10px;">
 					          <a href='${articleUrl}&num=${dto.num}'>${dto.subject}</a>
-					          <t> 댓글 갯수 : ${dto.replyCount} </t>
+					          <c:if test="${dto.replyCount!=0}">(${dto.replyCount})</c:if>
 					      </td>
 					      <td align="center">${dto.userName}</td>
 					      <td align="center">${dto.created}</td>

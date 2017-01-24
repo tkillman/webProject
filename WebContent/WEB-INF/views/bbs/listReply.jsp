@@ -1,9 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
 	String cp=request.getContextPath();
 %>
+
+
+
+<!-- 여기에는 html 형태로 작성하면 안된다. text형태로 넘길 것이기 때문에 -->
 
 <c:if test="${dataCount!=0}">
 <table style='width: 600px; margin: 10px auto 30px; border-spacing: 0px;'>

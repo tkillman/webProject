@@ -8,7 +8,6 @@ public class BoardDTO {
 	private int hitCount;
 	private int replyCount;
 	
-	
 	public int getReplyCount() {
 		return replyCount;
 	}

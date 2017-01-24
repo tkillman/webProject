@@ -51,11 +51,13 @@ function updateBoard() {
 </c:if>
 }
 
+//댓글의 첫 페이지를 보여준다.
 $(function(){
 	listPage(1);
 	
 })
 
+//
 function listPage(page){
 	var url="<%=cp%>/bbs/listReply.do";
 	var num="${dto.num}";
@@ -63,10 +65,10 @@ function listPage(page){
 	$.post(url,{num:num,pageNo:page},function(data){
 		
 		$('#listReply').html(data);
+	
 	});
+
 }
-
-
 
 
 function login(){
@@ -107,7 +109,9 @@ function sendReply(){
 	    	
 	    	if(data.isLogin=="false"){
 	    		login();
+	    		
 	    	}else{
+	    		
 	    		listPage(1);
 	    	}
 	    	}
@@ -121,8 +125,51 @@ function sendReply(){
 	
 }
 
+
+function deleteReply(replyNum,page){
+	
+	var uid="${sessionScope.member.userId}";
+	
+	if(!uid){
+		login();
+		return;
+	
+	}
 	
 	
+	if(confirm("정말 삭제하시겠습니까?")==false){
+		return;
+	}
+	
+	var url="<%=cp%>/bbs/deleteReply.do";
+	var query="replyNum="+replyNum;
+	
+	
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:query
+		,dataType:"json"
+	    ,success:function(data){
+	    	
+	    	console.log(data);
+	    	
+	    	$('#replyContent').val("");
+	    	
+	    	if(data.isLogin=="false"){
+	    		login();
+	    	}else{
+	    		listPage(page);
+	    		
+	    	}
+	    	}
+	    	
+	    ,error:function(e){
+	    	console.log(e.responseText);
+	    }
+	});
+
+}
 	
 </script>
 

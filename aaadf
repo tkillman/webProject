@@ -1,0 +1,12 @@
+select num, count(*) from BBSREPLY group by num;
+
+
+
+
+
+select b.num,subject,nvl(replyCount,0) replyCount from bbs b
+left outer join
+(
+select num, count(*) replyCount from BBSREPLY group by num 
+) R on b.num=R.num
+
