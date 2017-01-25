@@ -127,6 +127,8 @@ public class GuestServlet extends HttpServlet {
 
 	private void deleteGuest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		
+		
 	}
 
 }

@@ -101,6 +101,7 @@ public class BoardDAOImpl implements BoardDAO{
 			pstmt.setString(1, searchValue);
 			
 			rs=pstmt.executeQuery();
+		
 			if(rs.next())
 				result=rs.getInt(1);
 			
@@ -134,6 +135,8 @@ public class BoardDAOImpl implements BoardDAO{
 		StringBuffer sb=new StringBuffer();
 		
 		try {
+
+			
 			sb.append("SELECT * FROM (");
 			sb.append("    SELECT ROWNUM rnum, tb.* FROM (");
 			sb.append("        SELECT b.num, b.userId, userName, subject");

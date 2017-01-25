@@ -53,6 +53,7 @@ public class MemberServlet extends MyServlet {
 	}
 
 	private void loginSubmit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		// 로그인 처리
 		// 세션객체. 세션 정보는 서버에 저장(로그인정보, 권한등을저장)
 		HttpSession session=req.getSession();
@@ -64,6 +65,7 @@ public class MemberServlet extends MyServlet {
 		String userPwd=req.getParameter("userPwd");
 		
 		MemberDTO dto=dao.readMember(userId);
+		
 		if(dto!=null) {
 			if(userPwd.equals(dto.getUserPwd()) && dto.getEnabled()==1) {
 				// 로그인 성공 : 로그인정보를 서버에 저장

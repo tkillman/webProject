@@ -19,18 +19,21 @@
 <script type="text/javascript" src="<%=cp%>/res/jquery/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
 <script type="text/javascript">
-    function sendBoard() {
+   
+function sendBoard() {
         var f = document.boardForm;
 
     	var str = f.subject.value;
-        if(!str) {
+        
+    	if(!str) {
             alert("제목을 입력하세요. ");
             f.subject.focus();
             return;
         }
 
     	str = f.content.value;
-        if(!str) {
+        
+    	if(!str) {
             alert("내용을 입력하세요. ");
             f.content.focus();
             return;

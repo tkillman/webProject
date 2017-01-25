@@ -1,0 +1,110 @@
+--------------------------------------
+-- 기존 테이블 삭제
+DROP TABLE bbsReplyLike PURGE;
+DROP TABLE bbsReply PURGE;
+DROP TABLE bbs PURGE;
+
+DROP TABLE member2 PURGE;
+DROP TABLE member1 PURGE;
+
+-- 시퀀스 삭제
+DROP SEQUENCE bbs_seq;
+DROP SEQUENCE bbsReply_seq;
+
+--------------------------------------
+-- 회원 테이블
+CREATE TABLE member1 (
+     userId      VARCHAR2(50) NOT NULL
+     ,userName VARCHAR2(50) NOT NULL
+     ,userPwd   VARCHAR2(100) NOT NULL
+     ,enabled    NUMBER(1) DEFAULT 1
+     ,created_date    DATE DEFAULT SYSDATE
+     ,modify_date     DATE DEFAULT SYSDATE
+     ,CONSTRAINT pk_member1_userId PRIMARY KEY(userId)
+);
+
+CREATE TABLE member2 (
+     userId      VARCHAR2(50) NOT NULL
+     ,birth        DATE
+     ,email       VARCHAR2(50)
+     ,tel           VARCHAR2(20)
+     ,job          VARCHAR2(50)
+     ,zip          VARCHAR2(7)
+     ,addr1      VARCHAR2(50)
+     ,addr2      VARCHAR2(50)
+     ,CONSTRAINT pk_member2_userId PRIMARY KEY(userId)
+     ,CONSTRAINT fk_member2_userId FOREIGN KEY(userId)
+                  REFERENCES member1(userId) ON DELETE CASCADE
+);
+
+--------------------------------------
+-- 테스트 사용자 입력
+INSERT INTO member1(userId, userName, userPwd) VALUES 
+    ('admin', '관리자', 'admin' );
+INSERT INTO member1(userId, userName, userPwd) VALUES 
+    ('han', '스프링', 'han' );
+COMMIT;
+
+--------------------------------------
+-- 게시판 테이블
+CREATE TABLE bbs (
+    num NUMBER NOT NULL PRIMARY KEY
+    ,userId VARCHAR2(50) NOT NULL
+    ,subject VARCHAR2(250) NOT NULL
+    ,content VARCHAR2(4000) NOT NULL
+    ,hitCount NUMBER DEFAULT 0
+    ,created DATE DEFAULT SYSDATE
+    ,CONSTRAINT fk_bbs_userId FOREIGN KEY(userId)
+                REFERENCES member1(userId)
+);
+
+CREATE TABLE bbsReply (
+    replyNum  NUMBER NOT NULL
+    ,num      NUMBER NOT NULL
+    ,userId   VARCHAR2(50) NOT NULL
+    ,content  VARCHAR2(4000) NOT NULL
+    ,created  DATE DEFAULT SYSDATE
+    ,answer   NUMBER NOT NULL
+    ,CONSTRAINT pk_bbsReply_replyNum PRIMARY KEY(replyNum)
+    ,CONSTRAINT fk_bbsReply_userId FOREIGN KEY(userId)
+          REFERENCES member1(userId) ON DELETE CASCADE
+    ,CONSTRAINT fk_bbsReply_num FOREIGN KEY(num)
+          REFERENCES bbs(num) ON DELETE CASCADE
+);
+
+-- 게시판 리플 - 좋아요/싫어요(Like/DisLike) : 컬럼명 like는 안됨
+CREATE TABLE bbsReplyLike (
+    replyNum  NUMBER NOT NULL
+    ,userId   VARCHAR2(50) NOT NULL
+    ,replyLike NUMBER(1) NOT NULL
+    ,CONSTRAINT pk_bbsReplyLike_replyNum
+            PRIMARY KEY(replyNum, userId)
+    ,CONSTRAINT fk_bbsReplyLike_replyNum
+            FOREIGN KEY(replyNum)
+            REFERENCES bbsReply(replyNum)
+	    ON DELETE CASCADE
+    ,CONSTRAINT fk_bbsReplyLike_userId
+            FOREIGN KEY(userId)
+            REFERENCES member1(userId)
+	    ON DELETE CASCADE
+);
+
+-- 시퀀스
+CREATE SEQUENCE bbs_seq
+    INCREMENT BY 1
+    START WITH 1
+    NOMAXVALUE
+    NOCYCLE
+    NOCACHE;
+
+CREATE SEQUENCE bbsReply_seq
+    INCREMENT BY 1
+    START WITH 1
+    NOMAXVALUE
+    NOCYCLE
+    NOCACHE;
+
+-- 테이블 및 시퀀스 확인
+SELECT * FROM tab;
+SELECT * FROM seq;
+
