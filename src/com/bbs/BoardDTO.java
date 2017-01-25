@@ -1,6 +1,8 @@
 package com.bbs;
 
+
 public class BoardDTO {
+	
 	private int listNum, num;
 	private String userId, userName;
 	private String subject, content;
