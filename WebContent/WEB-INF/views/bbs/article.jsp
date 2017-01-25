@@ -69,23 +69,16 @@ function listPage(page){
 	
 	});
 
-<<<<<<< HEAD
-=======
 }
 
 
->>>>>>> 48c422a93b78091ddfe1786f5ebacad0183a1cf7
 function login(){
 	location.href="<%=cp%>/member/login.do";
 }
 
-<<<<<<< HEAD
-function sendReply() {
-=======
+
 
 function sendReply(){
->>>>>>> 48c422a93b78091ddfe1786f5ebacad0183a1cf7
-	
 	var uid="${sessionScope.member.userId}";
 	
 	if(! uid){

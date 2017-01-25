@@ -195,6 +195,7 @@ public class MemberServlet extends MyServlet {
 			return;
 		}
 		
+		
 		String mode=req.getParameter("mode");
 		if(mode.equals("update"))
 			req.setAttribute("title", "회원 정보 수정");
@@ -211,11 +212,13 @@ public class MemberServlet extends MyServlet {
 		String cp=req.getContextPath();
 		MemberDAO dao=new MemberDAO();
 		
+		
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
 		if(info==null) { //로그아웃 된 경우
 			resp.sendRedirect(cp+"/member/login.do");
 			return;
 		}
+		
 		
 		// DB에서 해당 회원 정보 가져오기
 		MemberDTO dto=dao.readMember(info.getUserId());
@@ -224,6 +227,7 @@ public class MemberServlet extends MyServlet {
 			resp.sendRedirect(cp);
 			return;
 		}
+		
 		
 		String userPwd=req.getParameter("userPwd");
 		String mode=req.getParameter("mode");
@@ -238,6 +242,7 @@ public class MemberServlet extends MyServlet {
 			forward(req, resp, "/WEB-INF/views/member/pwd.jsp");
 			return;
 		}
+		
 		
 		if(mode.equals("delete")) {
 			// 회원탈퇴

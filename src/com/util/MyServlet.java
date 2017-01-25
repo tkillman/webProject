@@ -28,6 +28,7 @@ public abstract class MyServlet extends HttpServlet{
 		// 포워딩을 위한 메소드
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
+		
 	}
 	
 	protected abstract void process(HttpServletRequest req, HttpServletResponse resp)

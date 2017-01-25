@@ -60,6 +60,7 @@ function bgLabel(ob, id) {
     }
 }
 
+
 function sendLogin() {
     var f = document.loginForm;
 
@@ -139,9 +140,11 @@ function sendLogin() {
 					      </td>
 					  </tr>
 					  
+					  
 					  <tr align="center" height="40" >
 					    	<td><span style="color: blue;">${message}</span></td>
 					  </tr>
+					  
 					  
 					  </table>
 					</form>           

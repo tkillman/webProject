@@ -20,4 +20,5 @@ public interface BoardDAO {
 	public int dataCountReply(int num); // 리플 개수
 	public List<ReplyDTO> listReply(int num, int start, int end);// 리플
 	public int deleteReply(int replyNum);//리플 삭제
+	
 }
