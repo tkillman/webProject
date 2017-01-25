@@ -134,17 +134,25 @@ public class BoardDAOImpl implements BoardDAO{
 		StringBuffer sb=new StringBuffer();
 		
 		try {
-			
 			sb.append("SELECT * FROM (");
 			sb.append("    SELECT ROWNUM rnum, tb.* FROM (");
-			sb.append("        SELECT num, b.userId, userName, subject");
+			sb.append("        SELECT b.num, b.userId, userName, subject");
 			sb.append("            ,TO_CHAR(created, 'YYYY-MM-DD') created");
 			sb.append("            ,hitCount");
-			sb.append("            FROM bbs b JOIN member1 m ON b.userId=m.userId  ");
-			sb.append("	       ORDER BY num DESC");
+			sb.append("            ,NVL(replyCount, 0) replyCount");
+			sb.append("            FROM bbs b  ");
+			sb.append("            JOIN member1 m ON b.userId=m.userId  ");
+			sb.append("            LEFT OUTER JOIN  ");
+			sb.append("            (  ");
+			sb.append("                SELECT num, COUNT(*) replyCount  ");
+			sb.append("                FROM bbsReply WHERE answer=0  ");
+			sb.append("                GROUP BY num  ");
+			sb.append("            ) r ON b.num = r.num  ");
+			sb.append("	       ORDER BY b.num DESC");
 			sb.append("    ) tb WHERE ROWNUM <= ? ");
 			sb.append(") WHERE rnum >= ? ");
-
+			
+			
 			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.setInt(1, end);
 			pstmt.setInt(2, start);
@@ -160,9 +168,7 @@ public class BoardDAOImpl implements BoardDAO{
 				dto.setSubject(rs.getString("subject"));
 				dto.setHitCount(rs.getInt("hitCount"));
 				dto.setCreated(rs.getString("created"));
-				
-				int result= repCount(rs.getInt("num"));
-				dto.setReplyCount(result);
+				dto.setReplyCount(rs.getInt("replyCount"));
 				
 				list.add(dto);
 			}
@@ -184,46 +190,12 @@ public class BoardDAOImpl implements BoardDAO{
 				}
 			}
 		}
-		
 		return list;
-		
 	}
-	
-	//디비에 다시 가서 리플 갯수 가져오기
-	
-	public int repCount(int data){
-		
-		int r=0;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		StringBuffer sb=new StringBuffer();
-		
-		try {
-			
-			sb.append("select count(*) from bbsreply where num=?");
-			
-			pstmt= conn.prepareStatement(sb.toString());
-			pstmt.setInt(1, data);
-			rs =pstmt.executeQuery();
-			
-			if(rs.next()){
-				r=rs.getInt(1);
-			}
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		
-		return r;
-		
-	}
-	
 	
 	// 검색에서의 게시물 리스트
 	@Override	
 	public List<BoardDTO> listBoard(int start, int end, String searchKey, String searchValue) {
-	
 		List<BoardDTO> list=new ArrayList<>();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -232,10 +204,19 @@ public class BoardDAOImpl implements BoardDAO{
 		try {
 			sb.append("SELECT * FROM (");
 			sb.append("    SELECT ROWNUM rnum, tb.* FROM (");
-			sb.append("        SELECT num, b.userId, userName, subject");
+			sb.append("        SELECT b.num, b.userId, userName, subject");
 			sb.append("            ,TO_CHAR(created, 'YYYY-MM-DD') created");
 			sb.append("            ,hitCount");
-			sb.append("            FROM bbs b JOIN member1 m ON b.userId=m.userId ");
+			sb.append("            ,NVL(replyCount, 0) replyCount");
+			sb.append("            FROM bbs b  ");
+			sb.append("            JOIN member1 m ON b.userId=m.userId  ");
+			sb.append("            LEFT OUTER JOIN  ");
+			sb.append("            (  ");
+			sb.append("                SELECT num, COUNT(*) replyCount  ");
+			sb.append("                FROM bbsReply WHERE answer=0  ");
+			sb.append("                GROUP BY num  ");
+			sb.append("            ) r ON b.num = r.num  ");
+			
 			if(searchKey.equals("userName"))
 				sb.append("        WHERE  INSTR(userName, ?) = 1  ");
 			else if(searchKey.equals("created"))
@@ -262,6 +243,7 @@ public class BoardDAOImpl implements BoardDAO{
 				dto.setSubject(rs.getString("subject"));
 				dto.setHitCount(rs.getInt("hitCount"));
 				dto.setCreated(rs.getString("created"));
+				dto.setReplyCount(rs.getInt("replyCount"));
 				
 				list.add(dto);
 			}
@@ -549,7 +531,6 @@ public class BoardDAOImpl implements BoardDAO{
 	// 게시물의 댓글 추가
 	@Override
 	public int insertReply(ReplyDTO dto) {
-		
 		int result=0;
 		PreparedStatement pstmt=null;
 		StringBuffer sb=new StringBuffer();
@@ -562,8 +543,6 @@ public class BoardDAOImpl implements BoardDAO{
 			pstmt.setInt(1, dto.getNum());
 			pstmt.setString(2, dto.getUserId());
 			pstmt.setString(3, dto.getContent());
-			
-			//답글용 때문에 나온 것....
 			pstmt.setInt(4, dto.getAnswer());
 			
 			result=pstmt.executeUpdate();
@@ -590,10 +569,7 @@ public class BoardDAOImpl implements BoardDAO{
 		String sql;
 		
 		try {
-			
-			//answer=0인 것은 답글이 아니고 0이상이면 답글...
 			sql="SELECT NVL(COUNT(*), 0) FROM bbsReply WHERE num=? AND answer=0";
-			
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			

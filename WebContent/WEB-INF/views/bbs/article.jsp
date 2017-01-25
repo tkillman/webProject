@@ -36,6 +36,7 @@ function deleteBoard() {
 </c:if>
 }
 
+
 function updateBoard() {
 <c:if test="${sessionScope.member.userId==dto.userId}">
     var num = "${dto.num}";
@@ -51,11 +52,13 @@ function updateBoard() {
 </c:if>
 }
 
+//댓글의 첫 페이지를 보여준다.
 $(function(){
 	listPage(1);
 	
 })
 
+//
 function listPage(page){
 	var url="<%=cp%>/bbs/listReply.do";
 	var num="${dto.num}";
@@ -63,18 +66,25 @@ function listPage(page){
 	$.post(url,{num:num,pageNo:page},function(data){
 		
 		$('#listReply').html(data);
+	
 	});
+
+<<<<<<< HEAD
+=======
 }
 
 
-
-
+>>>>>>> 48c422a93b78091ddfe1786f5ebacad0183a1cf7
 function login(){
 	location.href="<%=cp%>/member/login.do";
 }
 
+<<<<<<< HEAD
+function sendReply() {
+=======
 
 function sendReply(){
+>>>>>>> 48c422a93b78091ddfe1786f5ebacad0183a1cf7
 	
 	//로그인이 풀린 경우, 20분이 지났다.
 	var uid="${sessionScope.member.userId}";
@@ -98,6 +108,7 @@ function sendReply(){
 	var url="<%=cp%>/bbs/insertReply.do";
 	
 	$.ajax({
+		
 		type:"post"
 		,url:url
 		,data:query
@@ -109,7 +120,9 @@ function sendReply(){
 	    	//로그인이 안 되어 있는 경우
 	    	if(data.isLogin=="false"){
 	    		login();
+	    		
 	    	}else{
+	    		
 	    		listPage(1);
 	    	}
 	    	}
@@ -123,8 +136,51 @@ function sendReply(){
 	
 }
 
+
+function deleteReply(replyNum,page){
+	
+	var uid="${sessionScope.member.userId}";
+	
+	if(!uid){
+		login();
+		return;
+	
+	}
 	
 	
+	if(confirm("정말 삭제하시겠습니까?")==false){
+		return;
+	}
+	
+	var url="<%=cp%>/bbs/deleteReply.do";
+	var query="replyNum="+replyNum;
+	
+	
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:query
+		,dataType:"json"
+	    ,success:function(data){
+	    	
+	    	console.log(data);
+	    	
+	    	$('#replyContent').val("");
+	    	
+	    	if(data.isLogin=="false"){
+	    		login();
+	    	}else{
+	    		listPage(page);
+	    		
+	    	}
+	    	}
+	    	
+	    ,error:function(e){
+	    	console.log(e.responseText);
+	    }
+	});
+
+}
 	
 </script>
 
