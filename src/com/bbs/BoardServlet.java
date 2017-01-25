@@ -31,25 +31,25 @@ public class BoardServlet extends MyServlet {
 		String uri=req.getRequestURI();
 		
 		// uri에 따른 작업 구분
-		if(uri.indexOf("list.do")!=-1) {
+		if(uri.indexOf("list.do")!=-1) {//ok , 리스트를 보여준다.
 			list(req, resp);
-		} else if(uri.indexOf("created.do")!=-1) {
+		} else if(uri.indexOf("created.do")!=-1) {//ok,작성란으로 보낸다.
 			createdForm(req, resp);
-		} else if(uri.indexOf("created_ok.do")!=-1) {
+		} else if(uri.indexOf("created_ok.do")!=-1) {//ok,작성한 것 디비에 저장
 			createdSubmit(req, resp);
-		} else if(uri.indexOf("article.do")!=-1) {
+		} else if(uri.indexOf("article.do")!=-1) {//ok, 글 보기
 			article(req, resp);
-		} else if(uri.indexOf("update.do")!=-1) {
+		} else if(uri.indexOf("update.do")!=-1) {//ok ,자신이 올린 글 맞는지 확인후 작성란
 			updateForm(req, resp);
-		} else if(uri.indexOf("update_ok.do")!=-1) {
+		} else if(uri.indexOf("update_ok.do")!=-1) {//ok , 작성한 것 디비에 저장
 			updateSubmit(req, resp);
-		} else if(uri.indexOf("delete.do")!=-1) {
+		} else if(uri.indexOf("delete.do")!=-1) { //ok , 삭제
 			delete(req, resp);
-		} else if(uri.indexOf("insertReply.do")!=-1) {
+		} else if(uri.indexOf("insertReply.do")!=-1) {//ok, 답글 넣기
 			insertReply(req, resp);
-		} else if(uri.indexOf("listReply.do")!=-1) {
+		} else if(uri.indexOf("listReply.do")!=-1) { //ok, 답글 리스트
 			listReply(req, resp);
-		} else if(uri.indexOf("deleteReply.do")!=-1) {
+		} else if(uri.indexOf("deleteReply.do")!=-1) {//ok , 답글 삭제
 			deleteReply(req, resp);
 		}
 	}
@@ -57,19 +57,33 @@ public class BoardServlet extends MyServlet {
 	private void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 게시물 리스트
 		String cp = req.getContextPath();
-
+		
+		//디비에서 작업할 객체생성
 		BoardDAO dao = new BoardDAOImpl();
+		
+		//페이징처리 객체생성
 		MyUtil util = new MyUtil();
-	
+		
+		
+		//페이지 값 받아오기
 		String page=req.getParameter("page");
+		
+		//일단 현재 페이지를 1로 설정
 		int current_page=1;
 		
 		if(page!=null)
 			current_page=Integer.parseInt(page);
 		
+		
 		// 검색
+		
+		
+		//찾을 목차(제목,작성자,내용,등록일)
 		String searchKey=req.getParameter("searchKey");
+		
+		//찾을 내용
 		String searchValue=req.getParameter("searchValue");
+		
 		if(searchKey==null) {
 			searchKey="subject";
 			searchValue="";
@@ -80,17 +94,22 @@ public class BoardServlet extends MyServlet {
 			searchValue=URLDecoder.decode(searchValue, "utf-8");
 		}
 		
+		
 		// 전체 데이터 개수
 		int dataCount;
 		if(searchValue.length()==0)
-			dataCount=dao.dataCount();
+			//게시글 전체 int 반환
+			dataCount=dao.dataCount(); 
 		else
+			//조건에 맞는 갯수만 int 반환
 			dataCount=dao.dataCount(searchKey, searchValue);
 		
 		// 전체 페이지 수
+		
 		int numPerPage=10;
 		int total_page=util.pageCount(numPerPage, dataCount);
 		
+		//웹 페이지는 정적이기 때문에 내가 요청한 페이지가 다른 사람이 삭제 했을 수도 있기 때문에
 		if(current_page>total_page)
 			current_page=total_page;
 		
@@ -98,25 +117,38 @@ public class BoardServlet extends MyServlet {
 		int start=(current_page-1)*numPerPage+1;
 		int end=current_page*numPerPage;
 		
+		
 		// 게시물 가져오기
 		List<BoardDTO> list=null;
+		
 		if(searchValue.length()==0)
+			
+			//전체 게시글 
 			list=dao.listBoard(start, end);
 		else
+			//조건에 맞는 게시글
 			list=dao.listBoard(start, end, searchKey, searchValue);
+		
 		
 		// 리스트 글번호 만들기
 		int listNum, n=0;
+		
 		Iterator<BoardDTO>it=list.iterator();
+		
 		while(it.hasNext()) {
 			BoardDTO dto=it.next();
+			
+			
 			listNum=dataCount-(start+n-1);
+			
 			dto.setListNum(listNum);
+			
 			n++;
 		}
 		
 		
 		String params="";
+		
 		if(searchValue.length()!=0) {
 			// 검색인 경우 검색값 인코딩
 			searchValue=URLEncoder.encode(searchValue, "utf-8");
@@ -127,6 +159,7 @@ public class BoardServlet extends MyServlet {
 		// 페이징 처리
 		String listUrl=cp+"/bbs/list.do";
 		String articleUrl=cp+"/bbs/article.do?page="+current_page;
+		
 		if(params.length()!=0) {
 			listUrl+="?"+params;
 			articleUrl+="&"+params;
@@ -148,10 +181,12 @@ public class BoardServlet extends MyServlet {
 	}
 	
 	private void createdForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		// 글쓰기 폼
 		String cp=req.getContextPath();
 		HttpSession session=req.getSession();
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
+		
 		if(info==null) { // 로그인되지 않은 경우
 			resp.sendRedirect(cp+"/member/login.do");
 			return;
@@ -258,7 +293,7 @@ public class BoardServlet extends MyServlet {
 		int num=Integer.parseInt(	req.getParameter("num"));
 		BoardDTO dto=dao.readBoard(num);
 		
-		if(dto==null) {
+		if(dto==null) {	
 			resp.sendRedirect(cp+"/bbs/list.do?page="+page);
 			return;
 		}

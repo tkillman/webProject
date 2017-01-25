@@ -101,6 +101,7 @@ public class BoardDAOImpl implements BoardDAO{
 			pstmt.setString(1, searchValue);
 			
 			rs=pstmt.executeQuery();
+		
 			if(rs.next())
 				result=rs.getInt(1);
 			

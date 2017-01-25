@@ -19,8 +19,14 @@
 <script type="text/javascript" src="<%=cp%>/res/jquery/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/res/js/util.js"></script>
 <script type="text/javascript">
+	
+	
 	function searchList() {
+		
 		var f=document.searchForm;
+		
+		
+		
 		f.action="<%=cp%>/bbs/list.do";
 		f.submit();
 	}

@@ -180,6 +180,7 @@ continue // 그 순간에 종료
 { if(i ==5) {continue;} document.write("hello"+i+"<br\>");}
  // 5가 나오지 않는다.
  
+
  27장 반복문의 중첩
  
   for(i=0;i<3;i++)
@@ -230,8 +231,8 @@ alert(get_argument(2));
 
 매개변수는 두 개 이상 올 수 있다.
 
-32장 함수를 정의하는 다른 방법
 
+32장 함수를 정의하는 다른 방법
 
 function numbering()
 { for(i=0;i<10;i++)
@@ -291,6 +292,7 @@ document.write("<br>");
 for(var j=0;j<members.length;j++)
 {document.write(members[j].toUpperCase()+"\n");}
 
+
 36장 배열(4/5) :데이터의 추가
 
 배열의 원소 추가
@@ -316,6 +318,7 @@ alert(li);
 
 li.splice(2,1,'k','t');
 
+
 37장 배열(5/5) : 제거와 정렬
 -제거-
 배열.shift(); // 가장 앞쪽 원소 하나 제거
@@ -329,6 +332,7 @@ li.splice(2,1,'k','t');
 생활코딩 참조
 
 li.sort();
+
 
 38장 객체(1/3) : 객체의 문법
 
@@ -478,6 +482,7 @@ grades.show();
  45장 모듈(5/5) : 라이브러리의 사용
  
  <script src="jquery.js"></script>
+
  
 $(#아이디 이름).click( function(){ $(#아이디이름).text('바꿀 내용');})
 
@@ -488,6 +493,7 @@ API란 프로그램이 제공하는 기능들을 유저가 사용할 수 있게 만드는것.
 
 
 47장 UI, API, 그리고 문서 -- 문서보는법
+
 
 49장 정규표현식(1/7) : 오리엔테이션
 정규표현식이란? 문자열에서 특정한 문자를 찾아내는 도구
@@ -579,6 +585,7 @@ console.log(numbers.sort(sortfunc))
 
 
 64장 값으로서 함수와 콜백 (4/4) : 비동기 처리
+
 
 Ajax 비동기 처리 asynchronous
 
@@ -797,6 +804,7 @@ document.write(p1.introduce());
 var p2 = new person('hyo');
 document.write(p2.introduce());
 
+
 76장 전역객체
  
  모든 객체는 이 전역객체의 프로퍼티다.
@@ -849,9 +857,11 @@ var n2 = new func();
 if(funcThis === n2 ){document.write('n2');}
 
 
+
 80장 this(4/5) 객체로서의 함수
 리터럴 ? new 를 사용하지 않아도 사용자가 편하게 객체를 만들 수 있도록 해 놓은 것
                 ex) 함수리터럴,객체리터럴,배열리터럴
+
 함수 리터럴                
 function sum(x,y){return x+y;}                
 var sum2 = new Fuction('x','y','return x+y;');
@@ -863,6 +873,7 @@ var n2 = new object();
 배열 리터럴
 var a =[1,2,3];
 var a = new Array(1,2,3);
+
 
 
 81강 this(5/5) apply와 this
@@ -953,6 +964,7 @@ o.value = 1; // 추가된 부분 . 먼저 o.value를 정의하면 상속받았던 값을 재정의
 
 document.write(o.value);
 
+
 86강 표준 내장 객체의 확장 (1/3) - 표준 내장 객체란~?
 표준 내장 객체? 자바 스크립트가 기본적으로 가지고 있는 객체
 프로그램의 기본!!
@@ -993,6 +1005,7 @@ var index = Math.floor( this.length*Math.random());
 var arr = ['hello','javascript','haha','hehe'];
 
 document.write(arr.random());
+
 
 
 89강 Object (1/4) Object란?
@@ -1084,6 +1097,7 @@ for(var name in o1){
                 document.write(name +'\n'); }
                             
 }
+
 
 93강 데이터 타입 (1/2) - 원시 데이터 타입과 객체
 
