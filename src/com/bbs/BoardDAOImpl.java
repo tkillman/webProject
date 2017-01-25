@@ -199,13 +199,14 @@ public class BoardDAOImpl implements BoardDAO{
 		StringBuffer sb=new StringBuffer();
 		
 		try {
+			
 			sb.append("select count(*) from bbsreply where num=?");
 			
 			pstmt= conn.prepareStatement(sb.toString());
 			pstmt.setInt(1, data);
 			rs =pstmt.executeQuery();
 			
-			while(rs.next()){
+			if(rs.next()){
 				r=rs.getInt(1);
 			}
 			

@@ -76,6 +76,7 @@ function login(){
 
 function sendReply(){
 	
+	//로그인이 풀린 경우, 20분이 지났다.
 	var uid="${sessionScope.member.userId}";
 	
 	if(! uid){
@@ -105,6 +106,7 @@ function sendReply(){
 	    	
 	    	$('#replyContent').val("");
 	    	
+	    	//로그인이 안 되어 있는 경우
 	    	if(data.isLogin=="false"){
 	    		login();
 	    	}else{

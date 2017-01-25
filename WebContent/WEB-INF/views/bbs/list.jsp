@@ -84,7 +84,7 @@
 					      <td align="center">${dto.listNum}</td>
 					      <td align="left" style="padding-left: 10px;">
 					          <a href='${articleUrl}&num=${dto.num}'>${dto.subject}</a>
-					          <t> 댓글 갯수 : ${dto.replyCount} </t>
+					                         댓글 갯수 : ${dto.replyCount}
 					      </td>
 					      <td align="center">${dto.userName}</td>
 					      <td align="center">${dto.created}</td>
